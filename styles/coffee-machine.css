@@ -1,0 +1,153 @@
+body {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    height: 100vh
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 50%;
+    width: 35%;
+    border-radius: 10px;
+    border: 3px solid blueviolet;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45%;
+    width: 100%;
+    background-color: #afb0b2;
+    border-radius: 10px;
+}
+
+.mid{
+    height: 90%;
+    width: 85%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: #d1cdcc;
+}
+
+.bottom {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.base {
+    height: 80%;
+    width: 95%;
+    background-color: #afb0b2;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.stand {
+    height: 20%;
+    width: 100%;
+    background-color: #555;
+}
+
+.box-container {
+    height: 100%;
+    width: 85%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.box {
+    height: 15%;
+    width: 20%;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px; 
+    background-color: #444;
+}
+
+.box-top {
+    height: 5%;
+    width: 25%;
+    background-color: #777;
+}
+
+.box-bottom {
+    height: 5%;
+    width: 15%;
+    background-color: #777;
+}
+
+.mini-box {
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    height: 15%;
+    width: 15%;
+}
+
+.mini-box-left, .mini-box-right {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #333;
+    width: 20%;
+    height: 20%;
+}
+
+.coffee, .milk {
+    margin-top: 70%;
+    height: 60%;
+    width: 60%;
+    opacity: 0;
+}
+
+.coffee {
+    background-color: #755542;
+}
+
+.milk {
+    background-color: #fefefe;
+}
+
+.pour {
+    animation: pour 8s linear 1;
+}
+
+@keyframes pour {
+    0% {
+        height: 0;
+        opacity: 1;
+    }
+
+    5% {
+        height: 0;
+        opacity: 1;
+    }
+
+    20% {
+        height: 6rem;
+        opacity: 1;
+    }
+
+    95% {
+        height: 6rem;
+        opacity: 1;
+    }
+
+    100% {
+        height: 6rem;
+        opacity: 0;
+    }
+}
