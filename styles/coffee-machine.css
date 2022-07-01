@@ -5,37 +5,49 @@ body {
     height: 100vh
 }
 
+button {
+    padding: 0;
+}
+
 .container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    height: 50%;
-    width: 30%;
+    height: 25em;
+    width: 30em;
     border-radius: 10px;
     border: 3px solid blueviolet;
 }
 
 .top {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    flex-direction: row-reverse;
     height: 45%;
     width: 100%;
     background-color: cadetblue;
     border-radius: 10px;
 }
 
-.start {
-    height: 40%;
-    width: 10%;
+.power, .start{
+    height: 1.8rem;
+    width: 1.8rem;
     border-radius: 50%;
-    padding: 0.2rem;
-    font-size: 0.6em;
-    text-transform: uppercase;
+    /* padding: .4em; */
+    font-size: .9rem;
+    text-align: center;
     border: none;
-    color: orange;
+    color: #ccc;
     background-color: #444;
+}
+
+.small-button {
+    height: .5rem;
+    width: .5rem;
+    border-radius: 50%;
+    background-color: #f00;
 }
 
 .mid {
@@ -135,7 +147,7 @@ body {
 }
 
 .coffee, .milk {
-    margin-top: 60%;
+    margin-top: 0.4em;
     height: 60%;
     width: 60%;
     opacity: 0;
