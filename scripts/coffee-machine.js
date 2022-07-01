@@ -1,6 +1,6 @@
 let milk = document.querySelector('.milk');
 let coffee = document.querySelector('.coffee');
-let button = document.querySelector('button');
+let button = document.querySelector('.start');
 
 // const chooseType = function() {
 
