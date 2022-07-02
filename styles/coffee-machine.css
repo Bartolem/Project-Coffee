@@ -11,24 +11,31 @@ button {
 
 .container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 25em;
     width: 30em;
+    margin: 0 auto;
     border-radius: 10px;
-    border: 3px solid blueviolet;
 }
 
 .top {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    flex-direction: row-reverse;
     height: 45%;
     width: 100%;
     background-color: cadetblue;
     border-radius: 10px;
+}
+
+.main-btn-box {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 80%;
+    width: 20%;
 }
 
 .power-btn-box, .start-btn-box {
@@ -36,8 +43,50 @@ button {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    height: 35%;
-    width: 5%;
+    height: 40%;
+    width: 100%;
+}
+
+.side-btn-box {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 80%;
+    width: 20%;
+}
+
+.side-btn-box button {
+    height: 1em;
+    width: 1em;
+}
+
+.side-btn-box label {
+    font-size: .8rem;
+}
+
+.side-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    width: 30%;
+}
+
+#output-text {
+    width: 80%;
+    padding: .4em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: none;
+    background-color: #BBE2F3;
+    color:#018AF8;
 }
 
 .power, .start {
