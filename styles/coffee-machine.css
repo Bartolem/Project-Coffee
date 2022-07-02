@@ -26,7 +26,7 @@ button {
     align-items: center;
     height: 45%;
     width: 100%;
-    background-color: cadetblue;
+    background-color: rgb(148, 169, 194);
     border-radius: 10px;
 }
 
@@ -35,7 +35,8 @@ button {
     align-items: center;
     flex-direction: row;
     height: 80%;
-    width: 20%;
+    width: 25%;
+    background-color: rgb(153, 153, 153);
 }
 
 .power-btn-box, .start-btn-box {
@@ -43,7 +44,7 @@ button {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    height: 40%;
+    height: 70%;
     width: 100%;
 }
 
@@ -52,7 +53,7 @@ button {
     justify-content: space-evenly;
     flex-direction: column;
     height: 80%;
-    width: 20%;
+    width: 25%;
 }
 
 .side-btn-box button {
@@ -82,22 +83,23 @@ button {
     width: 80%;
     padding: .4em;
     text-align: center;
+    font-size: 1.3rem;
     font-weight: bold;
-    font-size: 0.9rem;
+    letter-spacing: .1rem;
+    font-family: 'DS-Digital', sans-serif;
     border: none;
-    background-color: #BBE2F3;
-    color:#018AF8;
+    color:#000;
 }
 
 .power, .start {
-    height: 2em;
-    width: 2em;
+    height: 2.5em;
+    width: 2.5em;
     padding: 0;
     border-radius: 50%;
     border: none;
-    font-size: .7rem;
+    font-size: 1rem;
     text-align: center;
-    color: #ccc;
+    color: #aaa;
     background-color: #444;
 }
 
@@ -106,10 +108,10 @@ button {
 }
 
 .small-btn-power, .small-btn-start {
-    height: .5rem;
-    width: .5rem;
+    height: .7em;
+    width: .7em;
     border-radius: 50%;
-    background-color: #f00;
+    background-color: rgb(185, 4, 4);
 }
 
 .small-btn-start {
@@ -138,7 +140,7 @@ button {
 .base {
     height: 80%;
     width: 95%;
-    background-color: cadetblue;
+    background-color: rgb(148, 169, 194);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -228,7 +230,7 @@ button {
 }
 
 .pour {
-    animation: pour 4s linear 1;
+    animation: pour 6s linear 1;
 }
 
 @keyframes pour {
