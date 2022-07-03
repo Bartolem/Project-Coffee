@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+}
+
+body {
+    height: 200vh;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    height: 3em;
+    background-color: #533B31;
+    color: #fff;
+}
+
+h1 {
+    float: left;
+    margin-right: auto;
+}
+
+h2:first-child {
+    font-size: 4rem;
+    float: left;
+    margin-right: auto;
+    color:#FFBD59;
+}
+
+h2:nth-child(2) {
+    font-size: 12rem;
+    color: #FFBD59;
+}
+
+.top-text p {
+    float: right;
+    margin-left: auto;
+    font-size: 2rem;
+    text-align: center;
+    width: 50%;
+}
+
+nav {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70%;
+    list-style: none;
+}
+
+li, a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #BBAF99;
+    background-image: url("../images/coffee-img-medium.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    height: 100vh;
+    border-top: 4px solid #FFBD59;
+    color: #fff;
+}
+
+.top-text {
+    height: 80%;
+    height: 80%;
+    border: 6px solid purple;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.bottom {
+    background-color: #BBAF99;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
