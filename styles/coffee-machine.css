@@ -6,10 +6,16 @@
 }
 
 body {
+    margin: 0;
     display: flex;
     align-items:center;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
     height: 100vh
+}
+
+header {
+    border-bottom: 4px solid #709263;
 }
 
 button {

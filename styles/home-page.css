@@ -1,28 +1,9 @@
-@font-face {
-    font-family: 'Black-Jack regular';
-    src: url('blackjack-webfont.woff') format('woff');
-}
-
-@font-face {
-	font-family: 'Lato';
-	src: url('./LatoLig.woff') format('woff');
-}
-
 * {
     margin: 0;
 }
 
 body {
     height: 200vh;
-}
-
-h1 {
-    width: 35%;
-    float: left;
-    margin-right: auto;
-    font-family: Black-Jack regular;
-    font-weight: normal; 
-    font-size: 2rem;
 }
 
 h2:first-child {
@@ -35,6 +16,10 @@ h2:first-child {
 
 h2:nth-child(2) {
     font-size: 12rem;
+}
+
+header {
+    border-bottom: 4px solid #FFBD59;
 }
 
 .top-text {
@@ -63,7 +48,6 @@ h2:nth-child(2) {
     background-size: cover;
     background-position: bottom;
     height: 100vh;
-    border-top: 4px solid #FFBD59;
     color: #fff;
 }
 
