@@ -92,7 +92,7 @@ header {
     font-size: 3rem;
 }
 
-.col-1, .col-2, .col-3 {
+.col {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -116,7 +116,7 @@ header {
     body {
         height: 100vh;
     }
-    
+
     .top {
         height: 50vh;
     }
@@ -148,7 +148,7 @@ header {
         flex-direction: column;
     }
 
-    .col-1, .col-2, .col-3 {
+    .col {
         flex-direction: row;
         height: 30%;
         width: 90%;
@@ -166,7 +166,7 @@ header {
     }
 
     h2:nth-child(2) {
-        font-size: 4rem;
+        font-size: 5rem;
     }
 
     .top-text p {
@@ -183,5 +183,15 @@ header {
 
     .bottom p {
         font-size: .6rem;
+    }
+}
+
+@media (max-height: 500px) {
+    .top {
+        height: 100vh;
+    }
+
+    .bottom {
+        height: 150vh;
     }
 }
