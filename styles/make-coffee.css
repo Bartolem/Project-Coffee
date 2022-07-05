@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'DS-Digital Normal';
+    font-style: normal;
+    font-weight: normal;
+    src: local('DS-Digital Normal'), url('../webfonts/DS-DIGI.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Black-Jack regular';
+    src: url('../webfonts/blackjack-webfont.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Toledo-Bold';
+	src: url('../webfonts/toledosfbold0.woff') format('woff');
+}
+
+body {
+    margin: 0;
+    /* display: flex;
+    align-items:center;
+    justify-content: space-between;
+    flex-direction: column; */
+    height: 100vh
+}
+
+header {
+    border-bottom: 4px solid #709263;
+}
+
+button {
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #BBAF99;
+}
+
+.left-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 25em;
+    width: 30em;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.right-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+}
+
+.coffee-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+    width: 70%;
+    background-color: #709263;
+}
+
+.menu-top {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 10%;
+    width: 100%;
+    background-color: #526B48;
+}
+
+.menu-top h2 {
+    width: 100%;
+    font-family: Toledo-Bold;
+    font-size: 1.4rem;
+    letter-spacing: .3em;
+    color: #fff;
+}
+
+.menu-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+}
+
+.menu-main img {
+    width: 30%;
+}
+
+.menu-espresso, .menu-latte, 
+.menu-americano, .menu-cappuccino {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20%;
+    width: 80%;
+    font-family: Black-Jack regular;
+}

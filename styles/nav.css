@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Black-Jack regular';
-    src: url('blackjack-webfont.woff') format('woff');
+    src: url('../webfonts/blackjack-webfont.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'Lato';
-	src: url('./LatoLig.woff') format('woff');
+	src: url('../webfonts/LatoLig.woff') format('woff');
 }
 
 header {
