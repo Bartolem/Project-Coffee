@@ -24,7 +24,7 @@ h1 {
     margin-right: auto;
     font-family: Black-Jack regular;
     font-weight: normal; 
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 nav {
@@ -39,7 +39,7 @@ nav {
 .nav-links {
     margin: 0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     width: 70%;
     list-style: none;
@@ -52,7 +52,7 @@ li, a {
 }
 
 img {
-    width: 10%;
+    width: 7%;
 }
 
 @media (max-width:800px) {
@@ -86,9 +86,8 @@ img {
     }
 
     .nav-links {
-        justify-content: space-between;
         padding-right: 1.5em;
-        padding-left: .5em;
+        padding-left: 0;
     }
 }
 
