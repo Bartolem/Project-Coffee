@@ -6,7 +6,11 @@ body {
     height: 200vh;
 }
 
-h2:first-child {
+header {
+    border-bottom: 4px solid #FFBD59;
+}
+
+.top h2:first-child {
     float: left;
     margin-right: auto;
     margin-left: 2em;
@@ -14,12 +18,8 @@ h2:first-child {
     color: #fff;
 }
 
-h2:nth-child(2) {
+.top h2:nth-child(2) {
     font-size: 12rem;
-}
-
-header {
-    border-bottom: 4px solid #FFBD59;
 }
 
 .top-text {
@@ -61,16 +61,16 @@ header {
 }
 
 .bottom {
-    background-color: #BBAF99;
+    background-color: #533B31;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    height: 100vh;
+    height: 140vh;
     font-family: Lato;
     font-weight: bold;
-    color: #533B31;
+    color: #BBAF99;
 }
 
 .bottom-col {
@@ -82,28 +82,37 @@ header {
 }
 
 .bottom-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.bottom-text h3 {
     font-size: 3rem;
 }
 
 .col {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
     height: 100%;
     width: 30%;
+    margin: 8em 1em 5em 1em;
+    background-color: #BBAF99;
+    color: #533B31;
+}
+
+.img-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 45%;
+    width: 100%;
+}
+
+.col-h {
+    font-size: 2rem;
 }
 
 .bottom img {
-    width: 50%;
+    width: 60%;
 }
 
 .bottom p {
@@ -121,11 +130,11 @@ header {
         height: 50vh;
     }
 
-    h2:first-child {
+    .top h2:first-child {
         font-size: 2rem;
     }
 
-    h2:nth-child(2) {
+    .top h2:nth-child(2) {
         font-size: 6rem;
     }
 
@@ -133,12 +142,12 @@ header {
         font-size: 1.2rem;
     }
 
-    .bottom-text h3 {
+    .bottom-text {
         font-size: 2rem;
     }
 
     .bottom p {
-        font-size: .8rem;
+        font-size: .9rem;
     }
 
     .bottom-col {
@@ -148,24 +157,35 @@ header {
         flex-direction: column;
     }
 
+    .col-h {
+        font-size: 1.5rem;
+    }
+
     .col {
         flex-direction: row;
         height: 30%;
-        width: 90%;
+        width: 100%;
+        margin: 0;
         text-align: left;
     }
 
+    .img-box {
+        justify-content: center;
+        height: 100%;
+        width: 50%;
+    }
+
     .bottom img {
-        width: 20%;
+        width: 40%;
     }
 }
 
 @media (max-width:500px) {
-    h2:first-child {
+    .top h2:first-child {
         font-size: 1.8rem;
     }
 
-    h2:nth-child(2) {
+    .top h2:nth-child(2) {
         font-size: 5rem;
     }
 
@@ -173,16 +193,16 @@ header {
         font-size: 1rem;
     }
 
-    .top-text p {
-        font-size: 1rem;
-    }
-
-    .bottom-text h3 {
+    .bottom-text h2 {
         font-size: 1.8rem;
     }
 
+    .col-h {
+        font-size: 1rem;
+    }
+
     .bottom p {
-        font-size: .6rem;
+        font-size: .7rem;
     }
 }
 
