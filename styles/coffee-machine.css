@@ -237,3 +237,11 @@
         opacity: 0;
     }
 }
+
+@media (max-width:500px) {
+    .start, .power {
+        height: 2.2em;
+        width: 2.2em;
+        font-size: 0.8rem;
+    }
+}
