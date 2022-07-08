@@ -72,6 +72,7 @@ button {
     align-items: center;
     height: 90%;
     width: 80%;
+    border-radius: 5px;
     background-color: #709263;
 }
 
@@ -83,13 +84,15 @@ button {
     height: 10%;
     width: 100%;
     background-color: #526B48;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .menu-top h2 {
     width: 100%;
-    font-family: Toledo-Bold;
+    font-family: Black-Jack regular;
     font-size: 2rem;
-    letter-spacing: .3em;
+    /* letter-spacing: .3em; */
     color: #eee;
     font-weight: bold;
 }
@@ -108,7 +111,7 @@ button {
 }
 
 .menu-main h2 {
-    font-family: Black-Jack regular;
+    font-family: Lato;
     font-size: 2rem;
     color: #502d18;
 }
@@ -140,8 +143,8 @@ button {
     }
 
     .coffee-menu {
-        height: 100%;
-        width: 100%;
+        height: 90%;
+        width: 90%;
     }
 
     .coffee-machine {
@@ -177,7 +180,7 @@ button {
     }
 
     .menu-main img {
-        width: 45%;
+        width: 40%;
      
     }
 }

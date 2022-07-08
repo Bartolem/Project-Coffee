@@ -38,7 +38,7 @@ function switchOn() {
             startButton.style.color = "#aaa";
             smallPowerBtn.style.backgroundColor = "rgb(255, 61, 61)";
         }
-    }, 2000);
+    }, 1000);
 }
 
 function chooseType() {
@@ -61,7 +61,7 @@ function makeCoffee() {
     setTimeout(function() {
         milk.classList.add('pour');
         smallStartBtn.style.backgroundColor = "rgb(255, 202, 87)";
-    }, 2000);
+    }, 1000);
     
     setTimeout(function() {
         milk.classList.remove('pour');
