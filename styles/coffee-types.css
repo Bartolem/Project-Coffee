@@ -61,6 +61,8 @@ body {
     text-align: justify;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #533B31;
+    padding: .5em;
+    background-color: #9F8F72;
 }
 
 footer {
@@ -71,7 +73,10 @@ footer {
     height: 25%;
 }
 
-.pure-coffee, .water, .milk, .milk-foam {
+.pure-coffee, 
+.water, 
+.milk, 
+.milk-foam {
     height: 2.5em;
     width: 2.5em;
     border-radius: 50%;
@@ -145,5 +150,48 @@ footer div {
 
     .coffee-beans {
         width: 2.5em;
+    }
+
+    footer div {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:400px) {
+    .pure-coffee, 
+    .water, 
+    .milk, 
+    .milk-foam {
+        height: 2em;
+        width: 2em
+    }
+
+    .intensity {
+        width: 1.2em;
+    }
+}
+
+@media (max-height:500px) {
+    .column {
+        height: 150vh;
+    }
+
+    footer {
+        height: 30vh;
+    }
+
+    footer div {
+        height: 100%;
+    }
+}
+
+
+@media (max-height:300px) {
+    .column {
+        height: 200vh;
+    }
+
+    footer {
+        height: 50vh;
     }
 }
