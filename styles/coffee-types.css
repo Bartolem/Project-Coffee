@@ -20,9 +20,33 @@ body {
     height: 90%;
 }
 
+.coffee-beans {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .column img {
     width: 80%;
+    margin: .5em;
 }
+
+.coffee-beans img {
+    width: 5%;
+}
+
+#bean-lat img:nth-child(n + 2) {
+    opacity: .5;
+} 
+
+#bean-am img:nth-child(4) {
+    opacity: .5;
+} 
+
+#bean-cap img:nth-child(n + 3) {
+    opacity: .5;
+} 
 
 .column h2 {
     font-size: 2rem;
@@ -41,15 +65,15 @@ body {
 
 footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: 15vh;
 }
 
 .pure-coffee, .water, .milk, .milk-foam {
-    height: 3em;
-    width: 3em;
+    height: 2.5em;
+    width: 2.5em;
     border-radius: 50%;
     background-color: #755542;
 }
@@ -67,11 +91,14 @@ footer {
 }
 
 .intensity {
-    width: 2.5em;
+    width: 1.5em;
 }
 
 footer label {
     float: right;
     margin-right: 1em;
-    margin-left: 6em;
+    margin-left: 5em;
+    font-family: Lato;
+    font-weight: bold;
+    color: #533B31;
 }
