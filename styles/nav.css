@@ -15,7 +15,8 @@ header {
     height: 10vh;
     background-color: #533B31;
     color: #fff;
-
+    position: sticky;
+    top: 0;
 }
 
 h1 {
@@ -78,7 +79,6 @@ img {
 @media (max-width:500px) {
     h1 {
         font-size: 1rem;
-        width: 10%;
     }
 
     a {
@@ -99,10 +99,6 @@ img {
     .nav-links {
         padding-right: .3em;
         padding-left: .3em;
-    }
-
-    img {
-        width: 3em;
     }
 }
 
