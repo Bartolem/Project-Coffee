@@ -61,7 +61,7 @@ header {
 }
 
 .bottom {
-    background-color: #362721;
+    background-color: #BBAF99;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +70,7 @@ header {
     height: 140vh;
     font-family: Lato;
     font-weight: bold;
-    color: #BBAF99;
+    color: #362721;
 }
 
 .bottom-col {
@@ -94,7 +94,6 @@ header {
     height: 90%;
     width: 30%;
     margin: 8em 1em 5em 1em;
-    background-color: #BBAF99;
     color: #362721;
 }
 
@@ -112,7 +111,6 @@ header {
 }
 
 .bottom img {
-    /* transform: scale(10%); */
     height: 15em;
 }
 
@@ -124,7 +122,7 @@ header {
 
 @media (max-width: 900px) {
     body {
-        height: 150vh;
+        height: 290vh;
     }
 
     .top {
@@ -171,9 +169,12 @@ header {
 }
 
 @media (max-width:500px) {
-    .col {
+    body {
+        height: 400vh;
+    }
+
+    .top {
         height: 100vh;
-        flex-direction: column;
     }
 
     .bottom {
@@ -187,6 +188,11 @@ header {
 
     .bottom-text {
         margin-bottom: .5em;
+    }
+
+    .col {
+        height: 100vh;
+        flex-direction: column;
     }
 
     .col-h {
