@@ -164,22 +164,4 @@ cappuccinoButton.addEventListener('click', function() {
     text.value = "cappuccino";
 });
 
-  
-
-// function pureMilk() {
-
-// }
-
-// function pureCoffee() {
-//     function buttonClick() {
-//         button.addEventListener('click', function() {
-//             coffee.classList.add('pour');
-        
-//             setTimeout(function() {
-//                 coffee.classList.remove('pour');
-//             }, 8000);
-//         });
-//     }
-// }
-
 

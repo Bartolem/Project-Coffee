@@ -306,6 +306,10 @@
         font-size: .8rem;
     }
 
+    .side-btn-box {
+        width: 35%;
+    }
+
     .side-btn-box button {
         height: 1em;
         width: 1em;
@@ -313,6 +317,10 @@
 
     .side-btn-box label {
         font-size: .7rem;
+    }
+
+    #output-text {
+        font-size: .8rem;
     }
 
     .coffee, .milk {
