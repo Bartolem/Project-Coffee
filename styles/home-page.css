@@ -57,11 +57,11 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .bottom {
-    background-color: #533B31;
+    background-color: #BBAF99;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +70,7 @@ header {
     height: 140vh;
     font-family: Lato;
     font-weight: bold;
-    color: #BBAF99;
+    color: #362721;
 }
 
 .bottom-col {
@@ -94,8 +94,7 @@ header {
     height: 90%;
     width: 30%;
     margin: 8em 1em 5em 1em;
-    background-color: #BBAF99;
-    color: #533B31;
+    color: #362721;
 }
 
 .img-box {
@@ -112,7 +111,7 @@ header {
 }
 
 .bottom img {
-    width: 60%;
+    height: 15em;
 }
 
 .bottom p {
@@ -123,11 +122,11 @@ header {
 
 @media (max-width: 900px) {
     body {
-        height: 150vh;
+        height: 290vh;
     }
 
     .top {
-        height: 50vh;
+        height: 90vh;
     }
 
     .top h2:first-child {
@@ -143,15 +142,7 @@ header {
     }
 
     .bottom {
-        height: 100vh;
-    }
-
-    .bottom-text {
-        font-size: 2rem;
-    }
-
-    .bottom p {
-        font-size: .9rem;
+        height: 200vh;
     }
 
     .bottom-col {
@@ -162,13 +153,9 @@ header {
         height: 90%;
     }
 
-    .col-h {
-        font-size: 1.5rem;
-    }
-
     .col {
         flex-direction: row;
-        height: 30%;
+        height: 50vh;
         width: 100%;
         margin: 0;
         text-align: left;
@@ -179,35 +166,37 @@ header {
         height: 100%;
         width: 50%;
     }
-
-    .bottom img {
-        width: 40%;
-    }
 }
 
 @media (max-width:500px) {
-    .top h2:first-child {
-        font-size: 1.8rem;
+    body {
+        height: 400vh;
     }
 
-    .top h2:nth-child(2) {
-        font-size: 5rem;
+    .top {
+        height: 100vh;
     }
 
-    .top-text p {
-        font-size: 1rem;
+    .bottom {
+        height: 300vh;
     }
 
-    .bottom-text h2 {
-        font-size: 1.8rem;
+    .bottom img {
+        width: 18em;
+        height: auto;
+    }
+
+    .bottom-text {
+        margin-bottom: .5em;
+    }
+
+    .col {
+        height: 100vh;
+        flex-direction: column;
     }
 
     .col-h {
-        font-size: 1rem;
-    }
-
-    .bottom p {
-        font-size: .7rem;
+        font-size: 1.5rem;
     }
 }
 
