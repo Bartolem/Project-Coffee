@@ -103,7 +103,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    background-color: #ccc;
+    background-color: #aaa;
 }
 
 .bottom {
@@ -139,7 +139,7 @@
 }
 
 .box {
-    height: 15%;
+    height: 20%;
     width: 70%;
     display: flex;
     justify-content: right;
@@ -163,7 +163,7 @@
 }
 
 .box-top {
-    height: 10%;
+    height: 15%;
     width: 80%;
     background-color: #777;
 }
@@ -192,10 +192,53 @@
     background-color: #333;
 }
 
-.coffee, .milk {
-    margin-top: 0.45em;
+.cup {
+    position: relative;
     height: 60%;
-    width: 60%;
+    width: 20%;
+    border-radius: 0 0 25% 25%;
+    z-index: 1;
+    overflow: hidden;
+    border: 3px solid aliceblue;
+}
+
+.cup-coffee {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0%;
+    width: 100%;
+    background-color: #755542;
+    z-index: -1;
+    transition: 6s;
+}
+
+.cup-milk {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0%;
+    width: 100%;
+    background-color: #ded3a6;
+    z-index: -1;
+    transition: 6s;
+}
+
+.cup-foam {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0%;
+    width: 100%;
+    background-color: #eee;
+    z-index: -1;
+    transition: 6s;
+}
+
+.coffee, .milk {
+    position: absolute;
+    margin-top: .4em;
+    width: .8em;
     opacity: 0;
 }
 
@@ -223,17 +266,17 @@
     }
 
     20% {
-        height: 6rem;
+        height: 14em;
         opacity: 1;
     }
 
     95% {
-        height: 6rem;
+        height: 14em;
         opacity: 1;
     }
 
     100% {
-        height: 6rem;
+        height: 14em;
         opacity: 0;
     }
 }

@@ -1,3 +1,6 @@
+let cupCoffee = document.querySelector('.cup-coffee');
+let cupMilk = document.querySelector('.cup-milk');
+let cupFoam = document.querySelector('.cup-foam');
 let milk = document.querySelector('.milk');
 let coffee = document.querySelector('.coffee');
 let startButton = document.querySelector('.start');
@@ -44,30 +47,98 @@ function switchOn() {
 function chooseType() {
     switch(text.value) {
         case "espresso":
-            makeCoffee();
+            makeEspresso();
             break;
         case "latte":
+            makeLatte();
             break;
         case "americano":
+            makeAmericano();
             break;
         case "cappuccino":
+            makeCappuccino();
             break;
         default:
             console.log('musisz wybrać typ');
     }
 }
 
-function makeCoffee() {
+function makeEspresso() {
     setTimeout(function() {
-        milk.classList.add('pour');
+        coffee.classList.add('pour');
         smallStartBtn.style.backgroundColor = "rgb(255, 202, 87)";
     }, 1000);
     
     setTimeout(function() {
-        milk.classList.remove('pour');
+        coffee.classList.remove('pour');
         smallStartBtn.style.backgroundColor = '#777';
     }, 8000);
+
+    setTimeout(function() {
+        cupCoffee.style.height = "30%";
+    }, 2000);
 }
+
+function makeLatte() {
+    setTimeout(function() {
+        coffee.classList.add('pour');
+        milk.classList.add('pour');
+
+        smallStartBtn.style.backgroundColor = "rgb(255, 202, 87)";
+    }, 1000);
+    
+    setTimeout(function() {
+        coffee.classList.remove('pour');
+        milk.classList.remove('pour');
+
+        smallStartBtn.style.backgroundColor = '#777';
+    }, 8000);
+
+    setTimeout(function() {
+        cupCoffee.style.height = "20%";
+        cupMilk.style.height = "70%";
+        cupFoam.style.height = "80%";
+    }, 2000);
+}
+
+function makeAmericano() {
+    setTimeout(function() {
+        coffee.classList.add('pour');
+        smallStartBtn.style.backgroundColor = "rgb(255, 202, 87)";
+    }, 1000);
+    
+    setTimeout(function() {
+        coffee.classList.remove('pour');
+        smallStartBtn.style.backgroundColor = '#777';
+    }, 8000);
+
+    setTimeout(function() {
+        cupCoffee.style.height = "80%";
+    }, 2000);
+}
+
+function makeCappuccino() {
+    setTimeout(function() {
+        coffee.classList.add('pour');
+        milk.classList.add('pour');
+
+        smallStartBtn.style.backgroundColor = "rgb(255, 202, 87)";
+    }, 1000);
+    
+    setTimeout(function() {
+        coffee.classList.remove('pour');
+        milk.classList.remove('pour');
+
+        smallStartBtn.style.backgroundColor = '#777';
+    }, 8000);
+
+    setTimeout(function() {
+        cupCoffee.style.height = "20%";
+        cupMilk.style.height = "50%";
+        cupFoam.style.height = "80%";
+    }, 2000);
+}
+
 
 startButton.addEventListener('click', function() {
     chooseType();
