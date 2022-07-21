@@ -144,8 +144,16 @@ footer div {
         width: 2.5em;
     }
 
-    footer div {
+    footer {
         flex-direction: column;
+        justify-content: space-evenly;
+        height: 100vh;
+    }
+
+    footer div {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 50%;
     }
 }
 
