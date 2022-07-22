@@ -126,7 +126,7 @@ button {
     width: 100%;
 }
 
-@media (max-width:1000px) {
+@media (max-width:1024px) {
     header {
         border: none;
     } 
@@ -187,7 +187,7 @@ button {
     }
 }
 
-@media (max-width:500px) {
+@media (max-width:640px) {
     .coffee-menu {
         height: 120vh;
         width: 100vw;

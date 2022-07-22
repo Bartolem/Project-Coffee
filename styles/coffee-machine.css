@@ -293,13 +293,13 @@
     }
 }
 
-@media(max-width:1000px) {
+@media(max-width:1024px) {
     .coffee, .milk {
         width: .6em;
     }
 }
 
-@media (max-width:500px) {
+@media (max-width:640px) {
     .start, .power {
         height: 2.2em;
         width: 2.2em;

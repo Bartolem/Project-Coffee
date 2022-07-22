@@ -57,7 +57,7 @@ header img {
     width: 4em;
 }
 
-@media (max-width:800px) {
+@media (max-width:1024px) {
     h1 {
         font-size: 1.7rem;
     }
@@ -67,17 +67,11 @@ header img {
     }
 }
 
-@media (max-width:600px) { 
+@media (max-width:640px) {
     h1 {
         display: none;
     }
 
-    a {
-        font-size: .75rem;
-    }
-}
-
-@media (max-width:500px) {
     a {
         font-size: .7rem;
     }
@@ -89,7 +83,7 @@ header img {
     }
 }
 
-@media (max-width:400px) {
+@media (max-width:360px) {
     a {
         font-size: .65rem;
     }
