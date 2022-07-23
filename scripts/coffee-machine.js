@@ -18,23 +18,37 @@ let takeCup = document.querySelector('.base button:nth-child(2)');
 let power = false;
 
 const coffeeMachine = {
-    water: 3000, 
-    milk: 2000,
-    coffee: 1300,
+    water: 6000, 
+    milk: 1000,
+    coffee: 1000,
     cup: 10
 };
 
 const espresso = {
-    water: 300, 
+    water: 30, 
     milk: 0,
-    coffee: 300,
+    coffee: 8,
     cup: 1
 };
 
 const latte = {
-    water: 300, 
-    milk: 500,
-    coffee: 300,
+    water: 60, 
+    milk: 300,
+    coffee: 16,
+    cup: 1
+};
+
+const americano = {
+    water: 150, 
+    milk: 0,
+    coffee: 16,
+    cup: 1
+};
+
+const cappuccino = {
+    water: 60, 
+    milk: 120,
+    coffee: 16,
     cup: 1
 };
 
@@ -47,10 +61,10 @@ function switchOn() {
             latteButton.disabled = false;
             americanoButton.disabled = false;
             cappuccinoButton.disabled = false;
-            text.style.backgroundColor = "#BBE2F3";
-            powerButton.style.color = "#018AC8";
-            startButton.style.color = "#018AC8";
-            smallPowerBtn.style.backgroundColor = "rgb(20, 204, 20)";
+            text.style.backgroundColor = '#BBE2F3';
+            powerButton.style.color = '#018AC8';
+            startButton.style.color = '#018AC8';
+            smallPowerBtn.style.backgroundColor = 'rgb(20, 204, 20)';
         }
         else {
             power = false;
@@ -59,28 +73,72 @@ function switchOn() {
             latteButton.disabled = true;
             americanoButton.disabled = true;
             cappuccinoButton.disabled = true;
-            text.value = "";
+            text.value = '';
             text.style.backgroundColor = null;
-            powerButton.style.color = "#aaa";
-            startButton.style.color = "#aaa";
-            smallPowerBtn.style.backgroundColor = "rgb(255, 61, 61)";
+            powerButton.style.color = '#aaa';
+            startButton.style.color = '#aaa';
+            smallPowerBtn.style.backgroundColor = 'rgb(255, 61, 61)';
         }
     }, 1000);
 }
 
 function chooseType() {
     switch(text.value) {
-        case "espresso":
-            makeEspresso();
+        case 'espresso':
+            if(coffeeMachine.coffee >= espresso.coffee
+                && coffeeMachine.water >= espresso.water) {
+                    makeEspresso();
+            }
+            else if (coffeeMachine.coffee < espresso.coffee) {
+                console.log(`Not enought coffee beans to make espresso!`);
+            }
+            else if (coffeeMachine.water < espresso.water) {
+                console.log(`Not enought water to make espresso!`);
+            }
             break;
-        case "latte":
-            makeLatte();
+        case 'latte':
+            if(coffeeMachine.coffee >= latte.coffee
+                && coffeeMachine.water >= latte.water
+                && coffeeMachine.milk >= latte.milk) {
+                    makeLatte();
+            }
+            else if (coffeeMachine.coffee < latte.coffee) {
+                console.log(`Not enought coffee beans to make latte!`);
+            }
+            else if (coffeeMachine.water < latte.water) {
+                console.log(`Not enought water to make latte!`);
+            }
+            else if (coffeeMachine.milk < latte.milk) {
+                console.log(`Not enought milk to make latte!`);
+            }
             break;
-        case "americano":
-            makeAmericano();
+        case 'americano':
+            if(coffeeMachine.coffee >= americano.coffee
+                && coffeeMachine.water >= americano.water) {
+                    makeAmericano();
+            }
+            else if (coffeeMachine.coffee < americano.coffee) {
+                console.log(`Not enought coffee beans to make americano!`);
+            }
+            else if (coffeeMachine.water < americano.water) {
+                console.log(`Not enought water to make americano!`);
+            }
             break;
-        case "cappuccino":
-            makeCappuccino();
+        case 'cappuccino':
+            if(coffeeMachine.coffee >= cappuccino.coffee
+                && coffeeMachine.water >= cappuccino.water
+                && coffeeMachine.milk >= cappuccino.milk) {
+                    makeCappuccino();
+            }
+            else if (coffeeMachine.coffee < cappuccino.coffee) {
+                console.log(`Not enought coffee beans to make cappuccino!`);
+            }
+            else if (coffeeMachine.water < cappuccino.water) {
+                console.log(`Not enought water to make cappuccino!`);
+            }
+            else if (coffeeMachine.milk < cappuccino.milk) {
+                console.log(`Not enought milk to make cappuccino!`);
+            }
             break;
         default:
             console.log('musisz wybrać typ');
@@ -112,88 +170,134 @@ function disableTakeCup() {
 }
 
 function makeEspresso() {
+    disableStartButton();
+
     setTimeout(function() {
         coffee.classList.add('pour');
-        smallStartBtn.style.backgroundColor = "rgb(255, 202, 87)";
+        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
     }, 1000);
     
     setTimeout(function() {
         coffee.classList.remove('pour');
         smallStartBtn.style.backgroundColor = '#777';
         enableTakeCoffee();
-        enableStartButton();
     }, 8000);
 
     setTimeout(function() {
-        cupCoffee.style.height = "30%";
+        cupCoffee.style.height = '20%';
     }, 2000);
 
     coffeeMachine.water -= espresso.water;
-    console.log(coffeeMachine.water);
+    console.log('water ' + coffeeMachine.water);
+
+    coffeeMachine.milk -= espresso.milk;
+    console.log('milk ' + espresso.milk);
+
+    coffeeMachine.coffee -= espresso.coffee;
+    console.log('coffee ' + coffeeMachine.coffee);
 }
 
 function makeLatte() {
+    disableStartButton();
+
     setTimeout(function() {
         coffee.classList.add('pour');
         milk.classList.add('pour');
 
-        smallStartBtn.style.backgroundColor = "rgb(255, 202, 87)";
+        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
     }, 1000);
     
     setTimeout(function() {
         coffee.classList.remove('pour');
         milk.classList.remove('pour');
-
         smallStartBtn.style.backgroundColor = '#777';
+        enableTakeCoffee();
     }, 8000);
 
     setTimeout(function() {
-        cupCoffee.style.height = "20%";
-        cupMilk.style.height = "70%";
-        cupFoam.style.height = "80%";
+        cupCoffee.style.height = '30%';
+        cupMilk.style.height = '85%';
+        cupFoam.style.height = '95%';
     }, 2000);
+
+    coffeeMachine.water -= latte.water;
+    console.log('water ' + coffeeMachine.water);
+
+    coffeeMachine.milk -= latte.milk;
+    console.log('milk ' + coffeeMachine.milk);
+
+    coffeeMachine.coffee -= latte.coffee;
+    console.log('coffee ' + coffeeMachine.coffee);
 }
 
 function makeAmericano() {
+    disableStartButton();
+
     setTimeout(function() {
         coffee.classList.add('pour');
-        smallStartBtn.style.backgroundColor = "rgb(255, 202, 87)";
+        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
     }, 1000);
     
     setTimeout(function() {
         coffee.classList.remove('pour');
         smallStartBtn.style.backgroundColor = '#777';
+        enableTakeCoffee();
     }, 8000);
 
     setTimeout(function() {
-        cupCoffee.style.height = "80%";
+        cupCoffee.style.height = '80%';
     }, 2000);
+
+    coffeeMachine.water -= americano.water;
+    console.log('water ' + coffeeMachine.water);
+
+    coffeeMachine.milk -= americano.milk;
+    console.log('milk ' + coffeeMachine.milk);
+
+    coffeeMachine.coffee -= americano.coffee;
+    console.log('coffee ' + coffeeMachine.coffee);
 }
 
 function makeCappuccino() {
+    disableStartButton();
+
     setTimeout(function() {
         coffee.classList.add('pour');
         milk.classList.add('pour');
 
-        smallStartBtn.style.backgroundColor = "rgb(255, 202, 87)";
+        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
     }, 1000);
     
     setTimeout(function() {
         coffee.classList.remove('pour');
         milk.classList.remove('pour');
-
         smallStartBtn.style.backgroundColor = '#777';
+        enableTakeCoffee();
     }, 8000);
 
     setTimeout(function() {
-        cupCoffee.style.height = "20%";
-        cupMilk.style.height = "50%";
-        cupFoam.style.height = "80%";
+        cupCoffee.style.height = '30%';
+        cupMilk.style.height = '65%';
+        cupFoam.style.height = '95%';
     }, 2000);
+
+    coffeeMachine.water -= cappuccino.water;
+    console.log('water ' + coffeeMachine.water);
+
+    coffeeMachine.milk -= cappuccino.milk;
+    console.log('milk ' + coffeeMachine.milk);
+
+    coffeeMachine.coffee -= cappuccino.coffee;
+    console.log('coffee ' + coffeeMachine.coffee);
 }
 
 function getCup() {
     cup.style.visibility = 'visible';
+    cupCoffee.style.display = 'block';
+    cupMilk.style.display = 'block';
+    cupFoam.style.display = 'block';
+    
+    enableStartButton();
 }
 
 takeCup.addEventListener('click', function() {
@@ -203,10 +307,12 @@ takeCup.addEventListener('click', function() {
 
 takeCoffee.addEventListener('click', function() {
     cup.style.visibility = 'hidden';
-    
-    cupCoffee.style.height = "0";
-    cupMilk.style.height = "0";
-    cupFoam.style.height = "0";
+    cupCoffee.style.display = 'none';
+    cupCoffee.style.height = '0';
+    cupMilk.style.display = 'none';
+    cupMilk.style.height = '0';
+    cupFoam.style.display = 'none';
+    cupFoam.style.height = '0';
 
     disableTakeCoffee();
     enableTakeCup();
@@ -221,15 +327,15 @@ powerButton.addEventListener('click', function() {
 });
 
 espressoButton.addEventListener('click', function() {
-    text.value = "espresso";
+    text.value = 'espresso';
 });
 
 latteButton.addEventListener('click', function() {
-    text.value = "latte";
+    text.value = 'latte';
 });
 
 americanoButton.addEventListener('click', function() {
-    text.value = "americano";
+    text.value = 'americano';
 });
 
 cappuccinoButton.addEventListener('click', function() {
