@@ -12,7 +12,31 @@ let latteButton = document.querySelector('.latte-btn');
 let americanoButton = document.querySelector('.americano-btn');
 let cappuccinoButton = document.querySelector('.cappuccino-btn');
 let text = document.querySelector('#output-text');
+let cup = document.querySelector('.cup');
+let takeCoffee = document.querySelector('.base button:nth-child(1)');
+let takeCup = document.querySelector('.base button:nth-child(2)');
 let power = false;
+
+const coffeeMachine = {
+    water: 3000, 
+    milk: 2000,
+    coffee: 1300,
+    cup: 10
+};
+
+const espresso = {
+    water: 300, 
+    milk: 0,
+    coffee: 300,
+    cup: 1
+};
+
+const latte = {
+    water: 300, 
+    milk: 500,
+    coffee: 300,
+    cup: 1
+};
 
 function switchOn() {
     setTimeout(function() {
@@ -63,6 +87,30 @@ function chooseType() {
     }
 }
 
+function disableStartButton() {
+    startButton.disabled = true;
+}
+
+function enableStartButton() {
+    startButton.disabled = false;
+}
+
+function enableTakeCoffee() {
+    takeCoffee.disabled = false;
+}
+
+function disableTakeCoffee() {
+    takeCoffee.disabled = true;
+}
+
+function enableTakeCup() {
+    takeCup.disabled = false;
+}
+
+function disableTakeCup() {
+    takeCup.disabled = true;
+}
+
 function makeEspresso() {
     setTimeout(function() {
         coffee.classList.add('pour');
@@ -72,11 +120,16 @@ function makeEspresso() {
     setTimeout(function() {
         coffee.classList.remove('pour');
         smallStartBtn.style.backgroundColor = '#777';
+        enableTakeCoffee();
+        enableStartButton();
     }, 8000);
 
     setTimeout(function() {
         cupCoffee.style.height = "30%";
     }, 2000);
+
+    coffeeMachine.water -= espresso.water;
+    console.log(coffeeMachine.water);
 }
 
 function makeLatte() {
@@ -139,6 +192,25 @@ function makeCappuccino() {
     }, 2000);
 }
 
+function getCup() {
+    cup.style.visibility = 'visible';
+}
+
+takeCup.addEventListener('click', function() {
+    getCup();
+    disableTakeCup();
+});
+
+takeCoffee.addEventListener('click', function() {
+    cup.style.visibility = 'hidden';
+    
+    cupCoffee.style.height = "0";
+    cupMilk.style.height = "0";
+    cupFoam.style.height = "0";
+
+    disableTakeCoffee();
+    enableTakeCup();
+});
 
 startButton.addEventListener('click', function() {
     chooseType();

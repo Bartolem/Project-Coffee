@@ -15,10 +15,6 @@ body {
     height: 100vh;
 }
 
-header {
-    border-bottom: 4px solid #709263;
-}
-
 button {
     padding: 0;
 }
@@ -127,10 +123,6 @@ button {
 }
 
 @media (max-width:1024px) {
-    header {
-        border: none;
-    } 
-
     .container {
         flex-direction: column-reverse;
         height: 200vh;
