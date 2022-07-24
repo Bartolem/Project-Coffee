@@ -122,10 +122,10 @@ button {
     width: 100%;
 }
 
-@media (max-width:1024px) {
+@media (max-width:1100px) {
     .container {
         flex-direction: column-reverse;
-        height: 200vh;
+        height: 280vh;
     }
 
     .right-child {
@@ -134,18 +134,13 @@ button {
     }
 
     .left-child {
-        height: 100vh;
+        height: 120vh;
         width: 100%;
-    }
-
-    .coffee-machine {
-        height: 30em;
-        width: 35em;
     }
 
     .coffee-menu {
         height: 100%;
-        width: 80vw;
+        width: 60%;
         margin: 0;
     }
 
@@ -180,6 +175,14 @@ button {
 }
 
 @media (max-width:640px) {
+    .container {
+        height: 200vh;
+    }
+
+    .left-child {
+        height: 100vh;
+    }
+
     .coffee-menu {
         height: 120vh;
         width: 100vw;
@@ -190,7 +193,22 @@ button {
     }
 
     .coffee-machine {
-        height: 22em;
-        width: 27em;
+        height: 25em;
+        width: 30em;
+    }
+}
+
+@media (max-width:400px) {
+    .container {
+        height: 180vh;
+    }
+
+    .left-child {
+        height: 80vh;
+    }
+
+    .coffee-machine {
+        height: 20em;
+        width: 25em;
     }
 }

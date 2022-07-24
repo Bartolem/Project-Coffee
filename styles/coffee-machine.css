@@ -6,15 +6,24 @@
     width: 100%;
     background-color: rgb(148, 169, 194);
     border-radius: 10px;
+    border: 3px solid rgb(127, 145, 167);
 }
 
-.main-btn-box {
+.main-btn-box, 
+.side-btn-box {
     display: flex;
     align-items: center;
-    flex-direction: row;
+    justify-content: space-around;
     height: 80%;
     width: 25%;
     background-color: rgb(153, 153, 153);
+    border: 3px solid #888;
+    border-radius: 10px;
+}
+
+.side-btn-box {
+    align-items: stretch;
+    flex-direction: column;
 }
 
 .power-btn-box, .start-btn-box {
@@ -26,19 +35,12 @@
     width: 100%;
 }
 
-.side-btn-box {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    height: 80%;
-    width: 25%;
-    background-color: rgb(153, 153, 153);
-}
-
 .side-btn-box button {
     height: 1.3em;
     width: 1.3em;
-    transition: 3s;
+    transition: 2s;
+    border-radius: 3px;
+    border: 2px solid #666;
 }
 
 .side-btn-box button:enabled {
@@ -58,11 +60,17 @@
 
 .text {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    height: 80%;
+    height: 60%;
     width: 30%;
+}
+
+.text label {
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 #output-text {
@@ -73,26 +81,25 @@
     font-weight: bold;
     letter-spacing: .1rem;
     font-family: 'DS-Digital Normal', sans-serif;
-    border: none;
+    border: 2px solid #888;
     color:#000;
-    transition: 3s;
+    transition: 2s;
 }
 
 .power, .start {
     height: 2.5em;
     width: 2.5em;
     padding: 0;
-    border-radius: 50%;
-    border: none;
+    border-radius: 6px;
+    border: 2px solid #666;
     font-size: 1rem;
     text-align: center;
-    color: #aaa;
-    background-color: #444;
-    transition: 3s;
+    transition: 2s;
 }
 
-.start {
-    right: 5em;
+.power {
+    color: rgba(19, 1, 1, 0.3);
+    background-color: rgba(239, 239, 239, 0.3);
 }
 
 .small-btn-power, .small-btn-start {
@@ -100,7 +107,7 @@
     width: .7em;
     border-radius: 50%;
     background-color: rgb(185, 4, 4);
-    transition: 3s;
+    transition: 2s;
 }
 
 .small-btn-start {
@@ -115,6 +122,8 @@
     align-items: center;
     flex-direction: column;
     background-color: #aaa;
+    border-right: 3px solid #888;
+    border-left: 3px solid #888;
 }
 
 .bottom {
@@ -127,11 +136,31 @@
 }
 
 .base {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     height: 80%;
     width: 95%;
     background-color: rgb(148, 169, 194);
+    border: 3px solid rgb(127, 145, 167);
+    border-bottom: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.base button {
+    height: 55%;
+    width: 30%;
+    transition: 2s;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 2px solid #666;
+}
+
+.base button:enabled,
+.start:enabled {
+    background-color: rgb(1, 138, 200);
 }
 
 .stand {
@@ -323,7 +352,16 @@
         font-size: .8rem;
     }
 
+    .text label {
+        font-size: .8rem;
+    }
+
     .coffee, .milk {
         width: .5em;
+    }
+
+    .base button {
+        font-size: .9rem;
+        width: 40%;
     }
 }

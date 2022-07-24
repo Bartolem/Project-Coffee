@@ -18,8 +18,8 @@ let takeCup = document.querySelector('.base button:nth-child(2)');
 let power = false;
 
 const coffeeMachine = {
-    water: 6000, 
-    milk: 1000,
+    water: 2200, 
+    milk: 1400,
     coffee: 1000,
     cup: 10
 };
@@ -61,9 +61,10 @@ function switchOn() {
             latteButton.disabled = false;
             americanoButton.disabled = false;
             cappuccinoButton.disabled = false;
+            startButton.disabled = false;
             text.style.backgroundColor = '#BBE2F3';
-            powerButton.style.color = '#018AC8';
-            startButton.style.color = '#018AC8';
+            powerButton.style.backgroundColor = 'rgb(1, 138, 200)';
+            powerButton.style.color = '#000';
             smallPowerBtn.style.backgroundColor = 'rgb(20, 204, 20)';
         }
         else {
@@ -73,10 +74,11 @@ function switchOn() {
             latteButton.disabled = true;
             americanoButton.disabled = true;
             cappuccinoButton.disabled = true;
+            startButton.disabled = true;
             text.value = '';
             text.style.backgroundColor = null;
-            powerButton.style.color = '#aaa';
-            startButton.style.color = '#aaa';
+            powerButton.style.backgroundColor = 'rgba(239, 239, 239, 0.3)';
+            powerButton.style.color = 'rgba(19, 1, 1, 0.3)';
             smallPowerBtn.style.backgroundColor = 'rgb(255, 61, 61)';
         }
     }, 1000);
