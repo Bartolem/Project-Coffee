@@ -149,7 +149,6 @@ button {
         text-align: center;
         height: 10%;
         width: 100%;
-        border-radius: 0;
     }
 
     .menu-main {
@@ -195,6 +194,10 @@ button {
     .coffee-machine {
         height: 25em;
         width: 30em;
+    }
+
+    .menu-top {
+        border-radius: 0;
     }
 }
 

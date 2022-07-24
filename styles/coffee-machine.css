@@ -38,7 +38,7 @@
 .side-btn-box button {
     height: 1.3em;
     width: 1.3em;
-    transition: 2s;
+    transition: 2s linear;
     border-radius: 3px;
     border: 2px solid #666;
 }
@@ -83,7 +83,7 @@
     font-family: 'DS-Digital Normal', sans-serif;
     border: 2px solid #888;
     color:#000;
-    transition: 2s;
+    transition: 2s linear;
 }
 
 .power, .start {
@@ -94,7 +94,7 @@
     border: 2px solid #666;
     font-size: 1rem;
     text-align: center;
-    transition: 2s;
+    transition: 2s linear;
 }
 
 .power {
@@ -107,7 +107,7 @@
     width: .7em;
     border-radius: 50%;
     background-color: rgb(185, 4, 4);
-    transition: 2s;
+    transition: 2s linear;
 }
 
 .small-btn-start {
@@ -117,6 +117,7 @@
 .mid {
     height: 90%;
     width: 85%;
+    position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -124,6 +125,70 @@
     background-color: #aaa;
     border-right: 3px solid #888;
     border-left: 3px solid #888;
+}
+
+.milk-tank,
+.water-tank,
+.coffee-tank {
+    border: 3px solid #666;
+    border-radius: 8px;
+    height: 10%;
+    width: 20%;
+    overflow: hidden;
+}
+
+.label-milk-tank,
+.label-water-tank,
+.label-coffee-tank,
+.coffee-percent {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(0, -50%);
+    z-index: 1;
+}
+
+.milk-tank {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+}
+
+.water-tank {
+    position: absolute;
+    top: 25%;
+    right: 2%;
+}
+
+.coffee-tank {
+    position: absolute;
+    top: 40%;
+    right: 2%;
+}
+
+.coffee-percent {
+    left: 0;
+}
+
+.milk-in-tank,
+.water-in-tank,
+.coffee-in-tank {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    width: 100%;
+    transform: translate(0, 50%);
+    height: 100%;
+    background-color: #eee;
+    transition: 1s linear;
+}
+
+.water-in-tank {
+    background-color: lightblue;
+}
+
+.coffee-in-tank {
+    background-color: #4b3b32;
 }
 
 .bottom {
@@ -150,8 +215,8 @@
 
 .base button {
     height: 55%;
-    width: 30%;
-    transition: 2s;
+    width: 25%;
+    transition: 2s linear;
     font-size: 1rem;
     font-weight: bold;
     border-radius: 6px;
@@ -201,6 +266,7 @@
     margin-right: 70%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    z-index: 1;
 }
 
 .box-top {

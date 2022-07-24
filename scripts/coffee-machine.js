@@ -1,26 +1,40 @@
 let cupCoffee = document.querySelector('.cup-coffee');
 let cupMilk = document.querySelector('.cup-milk');
 let cupFoam = document.querySelector('.cup-foam');
+
 let milk = document.querySelector('.milk');
 let coffee = document.querySelector('.coffee');
-let startButton = document.querySelector('.start');
-let powerButton = document.querySelector('.power');
-let smallPowerBtn = document.querySelector('.small-btn-power');
-let smallStartBtn = document.querySelector('.small-btn-start');
-let espressoButton = document.querySelector('.espresso-btn');
-let latteButton = document.querySelector('.latte-btn');
-let americanoButton = document.querySelector('.americano-btn');
-let cappuccinoButton = document.querySelector('.cappuccino-btn');
-let text = document.querySelector('#output-text');
-let cup = document.querySelector('.cup');
-let takeCoffee = document.querySelector('.base button:nth-child(1)');
-let takeCup = document.querySelector('.base button:nth-child(2)');
+
+const startButton = document.querySelector('.start');
+const powerButton = document.querySelector('.power');
+const smallPowerBtn = document.querySelector('.small-btn-power');
+const smallStartBtn = document.querySelector('.small-btn-start');
+
+const espressoButton = document.querySelector('.espresso-btn');
+const latteButton = document.querySelector('.latte-btn');
+const americanoButton = document.querySelector('.americano-btn');
+const cappuccinoButton = document.querySelector('.cappuccino-btn');
+
+const text = document.querySelector('#output-text');
+
+const cup = document.querySelector('.cup');
+const takeCoffee = document.querySelector('.base button:nth-child(1)');
+const takeCup = document.querySelector('.base button:nth-child(2)');
+
+const milkInTank = document.querySelector('.milk-in-tank');
+const waterInTank = document.querySelector('.water-in-tank');
+const coffeeInTank = document.querySelector('.coffee-in-tank');
+
+
+let percentWater;
+let percentMilk;
+let percentCoffee;
 let power = false;
 
 const coffeeMachine = {
-    water: 2200, 
+    water: 750, 
     milk: 1400,
-    coffee: 1000,
+    coffee: 500,
     cup: 10
 };
 
@@ -171,6 +185,36 @@ function disableTakeCup() {
     takeCup.disabled = true;
 }
 
+function showPercentWater() {
+    waterInTank.style.width = `${percentWater}%`;
+}
+
+function showPercentMilk() {
+    milkInTank.style.width = `${percentMilk}%`;
+}
+
+function showPercentCoffee() {
+    coffeeInTank.style.width = `${percentCoffee}%`;
+}
+
+function calcPercentWater() {
+    percentWater = Math.round(coffeeMachine.water / 750 * 100);
+    console.log(`water ${percentWater}%`);
+    showPercentWater();
+}
+
+function calcPercentMilk() {
+    percentMilk = Math.round(coffeeMachine.milk / 1400 * 100);
+    console.log(`milk ${percentMilk}%`);
+    showPercentMilk();
+}
+
+function calcPercentCoffee() {
+    percentCoffee = Math.round(coffeeMachine.coffee / 500 * 100);
+    console.log(`coffee ${percentCoffee}%`);
+    showPercentCoffee();
+}
+
 function makeEspresso() {
     disableStartButton();
 
@@ -190,13 +234,13 @@ function makeEspresso() {
     }, 2000);
 
     coffeeMachine.water -= espresso.water;
-    console.log('water ' + coffeeMachine.water);
+    calcPercentWater();
 
     coffeeMachine.milk -= espresso.milk;
-    console.log('milk ' + espresso.milk);
+    calcPercentMilk();
 
     coffeeMachine.coffee -= espresso.coffee;
-    console.log('coffee ' + coffeeMachine.coffee);
+    calcPercentCoffee();
 }
 
 function makeLatte() {
@@ -223,13 +267,13 @@ function makeLatte() {
     }, 2000);
 
     coffeeMachine.water -= latte.water;
-    console.log('water ' + coffeeMachine.water);
+    calcPercentWater();
 
     coffeeMachine.milk -= latte.milk;
-    console.log('milk ' + coffeeMachine.milk);
+    calcPercentMilk();
 
     coffeeMachine.coffee -= latte.coffee;
-    console.log('coffee ' + coffeeMachine.coffee);
+    calcPercentCoffee();
 }
 
 function makeAmericano() {
@@ -251,13 +295,13 @@ function makeAmericano() {
     }, 2000);
 
     coffeeMachine.water -= americano.water;
-    console.log('water ' + coffeeMachine.water);
+    calcPercentWater();
 
     coffeeMachine.milk -= americano.milk;
-    console.log('milk ' + coffeeMachine.milk);
+    calcPercentMilk();
 
     coffeeMachine.coffee -= americano.coffee;
-    console.log('coffee ' + coffeeMachine.coffee);
+    calcPercentCoffee();
 }
 
 function makeCappuccino() {
@@ -284,13 +328,13 @@ function makeCappuccino() {
     }, 2000);
 
     coffeeMachine.water -= cappuccino.water;
-    console.log('water ' + coffeeMachine.water);
+    calcPercentWater();
 
     coffeeMachine.milk -= cappuccino.milk;
-    console.log('milk ' + coffeeMachine.milk);
+    calcPercentMilk();
 
     coffeeMachine.coffee -= cappuccino.coffee;
-    console.log('coffee ' + coffeeMachine.coffee);
+    calcPercentCoffee();
 }
 
 function getCup() {
