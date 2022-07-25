@@ -127,57 +127,58 @@
     border-left: 3px solid #888;
 }
 
+.fluid-tanks {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 60%;
+    width: 35%;
+    top: 10%;
+    right: 0;
+}
+
 .milk-tank,
 .water-tank,
 .coffee-tank {
+    position: relative;
+    height: 70%;
+    flex-basis: 25%;
     border: 3px solid #666;
     border-radius: 8px;
-    height: 10%;
-    width: 20%;
     overflow: hidden;
 }
 
 .label-milk-tank,
 .label-water-tank,
 .label-coffee-tank,
+.milk-percent,
+.water-percent,
 .coffee-percent {
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translate(0, -50%);
-    z-index: 1;
+    display: block;
+    text-align: center;
+    flex-basis: 25%;
+    font-size: .9rem;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #666;
+    transition: 2s linear;
 }
 
-.milk-tank {
-    position: absolute;
-    top: 10%;
-    right: 2%;
-}
-
-.water-tank {
-    position: absolute;
-    top: 25%;
-    right: 2%;
-}
-
-.coffee-tank {
-    position: absolute;
-    top: 40%;
-    right: 2%;
-}
-
+.milk-percent,
+.water-percent,
 .coffee-percent {
-    left: 0;
+    color: #888;
 }
 
 .milk-in-tank,
 .water-in-tank,
 .coffee-in-tank {
     position: absolute;
-    bottom: 50%;
+    bottom: 0;
     left: 0;
     width: 100%;
-    transform: translate(0, 50%);
     height: 100%;
     background-color: #eee;
     transition: 1s linear;

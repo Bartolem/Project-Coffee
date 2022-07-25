@@ -25,15 +25,25 @@ const milkInTank = document.querySelector('.milk-in-tank');
 const waterInTank = document.querySelector('.water-in-tank');
 const coffeeInTank = document.querySelector('.coffee-in-tank');
 
+const displayPercentWater = document.querySelector('.water-percent');
+const displayPercentMilk = document.querySelector('.milk-percent');
+const displayPercentCoffee = document.querySelector('.coffee-percent');
 
 let percentWater;
 let percentMilk;
 let percentCoffee;
 let power = false;
 
+const defaultCoffeeMachine = {
+    water: 1750, 
+    milk: 2400,
+    coffee: 500,
+    cup: 10
+};
+
 const coffeeMachine = {
-    water: 750, 
-    milk: 1400,
+    water: 1750, 
+    milk: 2400,
     coffee: 500,
     cup: 10
 };
@@ -80,6 +90,9 @@ function switchOn() {
             powerButton.style.backgroundColor = 'rgb(1, 138, 200)';
             powerButton.style.color = '#000';
             smallPowerBtn.style.backgroundColor = 'rgb(20, 204, 20)';
+            displayPercentWater.style.color = 'rgb(1, 138, 200)';
+            displayPercentMilk.style.color = 'rgb(1, 138, 200)';
+            displayPercentCoffee.style.color = 'rgb(1, 138, 200)';
         }
         else {
             power = false;
@@ -94,6 +107,9 @@ function switchOn() {
             powerButton.style.backgroundColor = 'rgba(239, 239, 239, 0.3)';
             powerButton.style.color = 'rgba(19, 1, 1, 0.3)';
             smallPowerBtn.style.backgroundColor = 'rgb(255, 61, 61)';
+            displayPercentWater.style.color = '#888';
+            displayPercentMilk.style.color = '#888';
+            displayPercentCoffee.style.color = '#888';
         }
     }, 1000);
 }
@@ -157,7 +173,7 @@ function chooseType() {
             }
             break;
         default:
-            console.log('musisz wybrać typ');
+            console.log('You need to choose type');
     }
 }
 
@@ -166,7 +182,9 @@ function disableStartButton() {
 }
 
 function enableStartButton() {
-    startButton.disabled = false;
+    if(power) {
+        startButton.disabled = false;
+    }
 }
 
 function enableTakeCoffee() {
@@ -186,31 +204,34 @@ function disableTakeCup() {
 }
 
 function showPercentWater() {
-    waterInTank.style.width = `${percentWater}%`;
+    displayPercentWater.innerHTML = `${percentWater}%`;
+    waterInTank.style.height = `${percentWater}%`;
 }
 
 function showPercentMilk() {
-    milkInTank.style.width = `${percentMilk}%`;
+    displayPercentMilk.innerHTML = `${percentMilk}%`;
+    milkInTank.style.height = `${percentMilk}%`;
 }
 
 function showPercentCoffee() {
-    coffeeInTank.style.width = `${percentCoffee}%`;
+    displayPercentCoffee.innerHTML = `${percentCoffee}%`;
+    coffeeInTank.style.height = `${percentCoffee}%`;
 }
 
 function calcPercentWater() {
-    percentWater = Math.round(coffeeMachine.water / 750 * 100);
+    percentWater = Math.round(coffeeMachine.water / defaultCoffeeMachine.water * 100);
     console.log(`water ${percentWater}%`);
     showPercentWater();
 }
 
 function calcPercentMilk() {
-    percentMilk = Math.round(coffeeMachine.milk / 1400 * 100);
+    percentMilk = Math.round(coffeeMachine.milk / defaultCoffeeMachine.milk * 100);
     console.log(`milk ${percentMilk}%`);
     showPercentMilk();
 }
 
 function calcPercentCoffee() {
-    percentCoffee = Math.round(coffeeMachine.coffee / 500 * 100);
+    percentCoffee = Math.round(coffeeMachine.coffee / defaultCoffeeMachine.coffee * 100);
     console.log(`coffee ${percentCoffee}%`);
     showPercentCoffee();
 }
