@@ -50,7 +50,7 @@ button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 35em;
+    height: 40em;
     width: 40em;
     margin: 0;
     border-radius: 10px;
@@ -192,7 +192,7 @@ button {
     }
 
     .coffee-machine {
-        height: 25em;
+        height: 30em;
         width: 30em;
     }
 
@@ -211,7 +211,7 @@ button {
     }
 
     .coffee-machine {
-        height: 20em;
+        height: 25em;
         width: 25em;
     }
 }

@@ -1,8 +1,13 @@
+.active {
+    color: black;
+    background-color: rgb(1, 138, 200);
+}
+
 .top {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 45%;
+    height: 60%;
     width: 100%;
     background-color: rgb(148, 169, 194);
     border-radius: 10px;
@@ -97,7 +102,7 @@
     transition: 2s linear;
 }
 
-.power {
+.power-default {
     color: rgba(19, 1, 1, 0.3);
     background-color: rgba(239, 239, 239, 0.3);
 }
@@ -115,7 +120,7 @@
 }
 
 .mid {
-    height: 90%;
+    height: 100%;
     width: 85%;
     position: relative;
     display: flex;
@@ -172,6 +177,13 @@
     color: #888;
 }
 
+.milk-percent.active,
+.water-percent.active,
+.coffee-percent.active {
+    color: rgb(1, 138, 200);
+    background-color: transparent;
+}
+
 .milk-in-tank,
 .water-in-tank,
 .coffee-in-tank {
@@ -226,6 +238,7 @@
 
 .base button:enabled,
 .start:enabled {
+    color: #000;
     background-color: rgb(1, 138, 200);
 }
 

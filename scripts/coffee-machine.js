@@ -34,6 +34,9 @@ let percentMilk;
 let percentCoffee;
 let power = false;
 
+let buttonsColor = 'rgb(1, 138, 200)';
+let percentColor = '#888';
+
 const defaultCoffeeMachine = {
     water: 1750, 
     milk: 2400,
@@ -78,38 +81,19 @@ const cappuccino = {
 
 function switchOn() {
     setTimeout(function() {
-        if (!power) {
+        if (!power) { // Checks that the coffee machine is turned off
             power = true;
-            startButton.disabled = false;
-            espressoButton.disabled = false;
-            latteButton.disabled = false;
-            americanoButton.disabled = false;
-            cappuccinoButton.disabled = false;
-            startButton.disabled = false;
-            text.style.backgroundColor = '#BBE2F3';
-            powerButton.style.backgroundColor = 'rgb(1, 138, 200)';
-            powerButton.style.color = '#000';
+            enableCoffeeTypesButtons();
+            enableStartButton();
             smallPowerBtn.style.backgroundColor = 'rgb(20, 204, 20)';
-            displayPercentWater.style.color = 'rgb(1, 138, 200)';
-            displayPercentMilk.style.color = 'rgb(1, 138, 200)';
-            displayPercentCoffee.style.color = 'rgb(1, 138, 200)';
         }
-        else {
+        else { // Checks that the coffee machine is turned on
             power = false;
-            startButton.disabled = true;
-            espressoButton.disabled = true;
-            latteButton.disabled = true;
-            americanoButton.disabled = true;
-            cappuccinoButton.disabled = true;
-            startButton.disabled = true;
+            disableCoffeeTypesButtons();
+            disableStartButton();
             text.value = '';
             text.style.backgroundColor = null;
-            powerButton.style.backgroundColor = 'rgba(239, 239, 239, 0.3)';
-            powerButton.style.color = 'rgba(19, 1, 1, 0.3)';
             smallPowerBtn.style.backgroundColor = 'rgb(255, 61, 61)';
-            displayPercentWater.style.color = '#888';
-            displayPercentMilk.style.color = '#888';
-            displayPercentCoffee.style.color = '#888';
         }
     }, 1000);
 }
@@ -177,14 +161,28 @@ function chooseType() {
     }
 }
 
-function disableStartButton() {
-    startButton.disabled = true;
+function enableCoffeeTypesButtons() {
+    espressoButton.disabled = false;
+    latteButton.disabled = false;
+    americanoButton.disabled = false;
+    cappuccinoButton.disabled = false;
+} 
+
+function disableCoffeeTypesButtons() {
+    espressoButton.disabled = true;
+    latteButton.disabled = true;
+    americanoButton.disabled = true;
+    cappuccinoButton.disabled = true;
 }
 
 function enableStartButton() {
     if(power) {
         startButton.disabled = false;
     }
+}
+
+function disableStartButton() {
+    startButton.disabled = true;
 }
 
 function enableTakeCoffee() {
@@ -251,7 +249,7 @@ function makeEspresso() {
     }, 8000);
 
     setTimeout(function() {
-        cupCoffee.style.height = '20%';
+        cupCoffee.style.height = '40%';
     }, 2000);
 
     coffeeMachine.water -= espresso.water;
@@ -282,7 +280,7 @@ function makeLatte() {
     }, 8000);
 
     setTimeout(function() {
-        cupCoffee.style.height = '30%';
+        cupCoffee.style.height = '20%';
         cupMilk.style.height = '85%';
         cupFoam.style.height = '95%';
     }, 2000);
@@ -312,7 +310,7 @@ function makeAmericano() {
     }, 8000);
 
     setTimeout(function() {
-        cupCoffee.style.height = '80%';
+        cupCoffee.style.height = '95%';
     }, 2000);
 
     coffeeMachine.water -= americano.water;
@@ -358,7 +356,7 @@ function makeCappuccino() {
     calcPercentCoffee();
 }
 
-function getCup() {
+function getCup() { // Put empty cup on the stand
     cup.style.visibility = 'visible';
     cupCoffee.style.display = 'block';
     cupMilk.style.display = 'block';
@@ -372,7 +370,7 @@ takeCup.addEventListener('click', function() {
     disableTakeCup();
 });
 
-takeCoffee.addEventListener('click', function() {
+takeCoffee.addEventListener('click', function() { // Take a cup of coffee from the stand
     cup.style.visibility = 'hidden';
     cupCoffee.style.display = 'none';
     cupCoffee.style.height = '0';
@@ -385,27 +383,33 @@ takeCoffee.addEventListener('click', function() {
     enableTakeCup();
 });
 
-startButton.addEventListener('click', function() {
+startButton.addEventListener('click', function() { // Run coffee machine, by click on start button
     chooseType();
 });
 
-powerButton.addEventListener('click', function() {
+powerButton.addEventListener('click', function() {  // Start the program, by click on power button
+    powerButton.classList.toggle('power-default');
+    powerButton.classList.toggle('active');
+    text.classList.toggle('active');
+    displayPercentWater.classList.toggle('active');
+    displayPercentCoffee.classList.toggle('active');
+    displayPercentMilk.classList.toggle('active');
     switchOn();
 });
-
-espressoButton.addEventListener('click', function() {
+                            // Coffee selection buttons
+espressoButton.addEventListener('click', function() { // espresso selection button
     text.value = 'espresso';
 });
 
-latteButton.addEventListener('click', function() {
+latteButton.addEventListener('click', function() { // latte selection button
     text.value = 'latte';
 });
 
-americanoButton.addEventListener('click', function() {
+americanoButton.addEventListener('click', function() { // americano selection button
     text.value = 'americano';
 });
 
-cappuccinoButton.addEventListener('click', function() {
+cappuccinoButton.addEventListener('click', function() { // cappuccino selection button
     text.value = "cappuccino";
 });
 
