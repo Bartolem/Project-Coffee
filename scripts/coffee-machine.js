@@ -1,9 +1,9 @@
-let cupCoffee = document.querySelector('.cup-coffee');
-let cupMilk = document.querySelector('.cup-milk');
-let cupFoam = document.querySelector('.cup-foam');
+const cupCoffee = document.querySelector('.cup-coffee');
+const cupMilk = document.querySelector('.cup-milk');
+const cupFoam = document.querySelector('.cup-foam');
 
-let milk = document.querySelector('.milk');
-let coffee = document.querySelector('.coffee');
+const milk = document.querySelector('.milk');
+const coffee = document.querySelector('.coffee');
 
 const startButton = document.querySelector('.start');
 const powerButton = document.querySelector('.power');
@@ -34,8 +34,9 @@ let percentMilk;
 let percentCoffee;
 let power = false;
 
-let buttonsColor = 'rgb(1, 138, 200)';
-let percentColor = '#888';
+const cupElements = [cupCoffee, cupMilk, cupFoam];
+const coffeeButtons = [espressoButton, latteButton, americanoButton, cappuccinoButton];
+const activeElements = [powerButton, text, displayPercentWater, displayPercentMilk, displayPercentCoffee];
 
 const defaultCoffeeMachine = {
     water: 1750, 
@@ -80,22 +81,20 @@ const cappuccino = {
 };
 
 function switchOn() {
-    setTimeout(function() {
-        if (!power) { // Checks that the coffee machine is turned off
-            power = true;
-            enableCoffeeTypesButtons();
-            enableStartButton();
-            smallPowerBtn.style.backgroundColor = 'rgb(20, 204, 20)';
-        }
-        else { // Checks that the coffee machine is turned on
-            power = false;
-            disableCoffeeTypesButtons();
-            disableStartButton();
-            text.value = '';
-            text.style.backgroundColor = null;
-            smallPowerBtn.style.backgroundColor = 'rgb(255, 61, 61)';
-        }
-    }, 1000);
+    if (!power) { // Checks that the coffee machine is turned off
+        power = true;
+        enableCoffeeTypesButtons();
+        enableStartButton();
+        smallPowerBtn.style.backgroundColor = 'rgb(20, 204, 20)';
+    }
+    else { // Checks that the coffee machine is turned on
+        power = false;
+        disableCoffeeTypesButtons();
+        disableStartButton();
+        text.value = '';
+        text.style.backgroundColor = null;
+        smallPowerBtn.style.backgroundColor = 'rgb(255, 61, 61)';
+    }
 }
 
 function chooseType() {
@@ -162,21 +161,19 @@ function chooseType() {
 }
 
 function enableCoffeeTypesButtons() {
-    espressoButton.disabled = false;
-    latteButton.disabled = false;
-    americanoButton.disabled = false;
-    cappuccinoButton.disabled = false;
+    for (let i = 0; i < coffeeButtons.length; i++) {
+        coffeeButtons[i].disabled = false;
+    }
 } 
 
 function disableCoffeeTypesButtons() {
-    espressoButton.disabled = true;
-    latteButton.disabled = true;
-    americanoButton.disabled = true;
-    cappuccinoButton.disabled = true;
+    for (let i = 0; i < coffeeButtons.length; i++) {
+        coffeeButtons[i].disabled = true;
+    }
 }
 
 function enableStartButton() {
-    if(power) {
+    if (power) {
         startButton.disabled = false;
     }
 }
@@ -234,19 +231,43 @@ function calcPercentCoffee() {
     showPercentCoffee();
 }
 
-function makeEspresso() {
-    disableStartButton();
-
+function pourCoffee() {
     setTimeout(function() {
         coffee.classList.add('pour');
         smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
     }, 1000);
-    
+}
+
+function removePourCoffee() {
     setTimeout(function() {
         coffee.classList.remove('pour');
         smallStartBtn.style.backgroundColor = '#777';
         enableTakeCoffee();
     }, 8000);
+}
+
+function pourCoffeeAndMilk() {
+    setTimeout(function() {
+        coffee.classList.add('pour');
+        milk.classList.add('pour');
+
+        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
+    }, 1000);
+}
+
+function removePourCoffeeAndMilk() {
+    setTimeout(function() {
+        coffee.classList.remove('pour');
+        milk.classList.remove('pour');
+        smallStartBtn.style.backgroundColor = '#777';
+        enableTakeCoffee();
+    }, 8000);
+}
+
+function makeEspresso() {
+    disableStartButton();
+    pourCoffee();
+    removePourCoffee();
 
     setTimeout(function() {
         cupCoffee.style.height = '40%';
@@ -264,20 +285,8 @@ function makeEspresso() {
 
 function makeLatte() {
     disableStartButton();
-
-    setTimeout(function() {
-        coffee.classList.add('pour');
-        milk.classList.add('pour');
-
-        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
-    }, 1000);
-    
-    setTimeout(function() {
-        coffee.classList.remove('pour');
-        milk.classList.remove('pour');
-        smallStartBtn.style.backgroundColor = '#777';
-        enableTakeCoffee();
-    }, 8000);
+    pourCoffeeAndMilk();
+    removePourCoffeeAndMilk();
 
     setTimeout(function() {
         cupCoffee.style.height = '20%';
@@ -297,17 +306,8 @@ function makeLatte() {
 
 function makeAmericano() {
     disableStartButton();
-
-    setTimeout(function() {
-        coffee.classList.add('pour');
-        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
-    }, 1000);
-    
-    setTimeout(function() {
-        coffee.classList.remove('pour');
-        smallStartBtn.style.backgroundColor = '#777';
-        enableTakeCoffee();
-    }, 8000);
+    pourCoffee();
+    removePourCoffee();
 
     setTimeout(function() {
         cupCoffee.style.height = '95%';
@@ -325,20 +325,8 @@ function makeAmericano() {
 
 function makeCappuccino() {
     disableStartButton();
-
-    setTimeout(function() {
-        coffee.classList.add('pour');
-        milk.classList.add('pour');
-
-        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
-    }, 1000);
-    
-    setTimeout(function() {
-        coffee.classList.remove('pour');
-        milk.classList.remove('pour');
-        smallStartBtn.style.backgroundColor = '#777';
-        enableTakeCoffee();
-    }, 8000);
+    pourCoffeeAndMilk();
+    removePourCoffeeAndMilk();
 
     setTimeout(function() {
         cupCoffee.style.height = '30%';
@@ -357,10 +345,11 @@ function makeCappuccino() {
 }
 
 function getCup() { // Put empty cup on the stand
+    for (let i = 0; i < cupElements.length; i++) {
+        cupElements[i].style.display = 'block';  
+    }
+
     cup.style.visibility = 'visible';
-    cupCoffee.style.display = 'block';
-    cupMilk.style.display = 'block';
-    cupFoam.style.display = 'block';
     
     enableStartButton();
 }
@@ -372,12 +361,14 @@ takeCup.addEventListener('click', function() {
 
 takeCoffee.addEventListener('click', function() { // Take a cup of coffee from the stand
     cup.style.visibility = 'hidden';
-    cupCoffee.style.display = 'none';
-    cupCoffee.style.height = '0';
-    cupMilk.style.display = 'none';
-    cupMilk.style.height = '0';
-    cupFoam.style.display = 'none';
-    cupFoam.style.height = '0';
+    
+    for (let i = 0; i < cupElements.length; i++) {
+        cupElements[i].style.display = 'none';  
+    }
+
+    for (let i = 0; i < cupElements.length; i++) {
+        cupElements[i].style.height = '0';  
+    }
 
     disableTakeCoffee();
     enableTakeCup();
@@ -389,11 +380,11 @@ startButton.addEventListener('click', function() { // Run coffee machine, by cli
 
 powerButton.addEventListener('click', function() {  // Start the program, by click on power button
     powerButton.classList.toggle('power-default');
-    powerButton.classList.toggle('active');
-    text.classList.toggle('active');
-    displayPercentWater.classList.toggle('active');
-    displayPercentCoffee.classList.toggle('active');
-    displayPercentMilk.classList.toggle('active');
+
+    for (let i = 0; i < activeElements.length; i++) {
+        activeElements[i].classList.toggle('active');
+    }
+
     switchOn();
 });
                             // Coffee selection buttons
