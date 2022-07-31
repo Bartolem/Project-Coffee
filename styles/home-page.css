@@ -1,214 +1,227 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-    height: 200vh;
-}
-
-.top h2:first-child {
-    float: left;
-    margin-right: auto;
-    margin-left: 2em;
-    font-size: 4rem;
-    color: #fff;
-}
-
-.top h2:nth-child(2) {
-    font-size: 12rem;
-}
-
-.top-text {
-    font-family: Lato;
-    font-weight: bold;
-    color: #FFBD59;
-}
-
-.top-text p {
-    float: right;
-    margin-left: auto;
-    margin-right: 2em;
-    font-size: 2rem;
-    text-align: center;
-    width: 50%;
-    color: #fff;
+    min-height: 300vh;
 }
 
 .top {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #BBAF99;
-    background-image: url("../images/coffee-img-medium.jpg");
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-color: #533B31;
+    background-image: url("../images/coffee-machine-image.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: bottom;
+    background-position: center;
     height: 100vh;
-    color: #fff;
 }
 
 .top-text {
-    height: 80%;
-    height: 80%;
+    height: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    font-family: Lato;
+    font-weight: bold;
+    color: #e08700;
+}
+
+.top-text h2:first-child {
+    font-size: 3rem;
+}
+
+.top-text h2:nth-child(2) {
+    font-size: 6rem;
+}
+
+.top-text p {
+    font-size: 2rem;
+    width: 80%;
 }
 
 .bottom {
-    background-color: #BBAF99;
+    background-color: #fff6da;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    height: 140vh;
+    min-height: 200vh;
     font-family: Lato;
     font-weight: bold;
-    color: #533B31;;
 }
 
 .bottom-col {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    height: 80%;
+    height: 90%;
 }
 
 .bottom-text {
     font-size: 3rem;
+    display: none;
 }
 
 .col {
+    position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    flex-direction: column;
-    text-align: center;
-    height: 90%;
-    width: 30%;
-    margin: 8em 1em 5em 1em;
-}
-
-.img-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    height: 45%;
+    height: 80vh;
     width: 100%;
 }
 
+.col img.coffee-machine-img {
+    width: 28em;
+}
+
+.col img.cup-img {
+    width: 25em;
+}
+
+.col img.coffee-beans-bag-img {
+    width: 20em;
+}
+
 .col-h {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+    padding: 15px 0;
     font-size: 2rem;
+    background-color:#c77700;
+    color: #fff;
 }
 
-.bottom img {
-    height: 15em;
-}
-
-.bottom p {
-    width: 80%;
+.col p {
     font-size: 1rem;
     padding: 1em;
+    line-height: 2rem;
+    text-align: left;
 }
 
 @media (max-width: 1024px) {
     body {
-        height: 290vh;
-        background-image: url(../images/coffee-img-small.jpg);
+        min-height: 400vh;
     }
 
     .top {
-        height: 90vh;
+        height: 100vh;
     }
 
-    .top h2:first-child {
+    .top-text {
+        height: 40%;
+    }
+
+    .top-text h2:first-child {
         font-size: 2rem;
     }
-
-    .top h2:nth-child(2) {
-        font-size: 6rem;
+    
+    .top-text h2:nth-child(2) {
+        font-size: 4rem;
     }
 
     .top-text p {
-        font-size: 1.2rem;
-    }
-
-    .bottom {
-        height: 200vh;
-    }
+        font-size: 1.5rem;
+    } 
 
     .bottom-col {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        flex-direction: column;
-        height: 90%;
+        height: 100%;
     }
 
     .col {
-        flex-direction: row;
-        height: 50vh;
-        width: 100%;
-        margin: 0;
-        text-align: left;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
     }
 
-    .img-box {
-        justify-content: center;
-        height: 100%;
-        width: 50%;
+    .col-h {
+        font-size: 1.8rem;
+    }
+
+    .col img.coffee-machine-img {
+        width: 22em;
+    }
+    
+    .col img.cup-img {
+        width: 20em;
+    }
+    
+    .col img.coffee-beans-bag-img {
+        width: 15em;
     }
 }
 
-@media (max-width:640px) {
-    body {
-        height: 400vh;
-    }
-
-    .top {
-        height: 100vh;
-    }
-
+@media (max-width:640px) {   
     .top h2:first-child {
-        text-align: center;
-        margin: 0;
+        font-size: 1.6rem;
     }
 
     .top h2:nth-child(2) {
-        font-size: 4rem;
-        margin: .5em;
+        font-size: 3.5rem;
+    }
+
+    .top {
+        background-image: url(../images/coffee-machine-image-small.jpg);
+        background-position: left;
+    }
+
+    .top-text {
+        width: 70%;
+        color: #ffba52;
     }
 
     .top-text p {
-        text-align: center;
-        margin: 0;
+        font-size: 1rem;
         width: 80%;
-    }
-
-    .bottom {
-        height: 300vh;
-    }
-
-    .bottom img {
-        width: 18em;
-        height: auto;
-    }
-
-    .bottom-text {
-        margin-bottom: .5em;
-    }
-
-    .col {
-        height: 100vh;
-        flex-direction: column;
     }
 
     .col-h {
         font-size: 1.5rem;
+    }
+
+    .col img.coffee-machine-img {
+        width: 16em;
+    }
+    
+    .col img.cup-img {
+        width: 16em;
+    }
+    
+    .col img.coffee-beans-bag-img {
+        width: 13em;
+    }
+}
+
+@media(max-width:360px) {
+    .top {
+        align-items: center;
+        justify-content: center;
+    }
+    .top-text {
+        width: 80%;
+    }
+
+    .col img.coffee-machine-img {
+        width: 12em;
+    }
+    
+    .col img.cup-img {
+        width: 12em;
+    }
+    
+    .col img.coffee-beans-bag-img {
+        width: 10em;
     }
 }
 

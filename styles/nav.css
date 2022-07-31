@@ -17,6 +17,7 @@ header {
     color: #fff;
     position: sticky;
     top: 0;
+    left: 0;
     z-index: 1;
 }
 
@@ -84,13 +85,21 @@ header img {
 }
 
 @media (max-width:360px) {
+    header img {
+        display: none;
+    }
+
     a {
         font-size: .65rem;
     }
 
+    nav {
+        justify-content: center;
+    }
+
     .nav-links {
-        padding-right: .3em;
-        padding-left: .3em;
+        width: 90%;
+        padding: 0;
     }
 }
 
