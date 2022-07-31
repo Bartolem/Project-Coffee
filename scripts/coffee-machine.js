@@ -29,6 +29,9 @@ const displayPercentWater = document.querySelector('.water-percent');
 const displayPercentMilk = document.querySelector('.milk-percent');
 const displayPercentCoffee = document.querySelector('.coffee-percent');
 
+const arrowIcon = document.querySelector('#arrow-icon');
+const coffeeMenu = document.querySelector('.right-child');
+
 let percentWater;
 let percentMilk;
 let percentCoffee;
@@ -404,4 +407,8 @@ cappuccinoButton.addEventListener('click', function() { // cappuccino selection 
     text.value = "cappuccino";
 });
 
+arrowIcon.addEventListener('click', function() {
+    coffeeMenu.classList.toggle('show');
+    arrowIcon.classList.toggle('show');
+});
 

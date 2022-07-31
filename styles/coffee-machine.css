@@ -79,7 +79,7 @@
 }
 
 #output-text {
-    width: 80%;
+    width: 100%;
     padding: .4em;
     text-align: center;
     font-size: 1.3rem;
@@ -227,9 +227,9 @@
 }
 
 .base button {
-    height: 55%;
-    width: 25%;
-    transition: 2s linear;
+    height: 65%;
+    width: 30%;
+    transition: 1s linear;
     font-size: 1rem;
     font-weight: bold;
     border-radius: 6px;
@@ -409,6 +409,23 @@
 }
 
 @media (max-width:640px) {
+    .mid {
+        width: 95%;
+        align-items: flex-start;
+    }
+
+    .box-container {
+        margin-left: 10%;
+    }
+
+    .cup {
+        margin-left: 15%;
+    }
+
+    .base {
+        width: 100%;
+    }
+
     .start, .power {
         height: 2.2em;
         width: 2.2em;
@@ -416,7 +433,7 @@
     }
 
     .side-btn-box {
-        width: 35%;
+        width: 40%;
     }
 
     .side-btn-box button {
@@ -443,5 +460,23 @@
     .base button {
         font-size: .9rem;
         width: 40%;
+    }
+
+    .fluid-tanks {
+        width: 38%;
+    }
+
+    .fluid-tanks label {
+        font-size: .8rem;
+    }
+
+    .fluid-tanks span {
+        font-size: .8rem;
+    }
+}
+
+@media(max-width:360px) {
+    .fluid-tanks {
+        width: 50%;
     }
 }
