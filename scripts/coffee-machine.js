@@ -31,6 +31,7 @@ const displayPercentCoffee = document.querySelector('.coffee-percent');
 
 const arrowIcon = document.querySelector('#arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
+const modal = document.querySelector('.modal');
 
 let percentWater;
 let percentMilk;
@@ -83,6 +84,10 @@ const cappuccino = {
     cup: 1
 };
 
+function showModal() {
+    modal.classList.toggle('show');
+} 
+
 function switchOn() {
     if (!power) { // Checks that the coffee machine is turned off
         power = true;
@@ -108,9 +113,11 @@ function chooseType() {
                     makeEspresso();
             }
             else if (coffeeMachine.coffee < espresso.coffee) {
+                showModal();
                 console.log(`Not enought coffee beans to make espresso!`);
             }
             else if (coffeeMachine.water < espresso.water) {
+                showModal();
                 console.log(`Not enought water to make espresso!`);
             }
             break;
@@ -121,12 +128,15 @@ function chooseType() {
                     makeLatte();
             }
             else if (coffeeMachine.coffee < latte.coffee) {
+                showModal();
                 console.log(`Not enought coffee beans to make latte!`);
             }
             else if (coffeeMachine.water < latte.water) {
+                showModal();
                 console.log(`Not enought water to make latte!`);
             }
             else if (coffeeMachine.milk < latte.milk) {
+                showModal();
                 console.log(`Not enought milk to make latte!`);
             }
             break;
@@ -136,9 +146,11 @@ function chooseType() {
                     makeAmericano();
             }
             else if (coffeeMachine.coffee < americano.coffee) {
+                showModal();
                 console.log(`Not enought coffee beans to make americano!`);
             }
             else if (coffeeMachine.water < americano.water) {
+                showModal();
                 console.log(`Not enought water to make americano!`);
             }
             break;
@@ -149,12 +161,15 @@ function chooseType() {
                     makeCappuccino();
             }
             else if (coffeeMachine.coffee < cappuccino.coffee) {
+                showModal();
                 console.log(`Not enought coffee beans to make cappuccino!`);
             }
             else if (coffeeMachine.water < cappuccino.water) {
+                showModal();
                 console.log(`Not enought water to make cappuccino!`);
             }
             else if (coffeeMachine.milk < cappuccino.milk) {
+                showModal();
                 console.log(`Not enought milk to make cappuccino!`);
             }
             break;

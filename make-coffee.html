@@ -25,9 +25,15 @@
     </header>
 
     <main class="container">
-        <div class="left-child">
-            <i class="fa-solid fa-circle-down" id="arrow-icon"></i>
-            <div class="coffee-machine"><!--Body of coffee machine, this section include all machine elements-->
+        <section class="left-child">
+            <i class="fa-solid fa-circle-down" id="arrow-icon"></i>        
+            <section class="modal">
+                <div class="modal-top"></div>
+                <div class="modal-mid"></div>
+                <div class="modal-bottom"></div>
+            </section>
+
+            <section class="coffee-machine"><!--Body of coffee machine, this section include all machine elements-->
                 <div class="top"><!--The upper part of coffee machine-->
                     <div class="side-btn-box"> <!--Buttons on top-left side-->
                         <div class="side-btn">
@@ -123,13 +129,15 @@
                     </div>
                     <div class="stand"></div>
                 </div>
-            </div>
-        </div>
-        <div class="right-child"><!--Right side of the page-->
+            </section>
+        </section>
+        
+        <section class="right-child"><!--Right side of the page-->
             <div class="coffee-menu"><!--Menu with coffee-->
                 <div class="menu-top">
                     <h2>MENU</h2>
                 </div>
+
                 <div class="menu-main"><!--Items that are included in coffee menu-->
                     <div class="menu-item">
                         <img src="images/espresso.png">
@@ -172,7 +180,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
     <script src="scripts/coffee-machine.js"></script>   
 </body>
