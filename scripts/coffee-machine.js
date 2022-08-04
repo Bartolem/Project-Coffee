@@ -30,8 +30,11 @@ const displayPercentMilk = document.querySelector('.milk-percent');
 const displayPercentCoffee = document.querySelector('.coffee-percent');
 
 const arrowIcon = document.querySelector('#arrow-icon');
+const plusIcon = document.querySelector('#plus-icon');
 const coffeeMenu = document.querySelector('.right-child');
+const modalWrap = document.querySelector('.modal-wrap');
 const modal = document.querySelector('.modal');
+const closeModalIcon = document.querySelector('.modal-top i');
 
 let percentWater;
 let percentMilk;
@@ -86,6 +89,8 @@ const cappuccino = {
 
 function showModal() {
     modal.classList.toggle('show');
+    modalWrap.classList.toggle('show');
+    document.querySelector('.left-child').classList.toggle('blur');
 } 
 
 function switchOn() {
@@ -427,3 +432,6 @@ arrowIcon.addEventListener('click', function() {
     arrowIcon.classList.toggle('show');
 });
 
+closeModalIcon.addEventListener('click', showModal);
+
+plusIcon.addEventListener('click', showModal);

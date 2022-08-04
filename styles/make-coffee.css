@@ -47,14 +47,102 @@ body {
     top: 10vh;
 }
 
-#arrow-icon {
-    position: absolute;
-    top: 22%;
-    right: 2%;
-    font-size: 2.5rem;
+.modal-wrap {
+    display: none;
+}
+
+.modal-wrap.show {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
+}
+
+.modal {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70%;
+    width: 60%;
+    background-color: #444;
+}
+
+.modal.show { 
+    display: block;
+}
+
+.modal-top {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    flex-basis: 10%;
+    background-color: #555;
+}
+
+.modal-top h3 {
+    font-size: 1.7rem;
+    margin: 5px 15px;
+    font-family: Lato, sans-serif;
+}
+
+.modal-top i {
+    font-size: 3rem;
+    margin: 5px 15px;
+    color: brown;
+}
+
+.modal-mid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-basis: 80%;
+    height: 90%;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-mid div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 30%;
+    height: 100%;
+}
+
+.modal-mid img {
+    height: 30%;
+}
+
+.modal-mid i {
+    flex-basis: 30%;
+}
+
+.action-icons {
+    position: absolute;
+    top: 0%;
+    right: 20%;
+    z-index: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10%;
+    min-width: 120px;
+}
+
+#arrow-icon,
+#plus-icon {
+    font-size: 2rem;
     transition: 1s linear;
-    color: #444;
+    color: #333;
     cursor: pointer;
 }
 
@@ -63,11 +151,16 @@ body {
 }
 
 .left-child {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
+}
+
+.left-child.blur {
+    filter: blur(2px);
 }
 
 .coffee-machine {
@@ -124,7 +217,7 @@ body {
 }
 
 .menu-main h2, .menu-main li {
-    font-family: Lato;
+    font-family: Lato, sans-serif;
     font-size: 1rem;
     color: #fff;
     font-weight: bold;
@@ -143,6 +236,11 @@ body {
 }
 
 @media (max-width:1100px) {
+    .modal.show {
+        height: 80%;
+        width: 80%;
+    }
+
     .menu-item {
         flex-basis: 80%;
     }
@@ -158,6 +256,11 @@ body {
 }
 
 @media (max-width:640px) {
+    .modal.show {
+        height: 90%;
+        width: 90%;
+    }
+
     .right-child {
         top: -150vh;
     }
