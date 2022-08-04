@@ -102,7 +102,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     flex-basis: 80%;
     height: 90%;
     width: 100%;
@@ -123,7 +122,7 @@ body {
 }
 
 .modal-mid i {
-    flex-basis: 30%;
+    color: cornflowerblue;
 }
 
 .action-icons {
@@ -259,6 +258,20 @@ body {
     .modal.show {
         height: 90%;
         width: 90%;
+    }
+
+    .modal-mid {
+        flex-direction: column;
+    }
+
+    .modal-mid div {
+        height: 30%;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .modal-mid img {
+        height: 80%;
     }
 
     .right-child {

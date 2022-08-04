@@ -29,6 +29,13 @@ const displayPercentWater = document.querySelector('.water-percent');
 const displayPercentMilk = document.querySelector('.milk-percent');
 const displayPercentCoffee = document.querySelector('.coffee-percent');
 
+const defaultWaterQuantity = document.querySelector('.default-water-quantity');
+const waterQuantity = document.querySelector('.water-quantity');
+const defaultMilkQuantity = document.querySelector('.default-milk-quantity');
+const milkQuantity = document.querySelector('.milk-quantity');
+const defaultCoffeeQuantity = document.querySelector('.default-coffee-quantity');
+const coffeeQuantity = document.querySelector('.coffee-quantity');
+
 const arrowIcon = document.querySelector('#arrow-icon');
 const plusIcon = document.querySelector('#plus-icon');
 const coffeeMenu = document.querySelector('.right-child');
@@ -91,6 +98,13 @@ function showModal() {
     modal.classList.toggle('show');
     modalWrap.classList.toggle('show');
     document.querySelector('.left-child').classList.toggle('blur');
+
+    defaultWaterQuantity.innerHTML = defaultCoffeeMachine.water;
+    waterQuantity.innerHTML = `${coffeeMachine.water}/`;
+    defaultMilkQuantity.innerHTML = defaultCoffeeMachine.milk;
+    milkQuantity.innerHTML = `${coffeeMachine.milk}/`;
+    defaultCoffeeQuantity.innerHTML = defaultCoffeeMachine.coffee;
+    coffeeQuantity.innerHTML = `${coffeeMachine.coffee}/`;
 } 
 
 function switchOn() {
