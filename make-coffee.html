@@ -37,7 +37,7 @@
                             <img src="images/water-bottle.png" alt="water bottle" class="water-bottle">
                         </div>
                         <p>Quantity: <span class="water-quantity"></span><span class="default-water-quantity"></span> ml</p>
-                        <i class="fa-solid fa-square-plus"></i>
+                        <i class="fa-solid fa-square-plus" id="add-water"></i>
                     </div>
 
                     <div class="content-container">
@@ -45,7 +45,7 @@
                             <img src="images/milk-carton.png" alt="milk carton" class="milk-carton">
                         </div>
                         <p>Quantity: <span class="milk-quantity"></span><span class="default-milk-quantity"></span> ml</p>
-                        <i class="fa-solid fa-square-plus"></i>
+                        <i class="fa-solid fa-square-plus" id="add-milk"></i>
                     </div>
 
                     <div class="content-container">
@@ -53,7 +53,7 @@
                             <img src="images/beans-bag.png" alt="beans bag" class="beans-bag">
                         </div>
                         <p>Quantity: <span class="coffee-quantity"></span><span class="default-coffee-quantity"></span> g</p>
-                        <i class="fa-solid fa-square-plus"></i>
+                        <i class="fa-solid fa-square-plus" id="add-coffee"></i>
                     </div>
                  
                 </div>
@@ -63,8 +63,15 @@
      
         <section class="left-child">
             <section class="action-icons">
-                <i class="fa-solid fa-circle-down" id="arrow-icon"></i>
-                <i class="fa-solid fa-circle-plus" id="plus-icon"></i>   
+                <div>
+                    <i class="fa-solid fa-circle-down" id="arrow-icon"></i>
+                    <p>Show coffee menu</p>
+                </div>
+                
+                <div>
+                    <i class="fa-solid fa-circle-plus" id="plus-icon"></i>
+                    <p>Refill tanks</p>  
+                </div>   
             </section>
 
             <section class="coffee-machine"><!--Body of coffee machine, this section include all machine elements-->

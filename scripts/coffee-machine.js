@@ -42,6 +42,9 @@ const coffeeMenu = document.querySelector('.right-child');
 const modalWrap = document.querySelector('.modal-wrap');
 const modal = document.querySelector('.modal');
 const closeModalIcon = document.querySelector('.modal-top i');
+const addCoffeeIcon = document.querySelector('#add-coffee');
+const addMilkIcon = document.querySelector('#add-milk');
+const addWaterIcon = document.querySelector('#add-water');
 
 let percentWater;
 let percentMilk;
@@ -449,3 +452,21 @@ arrowIcon.addEventListener('click', function() {
 closeModalIcon.addEventListener('click', showModal);
 
 plusIcon.addEventListener('click', showModal);
+
+addCoffeeIcon.addEventListener('click', function() {
+    coffeeMachine.coffee = defaultCoffeeMachine.coffee;
+    coffeeQuantity.innerHTML = `${coffeeMachine.coffee}/`;
+    calcPercentCoffee();
+});
+
+addMilkIcon.addEventListener('click', function() {
+    coffeeMachine.milk = defaultCoffeeMachine.milk;
+    milkQuantity.innerHTML = `${coffeeMachine.milk}/`;
+    calcPercentMilk();
+});
+
+addWaterIcon.addEventListener('click', function() {
+    coffeeMachine.water = defaultCoffeeMachine.water;
+    waterQuantity.innerHTML = `${coffeeMachine.water}/`;
+    calcPercentWater();
+});

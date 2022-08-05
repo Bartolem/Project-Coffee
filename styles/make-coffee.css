@@ -127,6 +127,11 @@ body {
     font-size: 2rem;
 }
 
+.content-container p {
+    font-family: Lato;
+    color: white;
+}
+
 .img-container {
     display: flex;
     justify-content: center;
@@ -141,14 +146,30 @@ body {
 
 .action-icons {
     position: absolute;
-    top: 0%;
-    right: 20%;
+    top: 2%;
+    right: 0;
     z-index: 2;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    height: 10%;
-    min-width: 120px;
+    height: 5%;
+    width: 100%;
+}
+
+.action-icons div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 180px;
+    background-color:cornflowerblue;
+    border-radius: 20px;
+}
+
+.action-icons p {
+    margin: 0 10px;
+    color: #444;
+    font-weight: bold;
+    font-family: Lato;
 }
 
 #arrow-icon,
