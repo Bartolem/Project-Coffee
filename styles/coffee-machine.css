@@ -319,10 +319,18 @@
     height: 60%;
     width: 20%;
     border-radius: 0 0 25% 25%;
-    z-index: 1;
     overflow: hidden;
     border: 3px solid aliceblue;
-    background-color: rgba(239, 239, 239, 0.3);
+}
+
+.cup-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(239, 239, 239, 0.2);
+    z-index: 1;
 }
 
 .cup-coffee {
@@ -332,7 +340,6 @@
     height: 0%;
     width: 100%;
     background-color: #755542;
-    z-index: -1;
     transition: 6s;
 }
 
@@ -343,7 +350,6 @@
     height: 0%;
     width: 100%;
     background-color: #ded3a6;
-    z-index: -1;
     transition: 6s;
 }
 
@@ -354,7 +360,6 @@
     height: 0%;
     width: 100%;
     background-color: #eee;
-    z-index: -1;
     transition: 6s;
 }
 
