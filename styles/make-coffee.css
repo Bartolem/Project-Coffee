@@ -160,14 +160,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 180px;
-    background-color:cornflowerblue;
+    width: 135px;
+    background-color: green;
     border-radius: 20px;
 }
 
 .action-icons p {
     margin: 0 10px;
-    color: #444;
+    color: white;
     font-weight: bold;
     font-family: Lato;
 }
@@ -176,7 +176,7 @@ body {
 #plus-icon {
     font-size: 2rem;
     transition: 1s linear;
-    color: #333;
+    color:rgb(209, 143, 0);
     cursor: pointer;
 }
 

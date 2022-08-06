@@ -46,9 +46,7 @@ const addCoffeeIcon = document.querySelector('#add-coffee');
 const addMilkIcon = document.querySelector('#add-milk');
 const addWaterIcon = document.querySelector('#add-water');
 
-let percentWater;
-let percentMilk;
-let percentCoffee;
+let percentWater, percentMilk, percentCoffee;
 let power = false;
 
 const cupElements = [cupCoffee, cupMilk, cupFoam];

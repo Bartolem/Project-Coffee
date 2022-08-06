@@ -34,6 +34,7 @@ body {
 
 .coffee-beans img {
     width: 1em;
+    transform: rotate(20deg);
 }
 
 #bean-lat img:nth-child(n + 2) {
