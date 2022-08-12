@@ -1,5 +1,9 @@
-body {
+* {
     margin: 0;
+    box-sizing: border-box;
+}
+
+body {
     background-color: #BBAF99;
 }
 
@@ -8,8 +12,8 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    width: 100vw;
-    min-height: 120vh;
+    width: 100%;
+    min-height: 200vh;
 }
 
 .column {
@@ -42,7 +46,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 #bean-lat img:nth-child(n + 2) {
@@ -64,7 +68,7 @@ body {
 }
 
 .column p {
-    width: 80%;
+    width: 50%;
     font-size: 1rem;
     line-height: 1.8em;
     text-align: justify;
@@ -136,22 +140,9 @@ footer div {
         width: 100%;
     }
 
-    /* .column img {
-        width: 40%;
-    } */
-
     .column h2 {
         font-size: 3rem;
     }
-
-    .column p {
-        font-size: 1.2rem;
-        width: 90%;
-    }
-
-    /* .coffee-beans {
-        width: 2.5em;
-    } */
 
     footer {
         flex-direction: column;
@@ -167,6 +158,19 @@ footer div {
 }
 
 @media (max-width:640px) {
+    .column {
+        flex-direction: column;
+    }
+
+    .column p {
+        width: 80%;
+    }
+
+    .img-container {
+        height: 50%;
+        width: 80%;
+    }
+
     .pure-coffee, 
     .water, 
     .milk, 

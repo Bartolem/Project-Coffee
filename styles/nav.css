@@ -19,6 +19,7 @@ header {
     top: 0;
     left: 0;
     z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 
 h1 {
@@ -28,6 +29,7 @@ h1 {
     font-family: Black-Jack regular;
     font-weight: normal; 
     font-size: 2.5rem;
+    cursor: default;
 }
 
 nav {
@@ -52,6 +54,11 @@ li, a {
     text-decoration: none;
     font-size: 1rem;
     color: #fff;
+}
+
+li, a:hover {
+    color: #e08700;
+    transition: .5s;
 }
 
 header img {

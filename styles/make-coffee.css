@@ -26,7 +26,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 100vw;
+    width: 100%;
     background-color: #BBAF99;
 }
 
@@ -164,6 +164,12 @@ body {
     background-color: green;
     border-radius: 20px;
     cursor: pointer;
+}
+
+.action-icons div:hover {
+    background-color: rgb(0, 100, 0);
+    font-size: 1.1rem;
+    transition: .5s;
 }
 
 .action-icons p {
