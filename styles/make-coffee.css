@@ -163,6 +163,7 @@ body {
     width: 135px;
     background-color: green;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .action-icons p {
@@ -174,10 +175,10 @@ body {
 
 #arrow-icon,
 #plus-icon {
+    margin-left: -5px;
     font-size: 2rem;
     transition: 1s linear;
-    color:rgb(209, 143, 0);
-    cursor: pointer;
+    color:#e08700;
 }
 
 #arrow-icon.show {

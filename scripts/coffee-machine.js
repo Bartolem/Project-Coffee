@@ -36,8 +36,9 @@ const milkQuantity = document.querySelector('.milk-quantity');
 const defaultCoffeeQuantity = document.querySelector('.default-coffee-quantity');
 const coffeeQuantity = document.querySelector('.coffee-quantity');
 
+const showMenu = document.querySelector('.action-icons div:first-child');
+const refillTanks = document.querySelector('.action-icons div:nth-child(2)');
 const arrowIcon = document.querySelector('#arrow-icon');
-const plusIcon = document.querySelector('#plus-icon');
 const coffeeMenu = document.querySelector('.right-child');
 const modalWrap = document.querySelector('.modal-wrap');
 const modal = document.querySelector('.modal');
@@ -149,7 +150,7 @@ function chooseType() {
             }
             else if (coffeeMachine.coffee < latte.coffee) {
                 showModal();
-                console.log(`Not enought coffee beans to make latte!`);
+                alert(`Not enought coffee beans to make latte!`);
             }
             else if (coffeeMachine.water < latte.water) {
                 showModal();
@@ -236,37 +237,29 @@ function disableTakeCup() {
     takeCup.disabled = true;
 }
 
-function showPercentWater() {
-    displayPercentWater.innerHTML = `${percentWater}%`;
-    waterInTank.style.height = `${percentWater}%`;
+const showPercent = function(percent, product) {
+    switch(product) {
+        case 'water':
+            displayPercentWater.innerHTML = `${percent}%`;
+            waterInTank.style.height = `${percent}%`;
+            break
+        case 'milk':
+            displayPercentMilk.innerHTML = `${percent}%`;
+            milkInTank.style.height = `${percent}%`;
+            break
+        case 'coffee':
+            displayPercentCoffee.innerHTML = `${percent}%`;
+            coffeeInTank.style.height = `${percent}%`;
+            break
+        default:
+            console.log('Wrong argument in function');    
+    }
+    
+    console.log(`${product} ${percent}%`);
 }
 
-function showPercentMilk() {
-    displayPercentMilk.innerHTML = `${percentMilk}%`;
-    milkInTank.style.height = `${percentMilk}%`;
-}
-
-function showPercentCoffee() {
-    displayPercentCoffee.innerHTML = `${percentCoffee}%`;
-    coffeeInTank.style.height = `${percentCoffee}%`;
-}
-
-function calcPercentWater() {
-    percentWater = Math.round(coffeeMachine.water / defaultCoffeeMachine.water * 100);
-    console.log(`water ${percentWater}%`);
-    showPercentWater();
-}
-
-function calcPercentMilk() {
-    percentMilk = Math.round(coffeeMachine.milk / defaultCoffeeMachine.milk * 100);
-    console.log(`milk ${percentMilk}%`);
-    showPercentMilk();
-}
-
-function calcPercentCoffee() {
-    percentCoffee = Math.round(coffeeMachine.coffee / defaultCoffeeMachine.coffee * 100);
-    console.log(`coffee ${percentCoffee}%`);
-    showPercentCoffee();
+const calc = function(product) {
+    return Math.round(coffeeMachine[product] / defaultCoffeeMachine[product] * 100);
 }
 
 function pourCoffee() {
@@ -312,13 +305,13 @@ function makeEspresso() {
     }, 2000);
 
     coffeeMachine.water -= espresso.water;
-    calcPercentWater();
+    showPercent(calc('water'), 'water');
 
     coffeeMachine.milk -= espresso.milk;
-    calcPercentMilk();
+    showPercent(calc('milk'), 'milk');
 
     coffeeMachine.coffee -= espresso.coffee;
-    calcPercentCoffee();
+    showPercent(calc('coffee'), 'coffee');
 }
 
 function makeLatte() {
@@ -333,13 +326,13 @@ function makeLatte() {
     }, 2000);
 
     coffeeMachine.water -= latte.water;
-    calcPercentWater();
+    showPercent(calc('water'), 'water');
 
     coffeeMachine.milk -= latte.milk;
-    calcPercentMilk();
+    showPercent(calc('milk'), 'milk');
 
     coffeeMachine.coffee -= latte.coffee;
-    calcPercentCoffee();
+    showPercent(calc('coffee'), 'coffee');
 }
 
 function makeAmericano() {
@@ -352,13 +345,13 @@ function makeAmericano() {
     }, 2000);
 
     coffeeMachine.water -= americano.water;
-    calcPercentWater();
+    showPercent(calc('water'), 'water');
 
     coffeeMachine.milk -= americano.milk;
-    calcPercentMilk();
+    showPercent(calc('milk'), 'milk');
 
     coffeeMachine.coffee -= americano.coffee;
-    calcPercentCoffee();
+    showPercent(calc('coffee'), 'coffee');
 }
 
 function makeCappuccino() {
@@ -373,13 +366,13 @@ function makeCappuccino() {
     }, 2000);
 
     coffeeMachine.water -= cappuccino.water;
-    calcPercentWater();
+    showPercent(calc('water'), 'water');
 
     coffeeMachine.milk -= cappuccino.milk;
-    calcPercentMilk();
+    showPercent(calc('milk'), 'milk');
 
     coffeeMachine.coffee -= cappuccino.coffee;
-    calcPercentCoffee();
+    showPercent(calc('coffee'), 'coffee');
 }
 
 function getCup() { // Put empty cup on the stand
@@ -442,29 +435,29 @@ cappuccinoButton.addEventListener('click', function() { // cappuccino selection 
     text.value = "cappuccino";
 });
 
-arrowIcon.addEventListener('click', function() {
+showMenu.addEventListener('click', function() {
     coffeeMenu.classList.toggle('show');
     arrowIcon.classList.toggle('show');
 });
 
 closeModalIcon.addEventListener('click', showModal);
 
-plusIcon.addEventListener('click', showModal);
+refillTanks.addEventListener('click', showModal);
 
 addCoffeeIcon.addEventListener('click', function() {
     coffeeMachine.coffee = defaultCoffeeMachine.coffee;
     coffeeQuantity.innerHTML = `${coffeeMachine.coffee}/`;
-    calcPercentCoffee();
+    showPercent(calc('coffee'), 'coffee');
 });
 
 addMilkIcon.addEventListener('click', function() {
     coffeeMachine.milk = defaultCoffeeMachine.milk;
     milkQuantity.innerHTML = `${coffeeMachine.milk}/`;
-    calcPercentMilk();
+    showPercent(calc('milk'), 'milk');
 });
 
 addWaterIcon.addEventListener('click', function() {
     coffeeMachine.water = defaultCoffeeMachine.water;
     waterQuantity.innerHTML = `${coffeeMachine.water}/`;
-    calcPercentWater();
+    showPercent(calc('water'), 'water');
 });
