@@ -42,6 +42,7 @@ const arrowIcon = document.querySelector('#arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
 const modalWrap = document.querySelector('.modal-wrap');
 const modal = document.querySelector('.modal');
+const alert = document.querySelector('.alert');
 const closeModalIcon = document.querySelector('.modal-top i');
 const addCoffeeIcon = document.querySelector('#add-coffee');
 const addMilkIcon = document.querySelector('#add-milk');
@@ -126,6 +127,15 @@ function switchOn() {
     }
 }
 
+function resetAlertTextContent() {
+    alert.textContent = '';
+    alert.classList.toggle('border');
+}
+
+function addAlertTextContent(product, coffee) {
+    alert.textContent = `Not enought ${product} to make ${coffee}!`;
+}
+
 function chooseType() {
     switch(text.value) {
         case 'espresso':
@@ -135,10 +145,12 @@ function chooseType() {
             }
             else if (coffeeMachine.coffee < espresso.coffee) {
                 showModal();
+                addAlertTextContent('coffee beans', 'espresso');
                 console.log(`Not enought coffee beans to make espresso!`);
             }
             else if (coffeeMachine.water < espresso.water) {
                 showModal();
+                addAlertTextContent('water', 'espresso');
                 console.log(`Not enought water to make espresso!`);
             }
             break;
@@ -150,14 +162,17 @@ function chooseType() {
             }
             else if (coffeeMachine.coffee < latte.coffee) {
                 showModal();
-                alert(`Not enought coffee beans to make latte!`);
+                addAlertTextContent('coffee beans', 'latte');
+                console.log(`Not enought coffee beans to make latte!`);
             }
             else if (coffeeMachine.water < latte.water) {
                 showModal();
+                addAlertTextContent('water', 'latte');
                 console.log(`Not enought water to make latte!`);
             }
             else if (coffeeMachine.milk < latte.milk) {
                 showModal();
+                addAlertTextContent('milk', 'latte');
                 console.log(`Not enought milk to make latte!`);
             }
             break;
@@ -168,10 +183,12 @@ function chooseType() {
             }
             else if (coffeeMachine.coffee < americano.coffee) {
                 showModal();
+                addAlertTextContent('coffee beans', 'americano');
                 console.log(`Not enought coffee beans to make americano!`);
             }
             else if (coffeeMachine.water < americano.water) {
                 showModal();
+                addAlertTextContent('water', 'americano');
                 console.log(`Not enought water to make americano!`);
             }
             break;
@@ -183,14 +200,17 @@ function chooseType() {
             }
             else if (coffeeMachine.coffee < cappuccino.coffee) {
                 showModal();
-                console.log(`Not enought coffee beans to make cappuccino!`);
+                addAlertTextContent('coffee beans', 'cappuccino');
+                console.log(`Not enought coffee beans to make cappuccino!`);           
             }
             else if (coffeeMachine.water < cappuccino.water) {
                 showModal();
+                addAlertTextContent('water', 'cappuccino');
                 console.log(`Not enought water to make cappuccino!`);
             }
             else if (coffeeMachine.milk < cappuccino.milk) {
                 showModal();
+                addAlertTextContent('milk', 'cappuccino'); 
                 console.log(`Not enought milk to make cappuccino!`);
             }
             break;
@@ -448,16 +468,19 @@ addCoffeeIcon.addEventListener('click', function() {
     coffeeMachine.coffee = defaultCoffeeMachine.coffee;
     coffeeQuantity.innerHTML = `${coffeeMachine.coffee}/`;
     showPercent(calc('coffee'), 'coffee');
+    resetAlertTextContent();
 });
 
 addMilkIcon.addEventListener('click', function() {
     coffeeMachine.milk = defaultCoffeeMachine.milk;
     milkQuantity.innerHTML = `${coffeeMachine.milk}/`;
     showPercent(calc('milk'), 'milk');
+    resetAlertTextContent();
 });
 
 addWaterIcon.addEventListener('click', function() {
     coffeeMachine.water = defaultCoffeeMachine.water;
     waterQuantity.innerHTML = `${coffeeMachine.water}/`;
     showPercent(calc('water'), 'water');
+    resetAlertTextContent();
 });

@@ -112,6 +112,15 @@ body {
     width: 40%;
 }
 
+.col a {
+    font-size: 1rem;
+    color:darkmagenta;
+}
+
+.col a:hover {
+    color: rgb(52, 43, 110);
+}
+
 @media (max-width: 1024px) {
     body {
         min-height: 400vh;
@@ -154,11 +163,6 @@ body {
     .col p {
         text-align: center;
         width: 80%;
-    }
-
-    .col a {
-        font-size: 1rem;
-        color:darkmagenta;
     }
 
     .col img.coffee-machine-img {
