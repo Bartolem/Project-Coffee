@@ -8,6 +8,12 @@
 	src: url('../webfonts/LatoLig.woff') format('woff');
 }
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 header {
     display: flex;
     justify-content: center;
@@ -54,6 +60,7 @@ li, a {
     text-decoration: none;
     font-size: 1rem;
     color: #fff;
+    text-align: center;
 }
 
 li, a:hover {
