@@ -12,16 +12,21 @@ The heart of this project is the coffee machine. This machine has made brewing c
 
 ## Usage
 1. On the navigation bar, click on the make coffee tab.
+
 ![](images/usage1.png)
 
 2. Turn on the machine by pressing the button.
+
 ![](images/usage2.png)
 
 3. Choose coffee type.
+
 ![](images/usage3.png)
 
 3. Press the button responsible for pouring coffee.
+
 ![](images/usage4.png)
 
 4. Take the coffee cup and put a new empty cup to repeat the process.
+
 ![](images/usage5.png)
