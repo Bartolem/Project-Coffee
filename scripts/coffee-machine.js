@@ -43,6 +43,7 @@ const coffeeMenu = document.querySelector('.right-child');
 const modalWrap = document.querySelector('.modal-wrap');
 const modal = document.querySelector('.modal');
 const alert = document.querySelector('.alert');
+const alertText = document.querySelector('.alert span');
 const closeModalIcon = document.querySelector('.modal-top i');
 const addCoffeeIcon = document.querySelector('#add-coffee');
 const addMilkIcon = document.querySelector('#add-milk');
@@ -128,12 +129,13 @@ function switchOn() {
 }
 
 function resetAlertTextContent() {
-    alert.textContent = '';
-    alert.classList.toggle('border');
+    alertText.textContent = '';
+    alert.style.display = 'none';
 }
 
 function addAlertTextContent(product, coffee) {
-    alert.textContent = `Not enought ${product} to make ${coffee}!`;
+    alertText.textContent = `Not enought ${product} to make ${coffee}!`;
+    alert.style.display = 'flex';
 }
 
 function chooseType() {
