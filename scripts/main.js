@@ -1,7 +1,3 @@
-const cupCoffee = document.querySelector('.cup-coffee');
-const cupMilk = document.querySelector('.cup-milk');
-const cupFoam = document.querySelector('.cup-foam');
-
 const milk = document.querySelector('.milk');
 const coffee = document.querySelector('.coffee');
 
@@ -21,10 +17,6 @@ const cup = document.querySelector('.cup');
 const takeCoffee = document.querySelector('.base button:nth-child(1)');
 const takeCup = document.querySelector('.base button:nth-child(2)');
 
-const milkInTank = document.querySelector('.milk-in-tank');
-const waterInTank = document.querySelector('.water-in-tank');
-const coffeeInTank = document.querySelector('.coffee-in-tank');
-
 const displayPercentWater = document.querySelector('.water-percent');
 const displayPercentMilk = document.querySelector('.milk-percent');
 const displayPercentCoffee = document.querySelector('.coffee-percent');
@@ -40,6 +32,7 @@ const showMenu = document.querySelector('.action-icons div:first-child');
 const refillTanks = document.querySelector('.action-icons div:nth-child(2)');
 const arrowIcon = document.querySelector('#arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
+
 const modalWrap = document.querySelector('.modal-wrap');
 const modal = document.querySelector('.modal');
 const alert = document.querySelector('.alert');
@@ -68,7 +61,7 @@ const cappuccinoCoffee = americano.getCoffee();
 let percentWater, percentMilk, percentCoffee;
 let power = false;
 
-const cupElements = [cupCoffee, cupMilk, cupFoam];
+const cupElements = [coffeeCup.coffee, coffeeCup.milk, coffeeCup.foam];
 const coffeeButtons = [espressoButton, latteButton, americanoButton, cappuccinoButton];
 const activeElements = [powerButton, text, displayPercentWater, displayPercentMilk, displayPercentCoffee];
 
@@ -202,15 +195,15 @@ const showPercent = function(percent, product) { //Display percent value of spec
     switch(product) {
         case 'water':
             displayPercentWater.textContent = `${percent}%`;
-            waterInTank.style.height = `${percent}%`;
+            tank.water.style.height = `${percent}%`;
             break
         case 'milk':
             displayPercentMilk.textContent = `${percent}%`;
-            milkInTank.style.height = `${percent}%`;
+            tank.milk.style.height = `${percent}%`;
             break
         case 'coffee':
             displayPercentCoffee.textContent = `${percent}%`;
-            coffeeInTank.style.height = `${percent}%`;
+            tank.coffee.style.height = `${percent}%`;
             break
         default:
             console.log('Wrong argument in function');    
@@ -288,7 +281,7 @@ function makeEspresso() {
     removePourCoffee();
 
     setTimeout(function() {
-        cupCoffee.style.height = '40%';
+        coffeeCup.coffee.style.height = '40%';
     }, 2000);
     
     coffeeMachine.setWater(coffeeMachineWater -= espressoWater);
@@ -313,9 +306,9 @@ function makeLatte() {
     removePourCoffeeAndMilk();
 
     setTimeout(function() {
-        cupCoffee.style.height = '20%';
-        cupMilk.style.height = '85%';
-        cupFoam.style.height = '95%';
+        coffeeCup.coffee.style.height = '20%';
+        coffeeCup.milk.style.height = '85%';
+        coffeeCup.foam.style.height = '95%';
     }, 2000);
 
     coffeeMachine.setWater(coffeeMachineWater -= latteWater);
@@ -340,7 +333,7 @@ function makeAmericano() {
     removePourCoffee();
 
     setTimeout(function() {
-        cupCoffee.style.height = '95%';
+        coffeeCup.coffee.style.height = '95%';
     }, 2000);
 
     coffeeMachine.setWater(coffeeMachineWater -= americanoWater);
@@ -365,9 +358,9 @@ function makeCappuccino() {
     removePourCoffeeAndMilk();
 
     setTimeout(function() {
-        cupCoffee.style.height = '30%';
-        cupMilk.style.height = '65%';
-        cupFoam.style.height = '95%';
+        coffeeCup.coffee.style.height = '30%';
+        coffeeCup.milk.style.height = '65%';
+        coffeeCup.foam.style.height = '95%';
     }, 2000);
 
     coffeeMachine.setWater(coffeeMachineWater -= cappuccinoWater);
