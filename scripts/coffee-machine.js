@@ -21,6 +21,19 @@ class CoffeeMachine {
         this.getCup = function() {
             return _cup;
         }
+         
+        this.getDefaultWater = function() {
+            return _defaultWater;
+        }
+        this.getDefaultMilk = function() {
+            return _defaultMilk;
+        }
+        this.getDefaultCoffee = function() {
+            return _defaultCoffee;
+        }
+        this.getDefaultCup = function() {
+            return _defaultCup;
+        }
 
         this.setWater = function(value) {
             _water = value;

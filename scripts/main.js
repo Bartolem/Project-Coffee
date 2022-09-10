@@ -57,54 +57,20 @@ const latteWater = latte.getWater();
 const latteMilk = latte.getMilk();
 const latteCoffee = latte.getCoffee();
 
+const americanoWater = americano.getWater();
+const americanoMilk = americano.getMilk();
+const americanoCoffee = americano.getCoffee();
+
+const cappuccinoWater = americano.getWater();
+const cappuccinoMilk = americano.getMilk();
+const cappuccinoCoffee = americano.getCoffee();
+
 let percentWater, percentMilk, percentCoffee;
 let power = false;
 
 const cupElements = [cupCoffee, cupMilk, cupFoam];
 const coffeeButtons = [espressoButton, latteButton, americanoButton, cappuccinoButton];
 const activeElements = [powerButton, text, displayPercentWater, displayPercentMilk, displayPercentCoffee];
-
-const defaultCoffeeMachine = {
-    water: 1750, 
-    milk: 2400,
-    coffee: 500,
-    cup: 10
-};
-
-// const coffeeMachine = {
-//     water: 1750, 
-//     milk: 2400,
-//     coffee: 500,
-//     cup: 10
-// };
-
-// const espresso = {
-//     water: 30, 
-//     milk: 0,
-//     coffee: 8,
-//     cup: 1
-// };
-
-// const latte = {
-//     water: 60, 
-//     milk: 300,
-//     coffee: 16,
-//     cup: 1
-// };
-
-// const americano = {
-//     water: 150, 
-//     milk: 0,
-//     coffee: 16,
-//     cup: 1
-// };
-
-// const cappuccino = {
-//     water: 60, 
-//     milk: 120,
-//     coffee: 16,
-//     cup: 1
-// };
 
 function showModal() {
     modal.classList.toggle('show');
@@ -288,8 +254,30 @@ const showPercent = function(percent, product) {
     console.log(`${product} ${percent}%`);
 }
 
-const calc = function(product) {
-    return Math.round(coffeeMachine[product] / defaultCoffeeMachine[product] * 100);
+const calc = function(product, value, defaultValue) {
+    let coffeeMachineDefaultWater = coffeeMachine.getDefaultWater();
+    let coffeeMachineDefaultMilk = coffeeMachine.getDefaultMilk();
+    let coffeeMachineDefaultCoffee = coffeeMachine.getDefaultCoffee();
+
+    let coffeeMachineWater = coffeeMachine.getWater();
+    let coffeeMachineMilk = coffeeMachine.getMilk();
+    let coffeeMachineCoffee = coffeeMachine.getCoffee();
+
+    switch (product) {
+        case 'water':
+            value = coffeeMachineWater;
+            defaultValue = coffeeMachineDefaultWater;
+            break;
+        case 'milk':
+            value = coffeeMachineMilk;
+            defaultValue = coffeeMachineDefaultMilk;
+            break;
+        case 'coffee':
+            value = coffeeMachineCoffee;
+            defaultValue = coffeeMachineDefaultCoffee;
+    }
+
+    return Math.round(value / defaultValue * 100);
 }
 
 function pourCoffee() {
@@ -365,13 +353,13 @@ function makeLatte() {
         cupFoam.style.height = '95%';
     }, 2000);
 
-    coffeeMachine.setWater(coffeeMachineWater -= latte.getWater());
+    coffeeMachine.setWater(coffeeMachineWater -= latteWater);
     showPercent(calc('water'), 'water');
 
-    coffeeMachine.setMilk(coffeeMachineMilk -= latte.getMilk());
+    coffeeMachine.setMilk(coffeeMachineMilk -= latteMilk);
     showPercent(calc('milk'), 'milk');
 
-    coffeeMachine.setCoffee(coffeeMachineCoffee -= latte.getCoffee());
+    coffeeMachine.setCoffee(coffeeMachineCoffee -= latteCoffee);
     showPercent(calc('coffee'), 'coffee');
 
     console.log(coffeeMachine.getCoffee());
@@ -390,19 +378,23 @@ function makeAmericano() {
         cupCoffee.style.height = '95%';
     }, 2000);
 
-    coffeeMachine.setWater(coffeeMachineWater -= americano.getWater());
+    coffeeMachine.setWater(coffeeMachineWater -= americanoWater);
     showPercent(calc('water'), 'water');
 
-    coffeeMachine.setMilk(coffeeMachineMilk -= americano.getMilk());
+    coffeeMachine.setMilk(coffeeMachineMilk -= americanoMilk);
     showPercent(calc('milk'), 'milk');
 
-    coffeeMachine.setCoffee(coffeeMachineCoffee -= americano.getCoffee());
+    coffeeMachine.setCoffee(coffeeMachineCoffee -= americanoCoffee);
     showPercent(calc('coffee'), 'coffee');
 
     console.log(coffeeMachine.getCoffee());
 }
 
 function makeCappuccino() {
+    let coffeeMachineWater = coffeeMachine.getWater();
+    let coffeeMachineMilk = coffeeMachine.getMilk();
+    let coffeeMachineCoffee = coffeeMachine.getCoffee();
+
     disableStartButton();
     pourCoffeeAndMilk();
     removePourCoffeeAndMilk();
@@ -413,13 +405,13 @@ function makeCappuccino() {
         cupFoam.style.height = '95%';
     }, 2000);
 
-    coffeeMachine.water -= cappuccino.getWater();
+    coffeeMachine.setWater(coffeeMachineWater -= cappuccinoWater);
     showPercent(calc('water'), 'water');
 
-    coffeeMachine.milk -= cappuccino.getMilk();
+    coffeeMachine.setMilk(coffeeMachineMilk -= cappuccinoMilk);
     showPercent(calc('milk'), 'milk');
 
-    coffeeMachine.coffee -= cappuccino.getCoffee();
+    coffeeMachine.setCoffee(coffeeMachineCoffee -= cappuccinoCoffee);
     showPercent(calc('coffee'), 'coffee');
 }
 
@@ -493,22 +485,28 @@ closeModalIcon.addEventListener('click', showModal);
 refillTanks.addEventListener('click', showModal);
 
 addCoffeeIcon.addEventListener('click', function() {
-    coffeeMachine.coffee = defaultCoffeeMachine.coffee;
-    coffeeQuantity.textContent = `${coffeeMachine.coffee}/`;
+    let coffeeMachineDefaultCoffee = coffeeMachine.getDefaultCoffee();
+
+    coffeeMachine.setCoffee(coffeeMachineDefaultCoffee);
+    coffeeQuantity.textContent = `${coffeeMachine.getCoffee()}/`;
     showPercent(calc('coffee'), 'coffee');
     resetAlertTextContent();
 });
 
 addMilkIcon.addEventListener('click', function() {
-    coffeeMachine.milk = defaultCoffeeMachine.milk;
-    milkQuantity.textContent = `${coffeeMachine.milk}/`;
+    let coffeeMachineDefaultMilk = coffeeMachine.getDefaultMilk();
+    
+    coffeeMachine.setMilk(coffeeMachineDefaultMilk);
+    milkQuantity.textContent = `${coffeeMachine.getDefaultMilk()}/`;
     showPercent(calc('milk'), 'milk');
     resetAlertTextContent();
 });
 
 addWaterIcon.addEventListener('click', function() {
-    coffeeMachine.water = defaultCoffeeMachine.water;
-    waterQuantity.textContent = `${coffeeMachine.water}/`;
+    let coffeeMachineDefaultWater = coffeeMachine.getDefaultWater();
+
+    coffeeMachine.setWater(coffeeMachineDefaultWater);
+    waterQuantity.textContent = `${coffeeMachine.getWater()}/`;
     showPercent(calc('water'), 'water');
     resetAlertTextContent();
 });
