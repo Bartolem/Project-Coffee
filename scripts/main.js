@@ -72,16 +72,16 @@ const cupElements = [cupCoffee, cupMilk, cupFoam];
 const coffeeButtons = [espressoButton, latteButton, americanoButton, cappuccinoButton];
 const activeElements = [powerButton, text, displayPercentWater, displayPercentMilk, displayPercentCoffee];
 
-function showModal() {
+function showModal() { //Show popup window 
     modal.classList.toggle('show');
     modalWrap.classList.toggle('show');
     document.querySelector('.left-child').classList.toggle('blur');
 
-    defaultWaterQuantity.textContent = defaultCoffeeMachine.water;
+    defaultWaterQuantity.textContent = coffeeMachine.getDefaultWater();
     waterQuantity.textContent = `${coffeeMachine.getWater()}/`;
-    defaultMilkQuantity.textContent = defaultCoffeeMachine.milk;
+    defaultMilkQuantity.textContent = coffeeMachine.getDefaultMilk();
     milkQuantity.textContent = `${coffeeMachine.getMilk()}/`;
-    defaultCoffeeQuantity.textContent = defaultCoffeeMachine.coffee;
+    defaultCoffeeQuantity.textContent = coffeeMachine.getDefaultCoffee();
     coffeeQuantity.textContent = `${coffeeMachine.getCoffee()}/`;
 } 
 
@@ -107,88 +107,53 @@ function resetAlertTextContent() {
     alert.style.display = 'none';
 }
 
-function addAlertTextContent(product, coffee) {
+function addAlertTextContent(product, coffee) { 
     alertText.textContent = `Not enought ${product} to make ${coffee}!`;
     alert.style.display = 'flex';
 }
 
+function checkPossibility(coffeeType, makeCoffee) { //Checks the possibility of making coffee
+    if(coffeeMachine.getCoffee() >= coffeeType.getCoffee()
+    && coffeeMachine.getWater() >= coffeeType.getWater()
+    && coffeeMachine.getMilk() >= coffeeType.getMilk()) {
+        makeCoffee;
+    }
+    else if (coffeeMachine.getCoffee() < coffeeType.getCoffee()) {
+        showModal();
+        addAlertTextContent('coffee beans', coffeeType.name);
+        console.log(`Not enought coffee beans to make latte!`);
+    }
+else if (coffeeMachine.getWater() < coffeeType.getWater()) {
+    showModal();
+    addAlertTextContent('water', coffeeType.name);
+    console.log(`Not enought water to make latte!`);
+}
+else if (coffeeMachine.getMilk() < coffeeType.getMilk()) {
+    showModal();
+    addAlertTextContent('milk', coffeeType.name);
+    console.log(`Not enought milk to make latte!`);
+}
+}
+
 function chooseType() {
+    let makeCoffee;
+
     switch(text.value) {
         case 'espresso':
-            if(coffeeMachine.getCoffee() >= espressoCoffee
-                && coffeeMachine.getWater()>= espressoWater) {
-                    makeEspresso();
-            }
-            else if (coffeeMachine.getCoffee() < espressoCoffee) {
-                showModal();
-                addAlertTextContent('coffee beans', 'espresso');
-                console.log(`Not enought coffee beans to make espresso!`);
-            }
-            else if (coffeeMachine.getWater() < espressoWater) {
-                showModal();
-                addAlertTextContent('water', 'espresso');
-                console.log(`Not enought water to make espresso!`);
-            }
+            makeCoffee = makeEspresso();
+            checkPossibility(espresso, makeCoffee);
             break;
         case 'latte':
-            if(coffeeMachine.getCoffee() >= latte.getCoffee()
-                && coffeeMachine.getWater() >= latte.getWater()
-                && coffeeMachine.getMilk() >= latte.getMilk()) {
-                    makeLatte();
-            }
-            else if (coffeeMachine.getCoffee() < latte.getCoffee()) {
-                showModal();
-                addAlertTextContent('coffee beans', 'latte');
-                console.log(`Not enought coffee beans to make latte!`);
-            }
-            else if (coffeeMachine.getWater() < latte.getWater()) {
-                showModal();
-                addAlertTextContent('water', 'latte');
-                console.log(`Not enought water to make latte!`);
-            }
-            else if (coffeeMachine.getMilk() < latte.getMilk()) {
-                showModal();
-                addAlertTextContent('milk', 'latte');
-                console.log(`Not enought milk to make latte!`);
-            }
+            makeCoffee = makeLatte();
+            checkPossibility(cappuccino, makeCoffee);
             break;
         case 'americano':
-            if(coffeeMachine.getCoffee() >= americano.getCoffee()
-                && coffeeMachine.getWater() >= americano.getWater()) {
-                    makeAmericano();
-            }
-            else if (coffeeMachine.getCoffee() < americano.getCoffee()) {
-                showModal();
-                addAlertTextContent('coffee beans', 'americano');
-                console.log(`Not enought coffee beans to make americano!`);
-            }
-            else if (coffeeMachine.getWater() < americano.getWater()) {
-                showModal();
-                addAlertTextContent('water', 'americano');
-                console.log(`Not enought water to make americano!`);
-            }
+            makeCoffee = makeAmericano();
+            checkPossibility(americano, makeCoffee);
             break;
         case 'cappuccino':
-            if(coffeeMachine.getCoffee() >= cappuccino.getCoffee()
-                && coffeeMachine.getWater() >= cappuccino.getWater()
-                && coffeeMachine.getMilk() >= cappuccino.getMilk()) {
-                    makeCappuccino();
-            }
-            else if (coffeeMachine.getCoffee() < cappuccino.getCoffee()) {
-                showModal();
-                addAlertTextContent('coffee beans', 'cappuccino');
-                console.log(`Not enought coffee beans to make cappuccino!`);           
-            }
-            else if (coffeeMachine.getWater() < cappuccino.getWater()) {
-                showModal();
-                addAlertTextContent('water', 'cappuccino');
-                console.log(`Not enought water to make cappuccino!`);
-            }
-            else if (coffeeMachine.getMilk() < cappuccino.getMilk()) {
-                showModal();
-                addAlertTextContent('milk', 'cappuccino'); 
-                console.log(`Not enought milk to make cappuccino!`);
-            }
+            makeCoffee = makeCappuccino();
+            checkPossibility(cappuccino, makeCoffee);
             break;
         default:
             console.log('You need to choose type');
@@ -233,7 +198,7 @@ function disableTakeCup() {
     takeCup.disabled = true;
 }
 
-const showPercent = function(percent, product) {
+const showPercent = function(percent, product) { //Display percent value of specific product 
     switch(product) {
         case 'water':
             displayPercentWater.textContent = `${percent}%`;
@@ -254,7 +219,7 @@ const showPercent = function(percent, product) {
     console.log(`${product} ${percent}%`);
 }
 
-const calc = function(product, value, defaultValue) {
+const calc = function(product, value, defaultValue) { //Calculate the percent value of remaining products in coffee machine
     let coffeeMachineDefaultWater = coffeeMachine.getDefaultWater();
     let coffeeMachineDefaultMilk = coffeeMachine.getDefaultMilk();
     let coffeeMachineDefaultCoffee = coffeeMachine.getDefaultCoffee();
@@ -280,14 +245,14 @@ const calc = function(product, value, defaultValue) {
     return Math.round(value / defaultValue * 100);
 }
 
-function pourCoffee() {
+function pourCoffee() { //Calls coffee pour animation
     setTimeout(function() {
         coffee.classList.add('pour');
         smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
     }, 1000);
 }
 
-function removePourCoffee() {
+function removePourCoffee() { //Prevents from call coffee pour animation
     setTimeout(function() {
         coffee.classList.remove('pour');
         smallStartBtn.style.backgroundColor = '#777';
@@ -295,7 +260,7 @@ function removePourCoffee() {
     }, 8000);
 }
 
-function pourCoffeeAndMilk() {
+function pourCoffeeAndMilk() { //Calls milk pour animation
     setTimeout(function() {
         coffee.classList.add('pour');
         milk.classList.add('pour');
@@ -304,7 +269,7 @@ function pourCoffeeAndMilk() {
     }, 1000);
 }
 
-function removePourCoffeeAndMilk() {
+function removePourCoffeeAndMilk() { //Prevents from call milk pour animation
     setTimeout(function() {
         coffee.classList.remove('pour');
         milk.classList.remove('pour');
