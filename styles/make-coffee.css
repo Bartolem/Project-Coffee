@@ -285,6 +285,7 @@ body {
     font-size: 1rem;
     color: #fff;
     font-weight: bold;
+    text-align: left;
 }
 
 .menu-main li:first-child {
@@ -294,7 +295,7 @@ body {
 
 .menu-item {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     flex-basis: 50%;
 }
@@ -310,7 +311,7 @@ body {
     }
 
     .menu-item {
-        flex-basis: 80%;
+        flex-basis: 60%;
     }
     
     .coffee-machine {

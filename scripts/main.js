@@ -33,15 +33,6 @@ const refillTanks = document.querySelector('.action-icons div:nth-child(2)');
 const arrowIcon = document.querySelector('#arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
 
-const modalWrap = document.querySelector('.modal-wrap');
-const modal = document.querySelector('.modal');
-const alert = document.querySelector('.alert');
-const alertText = document.querySelector('.alert span');
-const closeModalIcon = document.querySelector('.modal-top i');
-const addCoffeeIcon = document.querySelector('#add-coffee');
-const addMilkIcon = document.querySelector('#add-milk');
-const addWaterIcon = document.querySelector('#add-water');
-
 const espressoWater = espresso.getWater();
 const espressoMilk = espresso.getMilk();
 const espressoCoffee = espresso.getCoffee();
@@ -66,8 +57,8 @@ const coffeeButtons = [espressoButton, latteButton, americanoButton, cappuccinoB
 const activeElements = [powerButton, text, displayPercentWater, displayPercentMilk, displayPercentCoffee];
 
 function showModal() { //Show popup window 
-    modal.classList.toggle('show');
-    modalWrap.classList.toggle('show');
+    popup.modal.classList.toggle('show');
+    popup.modalWrap.classList.toggle('show');
     document.querySelector('.left-child').classList.toggle('blur');
 
     defaultWaterQuantity.textContent = coffeeMachine.getDefaultWater();
@@ -96,13 +87,13 @@ function switchOn() {
 }
 
 function resetAlertTextContent() {
-    alertText.textContent = '';
-    alert.style.display = 'none';
+    popup.alertText.textContent = '';
+    popup.alert.style.display = 'none';
 }
 
 function addAlertTextContent(product, coffee) { 
-    alertText.textContent = `Not enought ${product} to make ${coffee}!`;
-    alert.style.display = 'flex';
+    popup.alertText.textContent = `Not enought ${product} to make ${coffee}!`;
+    popup.alert.style.display = 'flex';
 }
 
 function checkPossibility(coffeeType, makeCoffee) { //Checks the possibility of making coffee
@@ -438,11 +429,11 @@ showMenu.addEventListener('click', function() {
     arrowIcon.classList.toggle('show');
 });
 
-closeModalIcon.addEventListener('click', showModal);
+popup.closeModalIcon.addEventListener('click', showModal);
 
 refillTanks.addEventListener('click', showModal);
 
-addCoffeeIcon.addEventListener('click', function() {
+popup.addCoffeeIcon.addEventListener('click', function() {
     let coffeeMachineDefaultCoffee = coffeeMachine.getDefaultCoffee();
 
     coffeeMachine.setCoffee(coffeeMachineDefaultCoffee);
@@ -451,7 +442,7 @@ addCoffeeIcon.addEventListener('click', function() {
     resetAlertTextContent();
 });
 
-addMilkIcon.addEventListener('click', function() {
+popup.addMilkIcon.addEventListener('click', function() {
     let coffeeMachineDefaultMilk = coffeeMachine.getDefaultMilk();
     
     coffeeMachine.setMilk(coffeeMachineDefaultMilk);
@@ -460,7 +451,7 @@ addMilkIcon.addEventListener('click', function() {
     resetAlertTextContent();
 });
 
-addWaterIcon.addEventListener('click', function() {
+popup.addWaterIcon.addEventListener('click', function() {
     let coffeeMachineDefaultWater = coffeeMachine.getDefaultWater();
 
     coffeeMachine.setWater(coffeeMachineDefaultWater);
