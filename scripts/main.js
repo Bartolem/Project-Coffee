@@ -52,7 +52,7 @@ const cappuccinoCoffee = americano.getCoffee();
 let percentWater, percentMilk, percentCoffee;
 let power = false;
 
-const cupElements = [coffeeCup.coffee, coffeeCup.milk, coffeeCup.foam];
+const cupElements = [Cup.getCoffee(), Cup.getMilk(), Cup.getFoam()];
 const coffeeButtons = [espressoButton, latteButton, americanoButton, cappuccinoButton];
 const activeElements = [powerButton, text, displayPercentWater, displayPercentMilk, displayPercentCoffee];
 
@@ -272,7 +272,7 @@ function makeEspresso() {
     removePourCoffee();
 
     setTimeout(function() {
-        coffeeCup.coffee.style.height = '40%';
+        Cup.coffee.style.height = '40%';
     }, 2000);
     
     coffeeMachine.setWater(coffeeMachineWater -= espressoWater);
@@ -297,9 +297,9 @@ function makeLatte() {
     removePourCoffeeAndMilk();
 
     setTimeout(function() {
-        coffeeCup.coffee.style.height = '20%';
-        coffeeCup.milk.style.height = '85%';
-        coffeeCup.foam.style.height = '95%';
+        Cup.getCoffee().style.height = '20%';
+        Cup.getMilk().style.height = '85%';
+        Cup.getFoam().style.height = '95%';
     }, 2000);
 
     coffeeMachine.setWater(coffeeMachineWater -= latteWater);
@@ -324,7 +324,7 @@ function makeAmericano() {
     removePourCoffee();
 
     setTimeout(function() {
-        coffeeCup.coffee.style.height = '95%';
+        Cup.getCoffee().style.height = '95%';
     }, 2000);
 
     coffeeMachine.setWater(coffeeMachineWater -= americanoWater);
@@ -349,9 +349,9 @@ function makeCappuccino() {
     removePourCoffeeAndMilk();
 
     setTimeout(function() {
-        coffeeCup.coffee.style.height = '30%';
-        coffeeCup.milk.style.height = '65%';
-        coffeeCup.foam.style.height = '95%';
+        Cup.getCoffee().style.height = '30%';
+        Cup.getMilk().style.height = '65%';
+        Cup.getFoam().style.height = '95%';
     }, 2000);
 
     coffeeMachine.setWater(coffeeMachineWater -= cappuccinoWater);
