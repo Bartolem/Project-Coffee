@@ -1,4 +1,4 @@
-class Cup {
+export class Cup {
     static getCoffee() {
         const coffee = document.querySelector('.cup-coffee');
         return coffee;

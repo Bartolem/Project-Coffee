@@ -1,3 +1,6 @@
+import {Cup} from'./cup.js';
+import {Tank} from './tank.js';
+
 const milk = document.querySelector('.milk');
 const coffee = document.querySelector('.coffee');
 

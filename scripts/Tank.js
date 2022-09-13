@@ -1,4 +1,4 @@
-class Tank {
+export class Tank {
     static getCoffee() {
         const coffee = document.querySelector('.coffee-in-tank');;
         return coffee;
