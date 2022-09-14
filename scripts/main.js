@@ -62,8 +62,10 @@ const milkQuantity = document.querySelector('.milk-quantity');
 const defaultCoffeeQuantity = document.querySelector('.default-coffee-quantity');
 const coffeeQuantity = document.querySelector('.coffee-quantity');
 
+const aside = document.querySelector('.action-icons');
 const showMenu = document.querySelector('.action-icons div:first-child');
 const refillTanks = document.querySelector('.action-icons div:nth-child(2)');
+const showAside = document.getElementById('menu-bars');
 const arrowIcon = document.querySelector('#arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
 
@@ -492,4 +494,8 @@ popup.addWaterIcon.addEventListener('click', function() {
     waterQuantity.textContent = `${coffeeMachine.getWater()}/`;
     showPercent(calc('water'), 'water');
     resetAlertTextContent();
+});
+
+showAside.addEventListener('click', function() {
+    aside.classList.toggle('show');
 });
