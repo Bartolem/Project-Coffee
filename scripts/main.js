@@ -74,6 +74,13 @@ const showAside = document.getElementById('menu-bars');
 const arrowIcon = document.getElementById('arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
 
+const innerCoffee = document.querySelector('.inner-coffee'); 
+const innerMilk = document.querySelector('.inner-milk'); 
+const inner = document.querySelector('.custom-coffee-inner'); 
+const coffeeRange = document.getElementById('coffee-range');
+const milkRange = document.getElementById('milk-range');
+const fillRange = document.getElementById('fill-range');
+
 const espressoWater = espresso.getWater();
 const espressoMilk = espresso.getMilk();
 const espressoCoffee = espresso.getCoffee();
@@ -520,4 +527,16 @@ closeCoffeeCreatorIcon.addEventListener('click', function() {
 
 closeCoffeeMenu.addEventListener('click', function() {
     coffeeMenu.classList.toggle('show');
+});
+
+coffeeRange.addEventListener('change', function() {
+    innerCoffee.style.height = `${coffeeRange.value}%`;
+});
+
+milkRange.addEventListener('change', function() {
+    innerMilk.style.height = `${milkRange.value}%`;
+});
+
+fillRange.addEventListener('change', function() {
+    inner.style.height = `${fillRange.value}%`;
 });
