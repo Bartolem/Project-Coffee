@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 60%;
+    height: 70%;
     width: 100%;
     background-color: rgb(88, 88, 88);
     border-radius: 10px;
@@ -19,8 +19,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 80%;
-    width: 25%;
+    height: 50%;
+    width: 20%;
     background-color: rgb(153, 153, 153);
     border: 3px solid #888;
     border-radius: 10px;
@@ -29,6 +29,8 @@
 .side-btn-box {
     align-items: stretch;
     flex-direction: column;
+    height: 80%;
+    width: 35%;
 }
 
 .power-btn-box, .start-btn-box {
@@ -41,8 +43,8 @@
 }
 
 .side-btn-box button {
-    height: 1.3em;
-    width: 1.3em;
+    height: 2em;
+    width: 2em;
     transition: 2s linear;
     border-radius: 3px;
     border: 2px solid #666;
@@ -54,7 +56,7 @@
 } 
 
 .side-btn-box label {
-    font-size: .8rem;
+    font-size: 1.4rem;
 }
 
 .side-btn {
@@ -74,7 +76,7 @@
 }
 
 .text label {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: darkgray;
@@ -84,7 +86,7 @@
     width: 100%;
     padding: .4em;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 2rem;
     font-weight: bold;
     letter-spacing: .1rem;
     font-family: 'DS-Digital Normal', sans-serif;
@@ -449,15 +451,15 @@
     }
 
     .side-btn-box label {
-        font-size: .7rem;
+        font-size: 1rem;
     }
 
     #output-text {
-        font-size: .8rem;
+        font-size: 1.2rem;
     }
 
     .text label {
-        font-size: .8rem;
+        font-size: 1.1rem;
     }
 
     .coffee, .milk {
@@ -465,7 +467,7 @@
     }
 
     .base button {
-        font-size: .9rem;
+        font-size: 1.1rem;
         width: 40%;
     }
 
@@ -482,13 +484,7 @@
     }
 }
 
-@media(max-width:360px) {
-    .start, .power {
-        height: 2.5em;
-        width: 2.5em;
-        font-size: .8rem;
-    }
-
+@media(max-width: 460px) {
     .cup {
         width: 30%;
         margin-left: 10%;
@@ -498,8 +494,44 @@
         width: 50%;
     }
 
-    .side-btn button {
-        height: 1.3em;
-        width: 1.3em;
+    .side-btn-box {
+        width: 50%;
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 2%;
+    }
+
+    .side-btn label {
+        font-size: 1rem;
+    }
+
+    .top {
+        position: relative;
+        height: 80%;
+    }
+
+    .text {
+        height: 40%;
+        width: 42%;
+        position: absolute;
+        top: 5%;
+        right: 2%;
+    }
+
+    .text label {
+        font-size: 1rem;
+    }
+
+    #output-text {
+        font-size: 1.2rem;
+    }
+
+    .main-btn-box {
+        height: 45%;
+        width: 42%;
+        position: absolute;
+        bottom: 5%;
+        right: 2%;
     }
 }

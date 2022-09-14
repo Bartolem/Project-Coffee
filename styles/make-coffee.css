@@ -169,7 +169,7 @@ body {
 
 #menu-bars {
     position: absolute;
-    top: 5%;
+    top: 1%;
     left: 1%;
     z-index: 3;
     font-size: 2.2rem;
@@ -179,14 +179,14 @@ body {
 
 .action-icons {
     position: absolute;
-    top: 4%;
+    top: 0;
     left: -35%;
     z-index: 2;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    height: 60%;
+    height: 70%;
     width: 20%;
     background-color: rgb(150, 140, 123);
     transition: .5s linear;
@@ -201,7 +201,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 30px;
-    width: 60%;
+    width: 65%;
     cursor: pointer;
 }
 
@@ -253,7 +253,7 @@ body {
     align-items: center;
     flex-direction: column;
     height: 40em;
-    width: 40em;
+    width: 45em;
     border-radius: 10px;
 }
 
@@ -321,6 +321,10 @@ body {
 }
 
 @media (max-width:1100px) {
+    .action-icons {
+        width: 35%;
+    }
+
     .alert {
         width: 75%;
     }
@@ -336,7 +340,7 @@ body {
     
     .coffee-machine {
         height: 35em;
-        width: 35em;
+        width: 42em;
     }
 
     .menu-main img {
@@ -345,6 +349,11 @@ body {
 }
 
 @media (max-width:640px) {
+    .action-icons {
+        width: 50%;
+        left: -50%;
+    }
+
     .alert {
         padding: 5px;
         top: 11%;
@@ -404,8 +413,8 @@ body {
     }
 
     .coffee-machine {
-        height: 30em;
-        width: 30em;
+        height: 35em;
+        width: 35em;
     }
 
     .menu-top {
@@ -414,6 +423,11 @@ body {
 }
 
 @media (max-width:400px) {
+    .action-icons {
+        width: 70%;
+        left: -70%;
+    }
+
     .alert {
         padding: 5px;
         top: 12%;
@@ -434,12 +448,8 @@ body {
         font-size: 1.4rem;
     }
 
-    .left-child {
-        height: 80vh;
-    }
-
     .coffee-machine {
-        height: 25em;
+        height: 32em;
         width: 25em;
     }
 }
