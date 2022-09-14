@@ -126,6 +126,66 @@ body {
     text-align: center;
 }
 
+/*custom coffee*/
+.coffee-creation-mid {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coffee-creator,
+.coffee-config {
+    height: 90%;
+    flex-basis: 50%;
+}
+
+.custom-coffee {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 16em;
+    width: 13em;
+    border-radius: 0 0 25% 25%;
+    overflow: hidden;
+    border: 3px solid aliceblue;
+}
+
+.custom-coffee-inner {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.inner-coffee,
+.inner-milk {
+    position: absolute;
+    height: 25%;
+    width: 100%;
+    background-color: #4b3b32;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    transition: 2s;
+}
+
+.inner-milk {
+    height: 50%;
+    background-color: #ded3a6;
+    z-index: 2;
+}
+
+.coffee-config {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+/*#######*/
 .alert {
     display: none;
     align-items: center;
