@@ -63,6 +63,7 @@ const defaultCoffeeQuantity = document.querySelector('.default-coffee-quantity')
 const coffeeQuantity = document.querySelector('.coffee-quantity');
 
 const closeCoffeeCreatorIcon = document.querySelector('.coffee-creation-top i');
+const closeCoffeeMenu = document.querySelector('.menu-top i');
 const coffeeCreation = document.querySelector('.coffee-creation');
 const coffeeCreationWrap = document.querySelector('.coffee-creation-wrap');
 const aside = document.querySelector('.action-icons');
@@ -515,4 +516,8 @@ mugIcon.addEventListener('click', function() {
 closeCoffeeCreatorIcon.addEventListener('click', function() {
     coffeeCreation.classList.toggle('show');
     coffeeCreationWrap.classList.toggle('show');
+});
+
+closeCoffeeMenu.addEventListener('click', function() {
+    coffeeMenu.classList.toggle('show');
 });

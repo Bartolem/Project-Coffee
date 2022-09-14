@@ -109,7 +109,8 @@ body {
 }
 
 .modal-top i,
-.coffee-creation-top i {
+.coffee-creation-top i,
+.menu-top i {
     font-size: 3rem;
     margin: 5px 15px;
     color: brown;
@@ -188,7 +189,7 @@ body {
     z-index: 3;
     font-size: 2.2rem;
     cursor: pointer;
-    color: rgb(94, 61, 3);
+    color: rgb(83, 59, 49);
 }
 
 .action-icons {
@@ -237,7 +238,7 @@ body {
     margin-left: -5px;
     font-size: 2rem;
     transition: 1s linear;
-    color: rgb(94, 61, 3);
+    color: rgb(83, 59, 49);
 }
 
 #mug-icon {
