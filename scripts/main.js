@@ -62,11 +62,15 @@ const milkQuantity = document.querySelector('.milk-quantity');
 const defaultCoffeeQuantity = document.querySelector('.default-coffee-quantity');
 const coffeeQuantity = document.querySelector('.coffee-quantity');
 
+const closeCoffeeCreatorIcon = document.querySelector('.coffee-creation-top i');
+const coffeeCreation = document.querySelector('.coffee-creation');
+const coffeeCreationWrap = document.querySelector('.coffee-creation-wrap');
 const aside = document.querySelector('.action-icons');
 const showMenu = document.querySelector('.action-icons div:first-child');
 const refillTanks = document.querySelector('.action-icons div:nth-child(2)');
+const mugIcon = document.querySelector('.action-icons div:nth-child(3)')
 const showAside = document.getElementById('menu-bars');
-const arrowIcon = document.querySelector('#arrow-icon');
+const arrowIcon = document.getElementById('arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
 
 const espressoWater = espresso.getWater();
@@ -95,6 +99,7 @@ const activeElements = [powerButton, text, displayPercentWater, displayPercentMi
 function showModal() { //Show popup window 
     popup.modal.classList.toggle('show');
     popup.modalWrap.classList.toggle('show');
+    aside.classList.remove('show');
     document.querySelector('.left-child').classList.toggle('blur');
 
     defaultWaterQuantity.textContent = coffeeMachine.getDefaultWater();
@@ -463,6 +468,7 @@ cappuccinoButton.addEventListener('click', function() { // cappuccino selection 
 showMenu.addEventListener('click', function() {
     coffeeMenu.classList.toggle('show');
     arrowIcon.classList.toggle('show');
+    aside.classList.remove('show');
 });
 
 popup.closeModalIcon.addEventListener('click', showModal);
@@ -498,4 +504,15 @@ popup.addWaterIcon.addEventListener('click', function() {
 
 showAside.addEventListener('click', function() {
     aside.classList.toggle('show');
+});
+
+mugIcon.addEventListener('click', function() {
+    coffeeCreation.classList.toggle('show');
+    coffeeCreationWrap.classList.toggle('show');
+    aside.classList.remove('show');
+});
+
+closeCoffeeCreatorIcon.addEventListener('click', function() {
+    coffeeCreation.classList.toggle('show');
+    coffeeCreationWrap.classList.toggle('show');
 });

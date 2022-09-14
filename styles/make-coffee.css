@@ -47,7 +47,8 @@ body {
     top: 10vh;
 }
 
-.modal-wrap {
+.modal-wrap, 
+.coffee-creation-wrap {
     display: none;
     position: fixed;
     top: 10%;
@@ -58,11 +59,13 @@ body {
     z-index: 2;
 }
 
-.modal-wrap.show {
+.modal-wrap.show, 
+.coffee-creation-wrap.show {
     display: block;
 }
 
-.modal {
+.modal, 
+.coffee-creation {
     position: absolute;
     display: none;
     top: 50%;
@@ -74,11 +77,16 @@ body {
     border-radius: 10px;
 }
 
-.modal.show { 
+.coffee-creation {
+    background-color: rgb(150, 140, 123);
+}
+
+.modal.show, .coffee-creation.show { 
     display: block;
 }
 
-.modal-top {
+.modal-top,
+.coffee-creation-top {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     display: flex;
@@ -89,13 +97,19 @@ body {
     background-color: #555;
 }
 
-.modal-top h3 {
+.coffee-creation-top {
+    background-color: rgb(133, 123, 107);
+}
+
+.modal-top h3,
+.coffee-creation-top h3 {
     font-size: 1.7rem;
     margin: 5px 15px;
     font-family: Lato, sans-serif;
 }
 
-.modal-top i {
+.modal-top i,
+.coffee-creation-top i {
     font-size: 3rem;
     margin: 5px 15px;
     color: brown;
@@ -168,8 +182,8 @@ body {
 }
 
 #menu-bars {
-    position: absolute;
-    top: 1%;
+    position: fixed;
+    top: 12%;
     left: 1%;
     z-index: 3;
     font-size: 2.2rem;
@@ -198,7 +212,7 @@ body {
 
 .action-icons div {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 30px;
     width: 65%;
