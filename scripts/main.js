@@ -83,7 +83,6 @@ const showMenu = document.querySelector('.action-icons div:first-child');
 const refillTanks = document.querySelector('.action-icons div:nth-child(2)');
 const mugIcon = document.querySelector('.action-icons div:nth-child(3)')
 const showAside = document.getElementById('menu-bars');
-const arrowIcon = document.getElementById('arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
 
 const innerCoffee = document.querySelector('.inner-coffee'); 
@@ -357,8 +356,14 @@ function makeCustomCoffee() {
     disableStartButton();
 
     if (coffeeRange.value >= milkRange.value) {
-        pourCoffee();
-        removePourCoffee();
+        if (milkRange.value === '0') {
+            pourCoffee();
+            removePourCoffee();
+        }
+        else {
+            pourCoffeeAndMilk();
+            removePourCoffeeAndMilk();
+        }
 
         coffeeMachine.setWater(coffeeMachineWater -= coffeeRange.value * 2);
         showPercent(calc('water'), 'water');
@@ -563,7 +568,6 @@ cappuccinoButton.addEventListener('click', function() { // cappuccino selection 
 
 showMenu.addEventListener('click', function() {
     coffeeMenu.classList.toggle('show');
-    arrowIcon.classList.toggle('show');
     aside.classList.remove('show');
 });
 
@@ -606,11 +610,13 @@ mugIcon.addEventListener('click', function() {
     coffeeCreation.classList.toggle('show');
     coffeeCreationWrap.classList.toggle('show');
     aside.classList.remove('show');
+    document.querySelector('.left-child').classList.toggle('blur');
 });
 
 closeCoffeeCreatorIcon.addEventListener('click', function() {
     coffeeCreation.classList.toggle('show');
     coffeeCreationWrap.classList.toggle('show');
+    document.querySelector('.left-child').classList.toggle('blur');
 });
 
 closeCoffeeMenu.addEventListener('click', function() {
