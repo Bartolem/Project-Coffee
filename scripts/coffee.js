@@ -24,8 +24,3 @@ class Coffee {
         console.log(`This is ${this.name}`)
     }
 }
-
-const espresso = new Coffee('espresso', 30, 0, 8);
-const latte = new Coffee('latte', 60, 300, 16);
-const americano = new Coffee('americano', 150, 0, 16);
-const cappuccino = new Coffee('cappuccino', 60, 120, 16);

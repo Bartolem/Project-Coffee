@@ -32,6 +32,17 @@ class Tank {
     }     
 }
 
+const coffeeMachine = new CoffeeMachine(1750, 2400, 500, 15);
+const espresso = new Coffee('espresso', 30, 0, 8);
+const latte = new Coffee('latte', 60, 300, 16);
+const americano = new Coffee('americano', 150, 0, 16);
+const cappuccino = new Coffee('cappuccino', 60, 120, 16);
+const customCoffee = new Coffee('', 60, 100, 16);
+
+const customCoffeeButton = document.querySelector('.custom-name button');
+const customCoffeeInput = document.querySelector('.custom-name input');
+const addToCoffeeMachine = document.getElementById('add-to-coffee-machine');
+
 const milk = document.querySelector('.milk');
 const coffee = document.querySelector('.coffee');
 
@@ -75,10 +86,12 @@ const arrowIcon = document.getElementById('arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
 
 const innerCoffee = document.querySelector('.inner-coffee'); 
-const innerMilk = document.querySelector('.inner-milk'); 
+const innerMilk = document.querySelector('.inner-milk');
+const innerFoam = document.querySelector('.inner-foam');
 const inner = document.querySelector('.custom-coffee-inner'); 
 const coffeeRange = document.getElementById('coffee-range');
 const milkRange = document.getElementById('milk-range');
+const foamRange = document.getElementById('foam-range');
 const fillRange = document.getElementById('fill-range');
 
 const espressoWater = espresso.getWater();
@@ -537,6 +550,24 @@ milkRange.addEventListener('change', function() {
     innerMilk.style.height = `${milkRange.value}%`;
 });
 
+foamRange.addEventListener('change', function() {
+    innerFoam.style.height = `${foamRange.value}%`;
+});
+
 fillRange.addEventListener('change', function() {
     inner.style.height = `${fillRange.value}%`;
+});
+
+customCoffeeButton.addEventListener('click', function() {
+    if (customCoffeeInput.value === ''){
+        console.log('Custom coffee name in not defined!');
+    }
+    else {
+        customCoffee.name = customCoffeeInput.value;
+        console.log(customCoffee.name);
+    }
+});
+
+addToCoffeeMachine.addEventListener('click', function() {
+    text.value = customCoffee.name;
 });

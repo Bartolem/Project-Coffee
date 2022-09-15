@@ -49,5 +49,3 @@ class CoffeeMachine {
         }
     }
 }
-
-const coffeeMachine = new CoffeeMachine(1750, 2400, 500, 15);
