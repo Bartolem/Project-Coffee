@@ -188,7 +188,7 @@ body {
 .inner-milk,
 .inner-foam {
     position: absolute;
-    height: 25%;
+    height: 50%;
     width: 100%;
     background-color: #4b3b32;
     z-index: 3;
@@ -204,7 +204,7 @@ body {
 }
 
 .inner-foam {
-    height: 60%;
+    height: 50%;
     background-color: #eee;
     z-index: 1;
 }

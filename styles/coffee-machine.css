@@ -328,6 +328,14 @@
     border: 3px solid aliceblue;
 }
 
+.inner-cup {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
 .cup-background {
     position: absolute;
     bottom: 0;

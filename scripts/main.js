@@ -59,6 +59,7 @@ const cappuccinoButton = document.querySelector('.cappuccino-btn');
 const text = document.querySelector('#output-text');
 
 const cup = document.querySelector('.cup');
+const innerCup = document.querySelector('.inner-cup');
 const takeCoffee = document.querySelector('.base button:nth-child(1)');
 const takeCup = document.querySelector('.base button:nth-child(2)');
 
@@ -185,6 +186,10 @@ function chooseType() {
     let makeCoffee;
 
     switch(text.value) {
+        case customCoffee.name:
+            makeCoffee = makeCustomCoffee();
+            checkPossibility(customCoffee, makeCoffee);
+            break;
         case 'espresso':
             makeCoffee = makeEspresso();
             checkPossibility(espresso, makeCoffee);
@@ -322,6 +327,50 @@ function removePourCoffeeAndMilk() { //Prevents from call milk pour animation
         smallStartBtn.style.backgroundColor = '#777';
         enableTakeCoffee();
     }, 8000);
+}
+
+function makeCustomCoffee() {
+    let coffeeMachineWater = coffeeMachine.getWater();
+    let coffeeMachineMilk = coffeeMachine.getMilk();
+    let coffeeMachineCoffee = coffeeMachine.getCoffee();
+
+    disableStartButton();
+
+    if (coffeeRange.value >= milkRange.value) {
+        pourCoffee();
+        removePourCoffee();
+
+        coffeeMachine.setWater(coffeeMachineWater -= americanoWater);
+        showPercent(calc('water'), 'water');
+
+        coffeeMachine.setMilk(coffeeMachineMilk -= americanoMilk);
+        showPercent(calc('milk'), 'milk');
+
+        coffeeMachine.setCoffee(coffeeMachineCoffee -= americanoCoffee);
+        showPercent(calc('coffee'), 'coffee');
+    }
+    else if (coffeeRange.value < milkRange.value) {
+        pourCoffeeAndMilk();
+        removePourCoffeeAndMilk();
+
+        coffeeMachine.setWater(coffeeMachineWater -= latteWater);
+        showPercent(calc('water'), 'water');
+
+        coffeeMachine.setMilk(coffeeMachineMilk -= latteMilk);
+        showPercent(calc('milk'), 'milk');
+
+        coffeeMachine.setCoffee(coffeeMachineCoffee -= latteCoffee);
+        showPercent(calc('coffee'), 'coffee');        
+    }
+    
+    setTimeout(function() {
+        innerCup.style.height = `${fillRange.value}%`;
+        Cup.getCoffee().style.height = `${coffeeRange.value}%`;
+        Cup.getMilk().style.height = `${milkRange.value}%`;
+        Cup.getFoam().style.height = `${foamRange.value}%`;
+    }, 2000);
+    
+    console.log(coffeeMachine.getCoffee());
 }
 
 function makeEspresso() {
