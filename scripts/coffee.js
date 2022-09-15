@@ -18,6 +18,13 @@ class Coffee {
         this.getCup = function() {
             return _cup;
         }
+
+        this.setWater = function(value) {
+            _water = value;
+        }
+        this.setMilk = function(value) {
+            _milk = value;
+        }
     }
 
     showCoffeeName() {

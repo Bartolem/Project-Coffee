@@ -95,6 +95,10 @@ const milkRange = document.getElementById('milk-range');
 const foamRange = document.getElementById('foam-range');
 const fillRange = document.getElementById('fill-range');
 
+const customCoffeeWater = customCoffee.getWater();
+const customCoffeeMilk = customCoffee.getMilk();
+const customCoffeeCoffee = customCoffee.getCoffee();
+
 const espressoWater = espresso.getWater();
 const espressoMilk = espresso.getMilk();
 const espressoCoffee = espresso.getCoffee();
@@ -311,7 +315,23 @@ function removePourCoffee() { //Prevents from call coffee pour animation
     }, 8000);
 }
 
-function pourCoffeeAndMilk() { //Calls milk pour animation
+function pourMilk() { //Calls milk pour animation
+    setTimeout(function() {
+        milk.classList.add('pour');
+
+        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
+    }, 1000);
+}
+
+function removePourMilk() { //Prevents from call milk pour animation
+    setTimeout(function() {
+        milk.classList.remove('pour');
+        smallStartBtn.style.backgroundColor = '#777';
+        enableTakeCoffee();
+    }, 8000);
+}
+
+function pourCoffeeAndMilk() { //Calls milk and coffee pour animation
     setTimeout(function() {
         coffee.classList.add('pour');
         milk.classList.add('pour');
@@ -320,7 +340,7 @@ function pourCoffeeAndMilk() { //Calls milk pour animation
     }, 1000);
 }
 
-function removePourCoffeeAndMilk() { //Prevents from call milk pour animation
+function removePourCoffeeAndMilk() { //Prevents from call milk and coffee pour animation
     setTimeout(function() {
         coffee.classList.remove('pour');
         milk.classList.remove('pour');
@@ -340,26 +360,32 @@ function makeCustomCoffee() {
         pourCoffee();
         removePourCoffee();
 
-        coffeeMachine.setWater(coffeeMachineWater -= americanoWater);
+        coffeeMachine.setWater(coffeeMachineWater -= coffeeRange.value * 2);
         showPercent(calc('water'), 'water');
 
-        coffeeMachine.setMilk(coffeeMachineMilk -= americanoMilk);
+        coffeeMachine.setMilk(coffeeMachineMilk -= milkRange.value * 3);
         showPercent(calc('milk'), 'milk');
 
-        coffeeMachine.setCoffee(coffeeMachineCoffee -= americanoCoffee);
+        coffeeMachine.setCoffee(coffeeMachineCoffee -= customCoffeeCoffee);
         showPercent(calc('coffee'), 'coffee');
     }
     else if (coffeeRange.value < milkRange.value) {
-        pourCoffeeAndMilk();
-        removePourCoffeeAndMilk();
+        if (coffeeRange.value === '0') {
+            pourMilk();
+            removePourMilk();
+        }
+        else {
+            pourCoffeeAndMilk();
+            removePourCoffeeAndMilk();
+        }
 
-        coffeeMachine.setWater(coffeeMachineWater -= latteWater);
+        coffeeMachine.setWater(coffeeMachineWater -= coffeeRange.value * 2);
         showPercent(calc('water'), 'water');
 
-        coffeeMachine.setMilk(coffeeMachineMilk -= latteMilk);
+        coffeeMachine.setMilk(coffeeMachineMilk -= milkRange.value * 3);
         showPercent(calc('milk'), 'milk');
 
-        coffeeMachine.setCoffee(coffeeMachineCoffee -= latteCoffee);
+        coffeeMachine.setCoffee(coffeeMachineCoffee -= customCoffeeCoffee);
         showPercent(calc('coffee'), 'coffee');        
     }
     
