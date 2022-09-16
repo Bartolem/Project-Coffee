@@ -652,3 +652,18 @@ customCoffeeButton.addEventListener('click', function() {
 addToCoffeeMachine.addEventListener('click', function() {
     text.value = customCoffee.name;
 });
+
+coffeeCreationWrap.addEventListener('click', function(event) {
+    if (!event.target.closest('.coffee-creation')) {
+        coffeeCreation.classList.remove('show');
+        coffeeCreationWrap.classList.remove('show');
+        document.querySelector('.left-child').classList.remove('blur');
+        console.log('work!');
+    }
+});
+
+popup.modalWrap.addEventListener('click', function(event) {
+    if (!event.target.closest('.modal')) {
+        showModal();
+    }
+});
