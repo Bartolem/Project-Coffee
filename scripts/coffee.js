@@ -1,4 +1,4 @@
-class Coffee {
+export class Coffee {
     constructor(name, water, milk, coffee) {
         this.name = name;
         let _water = water;

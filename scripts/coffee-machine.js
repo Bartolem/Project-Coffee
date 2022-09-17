@@ -1,4 +1,4 @@
-class CoffeeMachine {
+export class CoffeeMachine {
     constructor(water, milk, coffee, cup) {
         let _water = water;
         let _milk = milk;

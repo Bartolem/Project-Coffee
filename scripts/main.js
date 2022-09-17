@@ -1,3 +1,9 @@
+import { Popup } from "./popup.js";
+import { CoffeeMachine } from "./coffee-machine.js"
+import { Coffee } from "./coffee.js";
+
+const popup = new Popup();
+
 class Cup {
     static getCoffee() {
         const coffee = document.querySelector('.cup-coffee');
