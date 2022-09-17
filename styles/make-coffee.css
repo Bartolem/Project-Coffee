@@ -277,13 +277,10 @@ body {
 }
 
 #menu-bars {
-<<<<<<< HEAD
     position: absolute;
     top: 1%;
-=======
     position: fixed;
     top: 12%;
->>>>>>> 9e35ab413babf3c6a95a96cad44a2f6732e483d2
     left: 1%;
     z-index: 3;
     font-size: 2.2rem;
@@ -300,11 +297,8 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-<<<<<<< HEAD
     height: 70%;
-=======
     height: 100%;
->>>>>>> 9e35ab413babf3c6a95a96cad44a2f6732e483d2
     width: 20%;
     background-color: rgb(150, 140, 123);
     transition: .5s linear;
@@ -544,8 +538,6 @@ body {
 }
 
 @media (max-width:400px) {
-<<<<<<< HEAD
-=======
     .custom-coffee {
         height: 12em;
         width: 10em;
@@ -555,7 +547,6 @@ body {
         flex-basis: 35%;
     }
 
->>>>>>> 9e35ab413babf3c6a95a96cad44a2f6732e483d2
     .action-icons {
         width: 70%;
         left: -70%;
