@@ -1,4 +1,4 @@
-class Popup {
+export class Popup {
     constructor() {
         this.modal = document.querySelector('.modal');
         this.modalWrap = document.querySelector('.modal-wrap');
@@ -11,4 +11,3 @@ class Popup {
     }
 }
 
-const popup = new Popup();

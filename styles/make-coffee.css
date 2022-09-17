@@ -47,7 +47,8 @@ body {
     top: 10vh;
 }
 
-.modal-wrap {
+.modal-wrap, 
+.coffee-creation-wrap {
     display: none;
     position: fixed;
     top: 10%;
@@ -58,11 +59,13 @@ body {
     z-index: 2;
 }
 
-.modal-wrap.show {
+.modal-wrap.show, 
+.coffee-creation-wrap.show {
     display: block;
 }
 
-.modal {
+.modal, 
+.coffee-creation {
     position: absolute;
     display: none;
     top: 50%;
@@ -74,11 +77,16 @@ body {
     border-radius: 10px;
 }
 
-.modal.show { 
+.coffee-creation {
+    background-color: rgb(150, 140, 123);
+}
+
+.modal.show, .coffee-creation.show { 
     display: block;
 }
 
-.modal-top {
+.modal-top,
+.coffee-creation-top {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     display: flex;
@@ -89,13 +97,20 @@ body {
     background-color: #555;
 }
 
-.modal-top h3 {
+.coffee-creation-top {
+    background-color: rgb(133, 123, 107);
+}
+
+.modal-top h3,
+.coffee-creation-top h3 {
     font-size: 1.7rem;
     margin: 5px 15px;
     font-family: Lato, sans-serif;
 }
 
-.modal-top i {
+.modal-top i,
+.coffee-creation-top i,
+.menu-top i {
     font-size: 3rem;
     margin: 5px 15px;
     color: brown;
@@ -111,6 +126,100 @@ body {
     text-align: center;
 }
 
+/*custom coffee*/
+.coffee-creation-mid {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coffee-creator,
+.coffee-config {
+    height: 95%;
+    flex-basis: 50%;
+}
+
+.coffee-config {
+    height: 60%;
+}
+
+.coffee-creator {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.custom-name {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-name button {
+    padding: 5px;
+    margin: 5px;
+}
+
+.custom-name input {
+    font-size: 1.2rem;
+    width: 9em;
+    margin: 5px;
+}
+
+.custom-coffee {
+    position: relative;
+    height: 16em;
+    width: 14em;
+    border-radius: 0 0 25% 25%;
+    overflow: hidden;
+    border: 3px solid aliceblue;
+}
+
+.custom-coffee-inner {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    transition: 2s;
+}
+
+.inner-coffee,
+.inner-milk,
+.inner-foam {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    background-color: #4b3b32;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    transition: 2s;
+}
+
+.inner-milk {
+    height: 50%;
+    background-color: #ded3a6;
+    z-index: 2;
+}
+
+.inner-foam {
+    height: 50%;
+    background-color: #eee;
+    z-index: 1;
+}
+
+.coffee-config {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+/*#######*/
 .alert {
     display: none;
     align-items: center;
@@ -168,13 +277,18 @@ body {
 }
 
 #menu-bars {
+<<<<<<< HEAD
     position: absolute;
     top: 1%;
+=======
+    position: fixed;
+    top: 12%;
+>>>>>>> 9e35ab413babf3c6a95a96cad44a2f6732e483d2
     left: 1%;
     z-index: 3;
     font-size: 2.2rem;
     cursor: pointer;
-    color: rgb(94, 61, 3);
+    color: rgb(83, 59, 49);
 }
 
 .action-icons {
@@ -186,7 +300,11 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+<<<<<<< HEAD
     height: 70%;
+=======
+    height: 100%;
+>>>>>>> 9e35ab413babf3c6a95a96cad44a2f6732e483d2
     width: 20%;
     background-color: rgb(150, 140, 123);
     transition: .5s linear;
@@ -198,7 +316,7 @@ body {
 
 .action-icons div {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 30px;
     width: 65%;
@@ -223,7 +341,7 @@ body {
     margin-left: -5px;
     font-size: 2rem;
     transition: 1s linear;
-    color: rgb(94, 61, 3);
+    color: rgb(83, 59, 49);
 }
 
 #mug-icon {
@@ -253,7 +371,7 @@ body {
     align-items: center;
     flex-direction: column;
     height: 40em;
-    width: 40em;
+    width: 45em;
     border-radius: 10px;
 }
 
@@ -329,7 +447,8 @@ body {
         width: 75%;
     }
 
-    .modal {
+    .modal,
+    .coffee-creation {
         height: 80%;
         width: 80%;
     }
@@ -340,7 +459,7 @@ body {
     
     .coffee-machine {
         height: 35em;
-        width: 35em;
+        width: 42em;
     }
 
     .menu-main img {
@@ -361,11 +480,13 @@ body {
         font-size: 1.1rem;
     }
 
-    .modal-wrap {
+    .modal-wrap,
+    .coffee-creation-wrap {
         position: absolute;
     }
 
-    .modal {
+    .modal,
+    .coffee-creation {
         height: 90%;
         width: 90%;
     }
@@ -413,8 +534,8 @@ body {
     }
 
     .coffee-machine {
-        height: 30em;
-        width: 30em;
+        height: 35em;
+        width: 35em;
     }
 
     .menu-top {
@@ -423,6 +544,18 @@ body {
 }
 
 @media (max-width:400px) {
+<<<<<<< HEAD
+=======
+    .custom-coffee {
+        height: 12em;
+        width: 10em;
+    }
+
+    .coffee-config {
+        flex-basis: 35%;
+    }
+
+>>>>>>> 9e35ab413babf3c6a95a96cad44a2f6732e483d2
     .action-icons {
         width: 70%;
         left: -70%;
@@ -439,7 +572,13 @@ body {
         font-size: 1.6rem;
     }
 
-    .modal {
+    .coffee-creation-mid {
+        flex-direction: column-reverse;
+        justify-content: space-around;
+    }
+
+    .modal,
+    .coffee-creation {
         height: 95%;
         width: 100%;
     }
@@ -449,7 +588,7 @@ body {
     }
 
     .coffee-machine {
-        height: 25em;
+        height: 32em;
         width: 25em;
     }
 }

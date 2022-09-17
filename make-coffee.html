@@ -25,17 +25,59 @@
     </header>
 
     <main class="container">
+        <section class="coffee-creation-wrap">
+            <section class="coffee-creation">
+                <div class="coffee-creation-top">
+                    <h3>Coffee creator</h3>
+                    <i class="fa-solid fa-square-xmark"></i>
+                </div>
+
+                <div class="coffee-creation-mid">
+                    <div class="coffee-creator">
+                        <div class="custom-name">
+                            <input type="text">
+                            <button>Save</button>
+                        </div>
+                        <div class="custom-coffee">
+                            <div class="custom-coffee-inner">
+                              <div class="inner-coffee"></div>
+                              <div class="inner-milk"></div>
+                              <div class="inner-foam"></div>
+                            </div>
+                          </div>
+                          <button id="add-to-coffee-machine">Add to coffee machine</button>
+                    </div>
+
+                    <div class="coffee-config">
+                        <label for="coffee">Coffee</label>
+                        <input type="range" value="50" max="100" step="10" id="coffee-range" name="coffee">
+                        
+                        <label for="milk">Milk</label>
+                        <input type="range" value="50" max="100" step="10" id="milk-range">
+                        
+                        <label for="foam">Foam</label>
+                        <input type="range" value="50" max="100" step="10" id="foam-range">
+                        
+                        <label for="fill">Fill level</label>
+                        <input type="range" value="75" min="50" max="100" step="10" id="fill-range">
+                    </div>
+                </div>
+            </section>
+        </section>
+
         <section class="modal-wrap">
             <section class="modal">
                 <div class="modal-top">
                     <h3>Products inventory</h3>
                     <i class="fa-solid fa-square-xmark"></i>
                 </div>
+
                 <div class="modal-mid">
                     <div class="alert">
                         <span></span>
                         <i class="fa-solid fa-triangle-exclamation"></i>
                     </div>
+
                     <div class="content-container">
                         <div class="img-container">
                             <img src="images/water-bottle.png" alt="water bottle" class="water-bottle">
@@ -171,9 +213,11 @@
 
                     <div class="cup">
                         <div class="cup-background "></div>
-                        <div class="cup-foam"></div>
-                        <div class="cup-milk"></div>
-                        <div class="cup-coffee"></div>
+                        <div class="inner-cup">
+                            <div class="cup-foam"></div>
+                            <div class="cup-milk"></div>
+                            <div class="cup-coffee"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="bottom"><!--The bottom part of coffee machine-->
@@ -190,6 +234,7 @@
             <div class="coffee-menu"><!--Menu with coffee-->
                 <div class="menu-top">
                     <h2>MENU</h2>
+                    <i class="fa-solid fa-square-xmark"></i>
                 </div>
 
                 <div class="menu-main"><!--Items that are included in coffee menu-->
@@ -236,9 +281,9 @@
             </div>
         </section>
     </main>
-    <script src="scripts/coffee-machine.js"></script>   
+    <!-- <script src="scripts/coffee-machine.js"></script>   
     <script src="scripts/coffee.js"></script>
-    <script src="scripts/popup.js"></script>
+    <script src="scripts/popup.js"></script> -->
     <script src="scripts/main.js" type="module"></script>
 </body>
 </html>

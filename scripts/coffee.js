@@ -1,4 +1,4 @@
-class Coffee {
+export class Coffee {
     constructor(name, water, milk, coffee) {
         this.name = name;
         let _water = water;
@@ -18,14 +18,16 @@ class Coffee {
         this.getCup = function() {
             return _cup;
         }
+
+        this.setWater = function(value) {
+            _water = value;
+        }
+        this.setMilk = function(value) {
+            _milk = value;
+        }
     }
 
     showCoffeeName() {
         console.log(`This is ${this.name}`)
     }
 }
-
-const espresso = new Coffee('espresso', 30, 0, 8);
-const latte = new Coffee('latte', 60, 300, 16);
-const americano = new Coffee('americano', 150, 0, 16);
-const cappuccino = new Coffee('cappuccino', 60, 120, 16);

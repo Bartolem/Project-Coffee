@@ -1,4 +1,4 @@
-class CoffeeMachine {
+export class CoffeeMachine {
     constructor(water, milk, coffee, cup) {
         let _water = water;
         let _milk = milk;
@@ -49,5 +49,3 @@ class CoffeeMachine {
         }
     }
 }
-
-const coffeeMachine = new CoffeeMachine(1750, 2400, 500, 15);

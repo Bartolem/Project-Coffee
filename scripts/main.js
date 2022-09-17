@@ -1,3 +1,9 @@
+import { Popup } from "./popup.js";
+import { CoffeeMachine } from "./coffee-machine.js"
+import { Coffee } from "./coffee.js";
+
+const popup = new Popup();
+
 class Cup {
     static getCoffee() {
         const coffee = document.querySelector('.cup-coffee');
@@ -32,6 +38,17 @@ class Tank {
     }     
 }
 
+const coffeeMachine = new CoffeeMachine(1750, 2400, 500, 15);
+const espresso = new Coffee('espresso', 30, 0, 8);
+const latte = new Coffee('latte', 60, 300, 16);
+const americano = new Coffee('americano', 150, 0, 16);
+const cappuccino = new Coffee('cappuccino', 60, 120, 16);
+const customCoffee = new Coffee('', 60, 100, 16);
+
+const customCoffeeButton = document.querySelector('.custom-name button');
+const customCoffeeInput = document.querySelector('.custom-name input');
+const addToCoffeeMachine = document.getElementById('add-to-coffee-machine');
+
 const milk = document.querySelector('.milk');
 const coffee = document.querySelector('.coffee');
 
@@ -48,6 +65,7 @@ const cappuccinoButton = document.querySelector('.cappuccino-btn');
 const text = document.querySelector('#output-text');
 
 const cup = document.querySelector('.cup');
+const innerCup = document.querySelector('.inner-cup');
 const takeCoffee = document.querySelector('.base button:nth-child(1)');
 const takeCup = document.querySelector('.base button:nth-child(2)');
 
@@ -62,12 +80,29 @@ const milkQuantity = document.querySelector('.milk-quantity');
 const defaultCoffeeQuantity = document.querySelector('.default-coffee-quantity');
 const coffeeQuantity = document.querySelector('.coffee-quantity');
 
+const closeCoffeeCreatorIcon = document.querySelector('.coffee-creation-top i');
+const closeCoffeeMenu = document.querySelector('.menu-top i');
+const coffeeCreation = document.querySelector('.coffee-creation');
+const coffeeCreationWrap = document.querySelector('.coffee-creation-wrap');
 const aside = document.querySelector('.action-icons');
 const showMenu = document.querySelector('.action-icons div:first-child');
 const refillTanks = document.querySelector('.action-icons div:nth-child(2)');
+const mugIcon = document.querySelector('.action-icons div:nth-child(3)')
 const showAside = document.getElementById('menu-bars');
-const arrowIcon = document.querySelector('#arrow-icon');
 const coffeeMenu = document.querySelector('.right-child');
+
+const innerCoffee = document.querySelector('.inner-coffee'); 
+const innerMilk = document.querySelector('.inner-milk');
+const innerFoam = document.querySelector('.inner-foam');
+const inner = document.querySelector('.custom-coffee-inner'); 
+const coffeeRange = document.getElementById('coffee-range');
+const milkRange = document.getElementById('milk-range');
+const foamRange = document.getElementById('foam-range');
+const fillRange = document.getElementById('fill-range');
+
+const customCoffeeWater = customCoffee.getWater();
+const customCoffeeMilk = customCoffee.getMilk();
+const customCoffeeCoffee = customCoffee.getCoffee();
 
 const espressoWater = espresso.getWater();
 const espressoMilk = espresso.getMilk();
@@ -95,6 +130,7 @@ const activeElements = [powerButton, text, displayPercentWater, displayPercentMi
 function showModal() { //Show popup window 
     popup.modal.classList.toggle('show');
     popup.modalWrap.classList.toggle('show');
+    aside.classList.remove('show');
     document.querySelector('.left-child').classList.toggle('blur');
 
     defaultWaterQuantity.textContent = coffeeMachine.getDefaultWater();
@@ -159,6 +195,10 @@ function chooseType() {
     let makeCoffee;
 
     switch(text.value) {
+        case customCoffee.name:
+            makeCoffee = makeCustomCoffee();
+            checkPossibility(customCoffee, makeCoffee);
+            break;
         case 'espresso':
             makeCoffee = makeEspresso();
             checkPossibility(espresso, makeCoffee);
@@ -280,7 +320,23 @@ function removePourCoffee() { //Prevents from call coffee pour animation
     }, 8000);
 }
 
-function pourCoffeeAndMilk() { //Calls milk pour animation
+function pourMilk() { //Calls milk pour animation
+    setTimeout(function() {
+        milk.classList.add('pour');
+
+        smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
+    }, 1000);
+}
+
+function removePourMilk() { //Prevents from call milk pour animation
+    setTimeout(function() {
+        milk.classList.remove('pour');
+        smallStartBtn.style.backgroundColor = '#777';
+        enableTakeCoffee();
+    }, 8000);
+}
+
+function pourCoffeeAndMilk() { //Calls milk and coffee pour animation
     setTimeout(function() {
         coffee.classList.add('pour');
         milk.classList.add('pour');
@@ -289,13 +345,69 @@ function pourCoffeeAndMilk() { //Calls milk pour animation
     }, 1000);
 }
 
-function removePourCoffeeAndMilk() { //Prevents from call milk pour animation
+function removePourCoffeeAndMilk() { //Prevents from call milk and coffee pour animation
     setTimeout(function() {
         coffee.classList.remove('pour');
         milk.classList.remove('pour');
         smallStartBtn.style.backgroundColor = '#777';
         enableTakeCoffee();
     }, 8000);
+}
+
+function makeCustomCoffee() {
+    let coffeeMachineWater = coffeeMachine.getWater();
+    let coffeeMachineMilk = coffeeMachine.getMilk();
+    let coffeeMachineCoffee = coffeeMachine.getCoffee();
+
+    disableStartButton();
+
+    if (coffeeRange.value >= milkRange.value) {
+        if (milkRange.value === '0') {
+            pourCoffee();
+            removePourCoffee();
+        }
+        else {
+            pourCoffeeAndMilk();
+            removePourCoffeeAndMilk();
+        }
+
+        coffeeMachine.setWater(coffeeMachineWater -= coffeeRange.value * 2);
+        showPercent(calc('water'), 'water');
+
+        coffeeMachine.setMilk(coffeeMachineMilk -= milkRange.value * 3);
+        showPercent(calc('milk'), 'milk');
+
+        coffeeMachine.setCoffee(coffeeMachineCoffee -= customCoffeeCoffee);
+        showPercent(calc('coffee'), 'coffee');
+    }
+    else if (coffeeRange.value < milkRange.value) {
+        if (coffeeRange.value === '0') {
+            pourMilk();
+            removePourMilk();
+        }
+        else {
+            pourCoffeeAndMilk();
+            removePourCoffeeAndMilk();
+        }
+
+        coffeeMachine.setWater(coffeeMachineWater -= coffeeRange.value * 2);
+        showPercent(calc('water'), 'water');
+
+        coffeeMachine.setMilk(coffeeMachineMilk -= milkRange.value * 3);
+        showPercent(calc('milk'), 'milk');
+
+        coffeeMachine.setCoffee(coffeeMachineCoffee -= customCoffeeCoffee);
+        showPercent(calc('coffee'), 'coffee');        
+    }
+    
+    setTimeout(function() {
+        innerCup.style.height = `${fillRange.value}%`;
+        Cup.getCoffee().style.height = `${coffeeRange.value}%`;
+        Cup.getMilk().style.height = `${milkRange.value}%`;
+        Cup.getFoam().style.height = `${foamRange.value}%`;
+    }, 2000);
+    
+    console.log(coffeeMachine.getCoffee());
 }
 
 function makeEspresso() {
@@ -462,7 +574,7 @@ cappuccinoButton.addEventListener('click', function() { // cappuccino selection 
 
 showMenu.addEventListener('click', function() {
     coffeeMenu.classList.toggle('show');
-    arrowIcon.classList.toggle('show');
+    aside.classList.remove('show');
 });
 
 popup.closeModalIcon.addEventListener('click', showModal);
@@ -498,4 +610,66 @@ popup.addWaterIcon.addEventListener('click', function() {
 
 showAside.addEventListener('click', function() {
     aside.classList.toggle('show');
+});
+
+mugIcon.addEventListener('click', function() {
+    coffeeCreation.classList.toggle('show');
+    coffeeCreationWrap.classList.toggle('show');
+    aside.classList.remove('show');
+    document.querySelector('.left-child').classList.toggle('blur');
+});
+
+closeCoffeeCreatorIcon.addEventListener('click', function() {
+    coffeeCreation.classList.toggle('show');
+    coffeeCreationWrap.classList.toggle('show');
+    document.querySelector('.left-child').classList.toggle('blur');
+});
+
+closeCoffeeMenu.addEventListener('click', function() {
+    coffeeMenu.classList.toggle('show');
+});
+
+coffeeRange.addEventListener('change', function() {
+    innerCoffee.style.height = `${coffeeRange.value}%`;
+});
+
+milkRange.addEventListener('change', function() {
+    innerMilk.style.height = `${milkRange.value}%`;
+});
+
+foamRange.addEventListener('change', function() {
+    innerFoam.style.height = `${foamRange.value}%`;
+});
+
+fillRange.addEventListener('change', function() {
+    inner.style.height = `${fillRange.value}%`;
+});
+
+customCoffeeButton.addEventListener('click', function() {
+    if (customCoffeeInput.value === ''){
+        console.log('Custom coffee name in not defined!');
+    }
+    else {
+        customCoffee.name = customCoffeeInput.value;
+        console.log(customCoffee.name);
+    }
+});
+
+addToCoffeeMachine.addEventListener('click', function() {
+    text.value = customCoffee.name;
+});
+
+coffeeCreationWrap.addEventListener('click', function(event) {
+    if (!event.target.closest('.coffee-creation')) {
+        coffeeCreation.classList.remove('show');
+        coffeeCreationWrap.classList.remove('show');
+        document.querySelector('.left-child').classList.remove('blur');
+        console.log('work!');
+    }
+});
+
+popup.modalWrap.addEventListener('click', function(event) {
+    if (!event.target.closest('.modal')) {
+        showModal();
+    }
 });
