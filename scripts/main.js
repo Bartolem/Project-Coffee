@@ -572,6 +572,15 @@ fillRange.addEventListener('change', function() {
     inner.style.height = `${fillRange.value}%`;
 });
 
+customCoffeeInput.addEventListener('input', function() {
+    if (customCoffeeInput.value === '') {
+        addToCoffeeMachine.disabled = true;
+    }
+    else {
+        addToCoffeeMachine.disabled = false;
+    }
+});
+
 customCoffeeButton.addEventListener('click', function() {
     if (customCoffeeInput.value === ''){
         console.log('Custom coffee name in not defined!');

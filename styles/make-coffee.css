@@ -173,6 +173,11 @@ body {
     color: white;
 }
 
+#add-to-coffee-machine:disabled {
+    color: rgba(19, 1, 1, 0.3);
+    background-color: rgba(239, 239, 239, 0.3);
+}
+
 .custom-name input {
     width: 9em;
     background-color: lightgray;
@@ -636,6 +641,11 @@ input[type=range]::-webkit-slider-thumb {
     .coffee-machine {
         height: 32em;
         width: 25em;
+    }
+
+    .coffee-creation,
+    .coffee-creation-top {
+        border-radius: 0;
     }
 }
 
