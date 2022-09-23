@@ -1,30 +1,33 @@
 export class Coffee {
     constructor(name, water, milk, coffee) {
         this.name = name;
-        let _water = water;
-        let _milk = milk;
-        let _coffee = coffee;
-        let _cup = 1;
+        this.water = water;
+        this.milk = milk;
+        this.coffee = coffee;
+        this.cup = 1;
+    }
 
-        this.getWater = function() {
-            return _water;
-        }
-        this.getMilk = function() {
-            return _milk;
-        }
-        this.getCoffee = function() {
-            return _coffee;
-        }
-        this.getCup = function() {
-            return _cup;
-        }
-
-        this.setWater = function(value) {
-            _water = value;
-        }
-        this.setMilk = function(value) {
-            _milk = value;
-        }
+    get water() {
+        return this._water;
+    }
+    get milk() {
+        return this._milk;
+    }
+    get coffee() {
+        return this._coffee;
+    }
+    getCup() {
+        return this.cup;
+    }
+    
+    set water(value) {
+        this._water = value;
+    }
+    set milk(value) {
+        this._milk = value;
+    }
+    set coffee(value) {
+        this._coffee = value;
     }
 
     showCoffeeName() {

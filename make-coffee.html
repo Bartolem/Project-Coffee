@@ -35,31 +35,41 @@
                 <div class="coffee-creation-mid">
                     <div class="coffee-creator">
                         <div class="custom-name">
-                            <input type="text">
+                            <input type="text" placeholder="Enter name">
                             <button>Save</button>
                         </div>
+                        
                         <div class="custom-coffee">
                             <div class="custom-coffee-inner">
                               <div class="inner-coffee"></div>
                               <div class="inner-milk"></div>
                               <div class="inner-foam"></div>
                             </div>
-                          </div>
-                          <button id="add-to-coffee-machine">Add to coffee machine</button>
+                        </div>
+
+                        <button id="add-to-coffee-machine">Add to coffee machine</button>
                     </div>
 
                     <div class="coffee-config">
-                        <label for="coffee">Coffee</label>
-                        <input type="range" value="50" max="100" step="10" id="coffee-range" name="coffee">
+                        <div>
+                            <label for="coffee">Coffee</label>
+                            <input type="range" value="50" max="100" step="10" id="coffee-range" name="coffee">
+                        </div>
                         
-                        <label for="milk">Milk</label>
-                        <input type="range" value="50" max="100" step="10" id="milk-range">
+                        <div>
+                            <label for="milk">Milk</label>
+                            <input type="range" value="50" max="100" step="10" id="milk-range">
+                        </div>
                         
-                        <label for="foam">Foam</label>
-                        <input type="range" value="50" max="100" step="10" id="foam-range">
-                        
-                        <label for="fill">Fill level</label>
-                        <input type="range" value="75" min="50" max="100" step="10" id="fill-range">
+                        <div>
+                             <label for="foam">Milk foam</label>
+                            <input type="range" value="50" max="100" step="10" id="foam-range">
+                        </div>
+                       
+                        <div>
+                            <label for="fill">Fill level</label>
+                            <input type="range" value="75" min="50" max="100" step="10" id="fill-range">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -281,9 +291,6 @@
             </div>
         </section>
     </main>
-    <!-- <script src="scripts/coffee-machine.js"></script>   
-    <script src="scripts/coffee.js"></script>
-    <script src="scripts/popup.js"></script> -->
     <script src="scripts/main.js" type="module"></script>
 </body>
 </html>

@@ -1,51 +1,64 @@
 export class CoffeeMachine {
     constructor(water, milk, coffee, cup) {
-        let _water = water;
-        let _milk = milk;
-        let _coffee = coffee;
-        let _cup = cup;
-        let _defaultWater = 1750;
-        let _defaultMilk = 2400;
-        let _defaultCoffee = 500;
-        let _defaultCup = 15;
-        
-        this.getWater = function() {
-            return _water;
-        }
-        this.getMilk = function() {
-            return _milk;
-        }
-        this.getCoffee = function() {
-            return _coffee;
-        }
-        this.getCup = function() {
-            return _cup;
-        }
-         
-        this.getDefaultWater = function() {
-            return _defaultWater;
-        }
-        this.getDefaultMilk = function() {
-            return _defaultMilk;
-        }
-        this.getDefaultCoffee = function() {
-            return _defaultCoffee;
-        }
-        this.getDefaultCup = function() {
-            return _defaultCup;
-        }
+        this.water = water;
+        this.milk = milk;
+        this.coffee = coffee;
+        this.cup = cup;
+        this.defaultWater = 1750;
+        this.defaultMilk = 2400;
+        this.defaultCoffee = 500;
+        this.defaultCup = 15;
+    }
 
-        this.setWater = function(value) {
-            _water = value;
-        }
-        this.setMilk = function(value) {
-            _milk = value;
-        }
-        this.setCoffee = function(value) {
-            _coffee = value;
-        }
-        this.setCup = function(value) {
-            _cup = value;
-        }
+    get water() {
+        return this._water;
+    }
+    get milk() {
+        return this._milk;
+    }
+    get coffee() {
+        return this._coffee;
+    }
+    get cup() {
+        return this._cup;
+    }
+     
+    get defaultWater() {
+        return this._defaultWater;
+    }
+    get defaultMilk() {
+        return this._defaultMilk;
+    }
+    get defaultCoffee() {
+        return this._defaultCoffee;
+    }
+    get defaultCup() {
+        return this._defaultCup;
+    }
+
+    set water(value) {
+        this._water = value;
+    }
+    set milk(value) {
+        this._milk = value;
+    }
+    set coffee(value) {
+        this._coffee = value;
+    }
+    set cup(value) {
+        this._cup = value;
+    }
+
+    set defaultWater(value) {
+        this._defaultWater = value;
+    }
+    set defaultMilk(value) {
+        this._defaultMilk = value;
+    }
+    set defaultCoffee(value) {
+        this._defaultCoffee = value;
+    }
+    set defaultCup(value) {
+        this._defaultCup = value;
     }
 }

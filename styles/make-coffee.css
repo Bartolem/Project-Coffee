@@ -142,7 +142,9 @@ body {
 }
 
 .coffee-config {
-    height: 60%;
+    height: 80%;
+    font-family: Lato, sans-serif;
+    font-size: 1.2rem;
 }
 
 .coffee-creator {
@@ -159,16 +161,44 @@ body {
     align-items: center;
 }
 
-.custom-name button {
-    padding: 5px;
+.custom-name button,
+#add-to-coffee-machine,
+.custom-name input  {
+    padding: 8px;
     margin: 5px;
+    font-size: 1.2rem;
+    background-color:darkslategray;
+    border: none;
+    border-radius: 3px;
+    color: white;
 }
 
 .custom-name input {
-    font-size: 1.2rem;
     width: 9em;
-    margin: 5px;
+    background-color: lightgray;
+    color: black;
 }
+
+.custom-name input:focus {
+    outline: none;
+}
+
+.coffee-config input {
+    appearance: none;
+    width: 14em;
+    height: 16px;
+    cursor: pointer;
+    background: lightgray;
+    margin: 1em;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 30px;
+    width: 15px;
+    background: darkslategray;
+    cursor: pointer;
+    appearance: none;
+  }
 
 .custom-coffee {
     position: relative;
@@ -216,6 +246,15 @@ body {
 .coffee-config {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.coffee-config div {
+    height: 25%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
@@ -277,8 +316,6 @@ body {
 }
 
 #menu-bars {
-    position: absolute;
-    top: 1%;
     position: fixed;
     top: 12%;
     left: 1%;
@@ -297,7 +334,6 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    height: 70%;
     height: 100%;
     width: 20%;
     background-color: rgb(150, 140, 123);
@@ -462,6 +498,11 @@ body {
 }
 
 @media (max-width:640px) {
+    .custom-coffee {
+        height: 14em;
+        width: 12em;
+    }
+
     .action-icons {
         width: 50%;
         left: -50%;
@@ -479,9 +520,33 @@ body {
         position: absolute;
     }
 
+    .coffee-creation-mid {
+        flex-direction: column-reverse;
+        justify-content: space-around;
+    }
+
+    .coffee-config,
+    .coffee-creator {
+        width: 100%;
+    }
+
+    .coffee-config {
+        flex-basis: 35%;
+    }
+
+    .coffee-creator {
+        flex-basis: 65%;
+    }
+
+    .coffee-config div {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 95%;
+    }
+
     .modal,
     .coffee-creation {
-        height: 90%;
+        height: 100%;
         width: 90%;
     }
 
@@ -543,10 +608,6 @@ body {
         width: 10em;
     }
 
-    .coffee-config {
-        flex-basis: 35%;
-    }
-
     .action-icons {
         width: 70%;
         left: -70%;
@@ -563,14 +624,8 @@ body {
         font-size: 1.6rem;
     }
 
-    .coffee-creation-mid {
-        flex-direction: column-reverse;
-        justify-content: space-around;
-    }
-
     .modal,
     .coffee-creation {
-        height: 95%;
         width: 100%;
     }
 
@@ -583,3 +638,4 @@ body {
         width: 25em;
     }
 }
+
