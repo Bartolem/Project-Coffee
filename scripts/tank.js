@@ -12,5 +12,20 @@ export class Tank {
     static get water() {
         const water = document.querySelector('.water-in-tank');
         return water;
-    }     
+    }
+    
+    static get displayPercentCoffee() {
+        const displayPercentCoffee = document.querySelector('.coffee-percent');
+        return displayPercentCoffee;
+    }
+
+    static get displayPercentMilk() {
+        const displayPercentMilk = document.querySelector('.milk-percent');
+        return displayPercentMilk;
+    }
+
+    static get displayPercentWater() {
+        const displayPercentWater = document.querySelector('.water-percent');
+        return displayPercentWater;
+    }
 }
