@@ -3,6 +3,7 @@ import { CoffeeMachine } from "./coffee-machine.js"
 import { Coffee } from "./coffee.js";
 import { Cup } from "./cup.js";
 import { Tank } from "./tank.js";
+import { Storage } from "./storage.js";
 
 const popup = new Popup();
 const coffeeMachine = new CoffeeMachine(1750, 2400, 500, 15);
@@ -47,7 +48,7 @@ const coffeeCreationWrap = document.querySelector('.coffee-creation-wrap');
 const aside = document.querySelector('.action-icons');
 const showMenu = document.querySelector('.action-icons div:first-child');
 const refillTanks = document.querySelector('.action-icons div:nth-child(2)');
-const mugIcon = document.querySelector('.action-icons div:nth-child(3)')
+const mugIcon = document.querySelector('.action-icons div:nth-child(3)');
 const showAside = document.getElementById('menu-bars');
 const coffeeMenu = document.querySelector('.right-child');
 const innerCoffee = document.querySelector('.inner-coffee'); 
@@ -59,26 +60,21 @@ const milkRange = document.getElementById('milk-range');
 const foamRange = document.getElementById('foam-range');
 const fillRange = document.getElementById('fill-range');
 
-
-const customCoffeeCoffee = customCoffee.coffee;
-const espressoWater = espresso.water;
-const espressoMilk = espresso.milk;
-const espressoCoffee = espresso.coffee;
-const latteWater = latte.water;
-const latteMilk = latte.milk;
-const latteCoffee = latte.coffee;
-const americanoWater = americano.water;
-const americanoMilk = americano.milk;
-const americanoCoffee = americano.coffee;
-const cappuccinoWater = americano.water;
-const cappuccinoMilk = americano.milk;
-const cappuccinoCoffee = americano.coffee;
-
 let power = false;
 
 const cupElements = [Cup.coffee, Cup.milk, Cup.foam];
 const coffeeButtons = [espressoButton, latteButton, americanoButton, cappuccinoButton];
 const activeElements = [powerButton, text, displayPercentWater, displayPercentMilk, displayPercentCoffee];
+
+window.onload = function() {
+    Storage.checkStorage('milk', coffeeMachine.milk);
+    Storage.checkStorage('water', coffeeMachine.water);
+    Storage.checkStorage('coffee', coffeeMachine.coffee);
+
+    showPercent(calc('milk'), 'milk');
+    showPercent(calc('water'), 'water');
+    showPercent(calc('coffee'), 'coffee');
+}
 
 function showModal() { //Show popup window 
     popup.modal.classList.toggle('show');
@@ -87,11 +83,11 @@ function showModal() { //Show popup window
     document.querySelector('.left-child').classList.toggle('blur');
 
     defaultWaterQuantity.textContent = coffeeMachine.defaultWater;
-    waterQuantity.textContent = `${coffeeMachine.water}/`;
+    waterQuantity.textContent = `${Storage.getItem('water')}/`;
     defaultMilkQuantity.textContent = coffeeMachine.defaultMilk;
-    milkQuantity.textContent = `${coffeeMachine.milk}/`;
+    milkQuantity.textContent = `${Storage.getItem('milk')}/`;
     defaultCoffeeQuantity.textContent = coffeeMachine.defaultCoffee;
-    coffeeQuantity.textContent = `${coffeeMachine.coffee}/`;
+    coffeeQuantity.textContent = `${Storage.getItem('coffee')}/`;
 } 
 
 function switchOn() {
@@ -122,51 +118,46 @@ function addAlertTextContent(product, coffee) {
 }
 
 function checkPossibility(coffeeType, makeCoffee) { //Checks the possibility of making coffee
-    if(coffeeMachine.coffee >= coffeeType.coffee
-    && coffeeMachine.water >= coffeeType.water
-    && coffeeMachine.milk >= coffeeType.milk) {
-        makeCoffee;
+    if (Storage.getItem('coffee') >= coffeeType.coffee
+    && Storage.getItem('water') >= coffeeType.water
+    && Storage.getItem('milk') >= coffeeType.milk) {
+        makeCoffee();
     }
-    else if (coffeeMachine.coffee < coffeeType.coffee) {
+    else if (Storage.getItem('coffee') < coffeeType.coffee) {
         showModal();
         addAlertTextContent('coffee beans', coffeeType.name);
         console.log(`Not enought coffee beans to make latte!`);
     }
-else if (coffeeMachine.water < coffeeType.water) {
-    showModal();
-    addAlertTextContent('water', coffeeType.name);
-    console.log(`Not enought water to make latte!`);
-}
-else if (coffeeMachine.milk < coffeeType.milk) {
-    showModal();
-    addAlertTextContent('milk', coffeeType.name);
-    console.log(`Not enought milk to make latte!`);
-}
+    else if (Storage.getItem('water') < coffeeType.water) {
+        showModal();
+        addAlertTextContent('water', coffeeType.name);
+        console.log(`Not enought water to make latte!`);
+    }
+    else if (Storage.getItem('milk') < coffeeType.milk) {
+        showModal();
+        addAlertTextContent('milk', coffeeType.name);
+        console.log(`Not enought milk to make latte!`);
+    }
 }
 
 function chooseType() {
-    let makeCoffee;
-
     switch(text.value) {
         case customCoffee.name:
-            makeCoffee = makeCustomCoffee();
-            checkPossibility(customCoffee, makeCoffee);
+            if (customCoffee.name !== '') {
+                checkPossibility(customCoffee, makeCustomCoffee);
+            }
             break;
         case 'espresso':
-            makeCoffee = makeEspresso();
-            checkPossibility(espresso, makeCoffee);
+            checkPossibility(espresso, makeEspresso);
             break;
         case 'latte':
-            makeCoffee = makeLatte();
-            checkPossibility(cappuccino, makeCoffee);
+            checkPossibility(latte, makeLatte);
             break;
         case 'americano':
-            makeCoffee = makeAmericano();
-            checkPossibility(americano, makeCoffee);
+            checkPossibility(americano, makeAmericano);
             break;
         case 'cappuccino':
-            makeCoffee = makeCappuccino();
-            checkPossibility(cappuccino, makeCoffee);
+            checkPossibility(cappuccino, makeCappuccino);
             break;
         default:
             console.log('You need to choose type');
@@ -232,27 +223,19 @@ const showPercent = function(percent, product) { //Display percent value of spec
     console.log(`${product} ${percent}%`);
 }
 
-const calc = function(product, value, defaultValue) { //Calculate the percent value of remaining products in coffee machine
-    let coffeeMachineDefaultWater = coffeeMachine.defaultWater;
-    let coffeeMachineDefaultMilk = coffeeMachine.defaultMilk;
-    let coffeeMachineDefaultCoffee = coffeeMachine.defaultCoffee;
-
-    let coffeeMachineWater = coffeeMachine.water;
-    let coffeeMachineMilk = coffeeMachine.milk;
-    let coffeeMachineCoffee = coffeeMachine.coffee;
-
+const calc = function(product, value, defaultValue) { //Calculate the percent value of products remaining in coffee machine
     switch (product) {
         case 'water':
-            value = coffeeMachineWater;
-            defaultValue = coffeeMachineDefaultWater;
+            value = Storage.getItem('water');
+            defaultValue = coffeeMachine.defaultWater;
             break;
         case 'milk':
-            value = coffeeMachineMilk;
-            defaultValue = coffeeMachineDefaultMilk;
+            value = Storage.getItem('milk');
+            defaultValue = coffeeMachine.defaultMilk;
             break;
         case 'coffee':
-            value = coffeeMachineCoffee;
-            defaultValue = coffeeMachineDefaultCoffee;
+            value = Storage.getItem('coffee');
+            defaultValue = coffeeMachine.defaultCoffee;
     }
 
     return Math.round(value / defaultValue * 100);
@@ -307,6 +290,11 @@ function removePourCoffeeAndMilk() { //Prevents from call milk and coffee pour a
     }, 8000);
 }
 
+function addItemtoStorage(item, value) {
+    Storage.setItem(item, Storage.getItem(item) - value);
+    showPercent(calc(item), item);
+}
+
 function makeCustomCoffee() {
     disableStartButton();
 
@@ -320,14 +308,9 @@ function makeCustomCoffee() {
             removePourCoffeeAndMilk();
         }
 
-        coffeeMachine.water -= coffeeRange.value * 2;
-        showPercent(calc('water'), 'water');
-
-        coffeeMachine.milk -=  milkRange.value * 3;
-        showPercent(calc('milk'), 'milk');
-
-        coffeeMachine.coffee -= customCoffeeCoffee;
-        showPercent(calc('coffee'), 'coffee');
+        addItemtoStorage('water', coffeeRange.value * 2);
+        addItemtoStorage('milk', milkRange.value * 3);
+        addItemtoStorage('coffee', customCoffee.coffee);
     }
     else if (coffeeRange.value < milkRange.value) {
         if (coffeeRange.value === '0') {
@@ -339,14 +322,9 @@ function makeCustomCoffee() {
             removePourCoffeeAndMilk();
         }
 
-        coffeeMachine.water -= coffeeRange.value * 2;
-        showPercent(calc('water'), 'water');
-
-        coffeeMachine.milk -= milkRange.value * 3;
-        showPercent(calc('milk'), 'milk');
-
-        coffeeMachine.coffee -= customCoffeeCoffee;
-        showPercent(calc('coffee'), 'coffee');        
+        addItemtoStorage('water', latte.water);
+        addItemtoStorage('milk', latte.milk);
+        addItemtoStorage('coffee', latte.coffee);
     }
     
     setTimeout(function() {
@@ -368,16 +346,9 @@ function makeEspresso() {
         Cup.coffee.style.height = '40%';
     }, 2000);
     
-    coffeeMachine.water -= espressoWater;
-    showPercent(calc('water'), 'water');
-
-    coffeeMachine.milk -= espressoMilk;
-    showPercent(calc('milk'), 'milk');
-
-    coffeeMachine.coffee -= espressoCoffee;
-    showPercent(calc('coffee'), 'coffee');
-    
-    console.log(coffeeMachine.coffee);
+    addItemtoStorage('water', espresso.water);
+    addItemtoStorage('milk', espresso.milk);
+    addItemtoStorage('coffee', espresso.coffee);
 }
 
 function makeLatte() {
@@ -391,16 +362,9 @@ function makeLatte() {
         Cup.foam.style.height = '95%';
     }, 2000);
 
-    coffeeMachine.water -= latteWater;
-    showPercent(calc('water'), 'water');
-
-    coffeeMachine.milk -= latteMilk;
-    showPercent(calc('milk'), 'milk');
-
-    coffeeMachine.coffee -= latteCoffee;
-    showPercent(calc('coffee'), 'coffee');
-
-    console.log(coffeeMachine.coffee);
+    addItemtoStorage('water', latte.water);
+    addItemtoStorage('milk', latte.milk);
+    addItemtoStorage('coffee', latte.coffee);
 }
 
 function makeAmericano() {
@@ -412,16 +376,9 @@ function makeAmericano() {
         Cup.coffee.style.height = '95%';
     }, 2000);
 
-    coffeeMachine.water -= americanoWater;
-    showPercent(calc('water'), 'water');
-
-    coffeeMachine.milk -= americanoMilk;
-    showPercent(calc('milk'), 'milk');
-
-    coffeeMachine.coffee -= americanoCoffee;
-    showPercent(calc('coffee'), 'coffee');
-
-    console.log(coffeeMachine.coffee);
+    addItemtoStorage('water', americano.water);
+    addItemtoStorage('milk', americano.milk);
+    addItemtoStorage('coffee', americano.coffee);
 }
 
 function makeCappuccino() {
@@ -435,14 +392,9 @@ function makeCappuccino() {
         Cup.foam.style.height = '95%';
     }, 2000);
 
-    coffeeMachine.water -= cappuccinoWater;
-    showPercent(calc('water'), 'water');
-
-    coffeeMachine.milk -= cappuccinoMilk;
-    showPercent(calc('milk'), 'milk');
-
-    coffeeMachine.coffee -= cappuccinoCoffee;
-    showPercent(calc('coffee'), 'coffee');
+    addItemtoStorage('water', cappuccino.water);
+    addItemtoStorage('milk', cappuccino.milk);
+    addItemtoStorage('coffee', cappuccino.coffee);
 }
 
 function getCup() { // Put empty cup on the stand
@@ -515,22 +467,22 @@ popup.closeModalIcon.addEventListener('click', showModal);
 refillTanks.addEventListener('click', showModal);
 
 popup.addCoffeeIcon.addEventListener('click', function() {
-    coffeeMachine.coffee = coffeeMachine.defaultCoffee;
-    coffeeQuantity.textContent = `${coffeeMachine.coffee}/`;
+    Storage.setItem('coffee', coffeeMachine.defaultCoffee);
+    coffeeQuantity.textContent = `${Storage.getItem('coffee')}/`;
     showPercent(calc('coffee'), 'coffee');
     resetAlertTextContent();
 });
 
 popup.addMilkIcon.addEventListener('click', function() {
-    coffeeMachine.milk = coffeeMachine.defaultMilk;
-    milkQuantity.textContent = `${coffeeMachine.defaultMilk}/`;
+    Storage.setItem('milk', coffeeMachine.defaultMilk);
+    milkQuantity.textContent = `${Storage.getItem('milk')}/`;
     showPercent(calc('milk'), 'milk');
     resetAlertTextContent();
 });
 
 popup.addWaterIcon.addEventListener('click', function() {
-    coffeeMachine.water = coffeeMachine.defaultWater;
-    waterQuantity.textContent = `${coffeeMachine.water}/`;
+    Storage.setItem('water', coffeeMachine.defaultWater);
+    waterQuantity.textContent = `${Storage.getItem('water')}/`;
     showPercent(calc('water'), 'water');
     resetAlertTextContent();
 });
@@ -572,22 +524,15 @@ fillRange.addEventListener('change', function() {
     inner.style.height = `${fillRange.value}%`;
 });
 
-customCoffeeInput.addEventListener('input', function() {
-    if (customCoffeeInput.value === '') {
-        addToCoffeeMachine.disabled = true;
-    }
-    else {
-        addToCoffeeMachine.disabled = false;
-    }
-});
-
 customCoffeeButton.addEventListener('click', function() {
     if (customCoffeeInput.value === ''){
         console.log('Custom coffee name in not defined!');
+        addToCoffeeMachine.disabled = true;
     }
     else {
         customCoffee.name = customCoffeeInput.value;
         console.log(customCoffee.name);
+        addToCoffeeMachine.disabled = false;
     }
 });
 
