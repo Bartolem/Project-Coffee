@@ -8,6 +8,16 @@ export class CoffeeCreator {
         const customCoffeeInput = document.querySelector('.custom-name input');
         return customCoffeeInput;
     }
+
+    static get customCoffeeName() {
+        const customCoffeeName = document.getElementById('custom-coffee-name');
+        return customCoffeeName;
+    }
+
+    static get addedToCoffeeMachineMessage() {
+        const addedToCoffeeMachineMessage = document.getElementById('added-to-coffee-machine-message');
+        return addedToCoffeeMachineMessage;
+    }
     
     static get addToCoffeeMachine() {
         const addToCoffeeMachine = document.getElementById('add-to-coffee-machine');

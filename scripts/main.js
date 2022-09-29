@@ -480,20 +480,40 @@ CoffeeCreator.fillRange.addEventListener('change', function() {
     CoffeeCreator.inner.style.height = `${CoffeeCreator.fillRange.value}%`;
 });
 
-CoffeeCreator.customCoffeeButton.addEventListener('click', function() {
+CoffeeCreator.customCoffeeButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    
     if (CoffeeCreator.customCoffeeInput.value === ''){
         console.log('Custom coffee name in not defined!');
+        CoffeeCreator.customCoffeeInput.style.border = '3px solid brown';
+        CoffeeCreator.customCoffeeName.classList.remove('success');
+        CoffeeCreator.customCoffeeName.classList.add('error');
+        CoffeeCreator.customCoffeeName.textContent = 'Custom coffee name is not defined!';
         CoffeeCreator.addToCoffeeMachine.disabled = true;
     }
     else {
         customCoffee.name = CoffeeCreator.customCoffeeInput.value;
         console.log(customCoffee.name);
+        CoffeeCreator.customCoffeeInput.style.border = 'none';
+        CoffeeCreator.customCoffeeName.classList.remove('error');
+        CoffeeCreator.customCoffeeName.classList.add('success');
+        CoffeeCreator.customCoffeeName.textContent = `Custom coffee name is set to ${customCoffee.name}`;
         CoffeeCreator.addToCoffeeMachine.disabled = false;
+
+        setTimeout(() => {
+            CoffeeCreator.customCoffeeName.classList.remove('success');
+            CoffeeCreator.customCoffeeName.textContent = '';
+        }, 3000);
     }
 });
 
-CoffeeCreator.addToCoffeeMachine.addEventListener('click', function() {
+CoffeeCreator.addToCoffeeMachine.addEventListener('click', function(event) {
+    event.preventDefault();
+
     CoffeeMachineUI.text.value = customCoffee.name;
+    CoffeeCreator.addedToCoffeeMachineMessage.removeAttribute('hidden');
+
+    setTimeout(() => CoffeeCreator.addedToCoffeeMachineMessage.setAttribute('hidden', 'hidden'), 4000);
 });
 
 CoffeeCreator.coffeeCreationWrap.addEventListener('click', function(event) {

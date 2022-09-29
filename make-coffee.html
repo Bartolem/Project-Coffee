@@ -33,22 +33,28 @@
                 </div>
 
                 <div class="coffee-creation-mid">
-                    <div class="coffee-creator">
-                        <div class="custom-name">
-                            <input type="text" placeholder="Enter name" maxlength="10">
-                            <button>Save</button>
-                        </div>
-                        
-                        <div class="custom-coffee">
-                            <div class="custom-coffee-inner">
-                              <div class="inner-coffee"></div>
-                              <div class="inner-milk"></div>
-                              <div class="inner-foam"></div>
+                    <form id="custom-coffee-form">
+                        <div class="coffee-creator">
+                            <div class="custom-name">
+                                <input type="text" placeholder="Enter name" maxlength="10">
+                                <button>Save</button>
                             </div>
+    
+                            <span id="custom-coffee-name"></span>
+    
+                            <div class="custom-coffee">
+                                <div class="custom-coffee-inner">
+                                  <div class="inner-coffee"></div>
+                                  <div class="inner-milk"></div>
+                                  <div class="inner-foam"></div>
+                                </div>
+                            </div>
+    
+                            <button id="add-to-coffee-machine" disabled>Add to coffee machine</button>
+    
+                            <span id="added-to-coffee-machine-message" hidden>Custom coffee is successfully added to coffee machine</span>
                         </div>
-
-                        <button id="add-to-coffee-machine" disabled>Add to coffee machine</button>
-                    </div>
+                    </form>                  
 
                     <div class="coffee-config">
                         <div>
