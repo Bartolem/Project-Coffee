@@ -27,7 +27,6 @@ body {
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: #BBAF99;
 }
 
 .right-child {
@@ -54,7 +53,7 @@ body {
     top: 10%;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
@@ -333,12 +332,12 @@ input[type=range]::-webkit-slider-thumb {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    flex-basis: 30%;
     height: 60%;
 }
 
 .img-container img {
-    transform: scale(40%);
+    transform: scale(50%);
 }
 
 #menu-bars {
@@ -415,6 +414,7 @@ input[type=range]::-webkit-slider-thumb {
     align-items: center;
     height: 100%;
     width: 100%;
+    background-color: #BBAF99;
 }
 
 .left-child.blur {
@@ -505,8 +505,8 @@ input[type=range]::-webkit-slider-thumb {
 
     .modal,
     .coffee-creation {
-        height: 80%;
-        width: 80%;
+        height: 90%;
+        width: 90%;
     }
 
     .menu-item {
@@ -544,6 +544,7 @@ input[type=range]::-webkit-slider-thumb {
     .modal-wrap,
     .coffee-creation-wrap {
         position: absolute;
+        height: 180vh;
     }
 
     .coffee-creation-mid {
@@ -554,14 +555,7 @@ input[type=range]::-webkit-slider-thumb {
     .coffee-config,
     .coffee-creator {
         width: 100%;
-    }
-
-    .coffee-config {
-        flex-basis: 35%;
-    }
-
-    .coffee-creator {
-        flex-basis: 65%;
+        height: 100%;
     }
 
     .coffee-config div {
@@ -570,9 +564,14 @@ input[type=range]::-webkit-slider-thumb {
         width: 95%;
     }
 
+    #custom-coffee-form {
+        width: 100%;
+        height: 50%;
+    }
+
     #custom-coffee-name,
     #added-to-coffee-machine-message {
-        width: 100%;
+        width: 80%;
         margin: 1em;
     }
 
@@ -584,20 +583,13 @@ input[type=range]::-webkit-slider-thumb {
 
     .modal-mid {
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: space-around;
     }
 
     .content-container {
-        flex-direction: row;
-        justify-content: center;
-        height: 10%;
+        justify-content: space-around;
+        height: 30%;
         width: 100%;
-    }
-
-    .content-container i {
-        position: absolute;
-        bottom: 15%;
-        right: 20%;
     }
 
     .img-container {
@@ -605,8 +597,13 @@ input[type=range]::-webkit-slider-thumb {
     }
 
     .img-container img {
-        transform: scale(30%);
+        transform: scale(50%);
     }
+
+    .left-child {
+        position: fixed;
+    }
+
     .right-child {
         top: -150vh;
     }
