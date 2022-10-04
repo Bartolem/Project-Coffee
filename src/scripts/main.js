@@ -422,22 +422,35 @@ Popup.closeModalIcon.addEventListener('click', showModal);
 
 Aside.refillTanks.addEventListener('click', showModal);
 
+function calculateValueToRefill(name, item, range) {
+    let coffeeValue = item * range / 100;
+    let coffeeValueTotal = Number(Storage.getItem(name));
+
+    coffeeValueTotal += coffeeValue;
+
+    if (coffeeValueTotal > item) {
+        coffeeValueTotal = item;
+    }
+
+    return coffeeValueTotal;
+}
+
 Popup.addCoffeeIcon.addEventListener('click', function() {
-    Storage.setItem('coffee', coffeeMachine.defaultCoffee);
+    Storage.setItem('coffee', calculateValueToRefill('coffee', coffeeMachine.defaultCoffee, Popup.addCoffeeRange.value));
     Popup.coffeeQuantity.textContent = `${Storage.getItem('coffee')}/`;
     showPercent(calc('coffee'), 'coffee');
     resetAlertTextContent();
 });
 
 Popup.addMilkIcon.addEventListener('click', function() {
-    Storage.setItem('milk', coffeeMachine.defaultMilk);
+    Storage.setItem('milk', calculateValueToRefill('milk', coffeeMachine.defaultMilk, Popup.addMilkRange.value));
     Popup.milkQuantity.textContent = `${Storage.getItem('milk')}/`;
     showPercent(calc('milk'), 'milk');
     resetAlertTextContent();
 });
 
 Popup.addWaterIcon.addEventListener('click', function() {
-    Storage.setItem('water', coffeeMachine.defaultWater);
+    Storage.setItem('water', calculateValueToRefill('water', coffeeMachine.defaultWater, Popup.addWaterRange.value));
     Popup.waterQuantity.textContent = `${Storage.getItem('water')}/`;
     showPercent(calc('water'), 'water');
     resetAlertTextContent();

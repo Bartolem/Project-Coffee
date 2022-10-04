@@ -24,6 +24,21 @@ export class Popup {
         return closeModalIcon;
     }
 
+    static get addCoffeeRange() {
+        const addCoffeeRange = document.getElementById('coffee-quantity-range');
+        return addCoffeeRange;
+    }
+
+    static get addMilkRange() {
+        const addMilkRange = document.getElementById('milk-quantity-range');
+        return addMilkRange;
+    }
+
+    static get addWaterRange() {
+        const addWaterRange = document.getElementById('water-quantity-range');
+        return addWaterRange;
+    }
+
     static get addCoffeeIcon() {
         const addCoffeeIcon = document.querySelector('#add-coffee');
         return addCoffeeIcon;

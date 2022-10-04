@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Coffee | Coffee Machine</title>
-    <link rel="stylesheet" href="styles/coffee-machine.css">
-    <link rel="stylesheet" href="styles/make-coffee.css">
-    <link rel="stylesheet" href="styles/all.css">
-    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="../styles/coffee-machine.css">
+    <link rel="stylesheet" href="../styles/make-coffee.css">
+    <link rel="stylesheet" href="../styles/all.css">
+    <link rel="stylesheet" href="../styles/nav.css">
 </head>
 <body>
     <header>
         <nav> <!--Navigation bar used in this project-->
-            <img src="images/coffee-cup-logo.png" alt="coffee-cup-draw">
+            <img src="../images/coffee-cup-logo.png" alt="coffee-cup-draw">
             <h1>Project Coffee</h1>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/index.html">Home</a></li>
                 <li><a href="#">Account</a></li>
                 <li><a href="#">Make Coffee</a></li>
                 <li><a href="coffee-types.html">Coffee Types</a></li>
@@ -96,25 +96,28 @@
 
                     <div class="content-container">
                         <div class="img-container">
-                            <img src="images/water-bottle.png" alt="water bottle" class="water-bottle">
+                            <img src="../images/water-bottle.png" alt="water bottle" class="water-bottle">
                         </div>
                         <p>Quantity: <span class="water-quantity"></span><span class="default-water-quantity"></span> ml</p>
+                        <input type="range" value="50" max="100" step="10" id="water-quantity-range" name="water-quantity-range">
                         <i class="fa-solid fa-square-plus" id="add-water"></i>
                     </div>
 
                     <div class="content-container">
                         <div class="img-container">
-                            <img src="images/milk-carton.png" alt="milk carton" class="milk-carton">
+                            <img src="../images/milk-carton.png" alt="milk carton" class="milk-carton">
                         </div>
                         <p>Quantity: <span class="milk-quantity"></span><span class="default-milk-quantity"></span> ml</p>
+                        <input type="range" value="50" max="100" step="10" id="milk-quantity-range" name="milk-quantity-range">
                         <i class="fa-solid fa-square-plus" id="add-milk"></i>
                     </div>
 
                     <div class="content-container">
                         <div class="img-container">
-                            <img src="images/beans-bag.png" alt="beans bag" class="beans-bag">
+                            <img src="../images/beans-bag.png" alt="beans bag" class="beans-bag">
                         </div>
                         <p>Quantity: <span class="coffee-quantity"></span><span class="default-coffee-quantity"></span> g</p>
+                        <input type="range" value="50" max="100" step="10" id="coffee-quantity-range" name="coffee-quantity-range">
                         <i class="fa-solid fa-square-plus" id="add-coffee"></i>
                     </div>
                  
@@ -255,7 +258,7 @@
 
                 <div class="menu-main"><!--Items that are included in coffee menu-->
                     <div class="menu-item">
-                        <img src="images/espresso.png" alt="espresso image">
+                        <img src="../images/espresso.png" alt="espresso image">
                         <ul>
                             <li><h2>Espresso</h2></li>
                             <li>8g coffee beans</li>
@@ -265,7 +268,7 @@
                     </div>
 
                     <div class="menu-item">
-                        <img src="images/latte.png" alt="latte image">
+                        <img src="../images/latte.png" alt="latte image">
                         <ul>
                             <li><h2>Latte</h2></li>
                             <li>16g coffee beans</li>
@@ -275,7 +278,7 @@
                     </div>
 
                     <div class="menu-item">
-                        <img src="images/americano.png" alt="americano image">
+                        <img src="../images/americano.png" alt="americano image">
                         <ul>
                             <li><h2>Americano</h2></li>
                             <li>16g coffee beans</li>
@@ -285,7 +288,7 @@
                     </div>
 
                     <div class="menu-item">
-                        <img src="images/cappuccino.png" alt="cappuccino image">
+                        <img src="../images/cappuccino.png" alt="cappuccino image">
                         <ul>
                             <li><h2>Cappuccino</h2></li>
                             <li>16g coffee beans</li>
@@ -297,6 +300,6 @@
             </div>
         </section>
     </main>
-    <script src="scripts/main.js" type="module"></script>
+    <script src="../scripts/main.js" type="module"></script>
 </body>
 </html>
