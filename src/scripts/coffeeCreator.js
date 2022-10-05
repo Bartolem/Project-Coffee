@@ -24,6 +24,11 @@ export class CoffeeCreator {
         return addToCoffeeMachine;
     }
 
+    static get resetCoffeeCreator() {
+        const resetCoffeeCreator = document.getElementById('reset-custom-coffee');
+        return resetCoffeeCreator;
+    }
+
     static get innerCoffee() {
         const innerCoffee = document.querySelector('.inner-coffee'); 
         return innerCoffee;

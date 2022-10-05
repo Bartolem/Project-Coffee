@@ -54,6 +54,21 @@ export class Popup {
         return addWaterIcon;
     }
 
+    static get coffeeValue() {
+        const coffeeValue = document.getElementById('coffee-value');
+        return coffeeValue;
+    }
+
+    static get milkValue() {
+        const milkValue = document.getElementById('milk-value');
+        return milkValue;
+    }
+
+    static get waterValue() {
+        const waterValue = document.getElementById('water-value');
+        return waterValue;
+    }
+
     static get defaultCoffeeQuantity() {
         const defaultCoffeeQuantity = document.querySelector('.default-coffee-quantity');
         return defaultCoffeeQuantity;

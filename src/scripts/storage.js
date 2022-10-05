@@ -12,4 +12,8 @@ export class Storage {
             Storage.setItem(item, value);
         }
     }
+
+    static removeItem(item) {
+        localStorage.removeItem(item);
+    }
 }

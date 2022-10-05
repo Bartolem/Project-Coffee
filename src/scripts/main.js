@@ -26,6 +26,21 @@ window.onload = function() {
     Storage.checkStorage('milk', coffeeMachine.milk);
     Storage.checkStorage('water', coffeeMachine.water);
     Storage.checkStorage('coffee', coffeeMachine.coffee);
+    Storage.checkStorage('coffeeRange', CoffeeCreator.coffeeRange.value);
+    Storage.checkStorage('milkRange', CoffeeCreator.milkRange.value);
+    Storage.checkStorage('foamRange', CoffeeCreator.foamRange.value);
+    Storage.checkStorage('fillRange', CoffeeCreator.fillRange.value);
+    Storage.checkStorage('customCoffeeName', customCoffee.name);
+
+    CoffeeCreator.customCoffeeInput.value = Storage.getItem('customCoffeeName');
+    CoffeeCreator.coffeeRange.value = Storage.getItem('coffeeRange');
+    CoffeeCreator.milkRange.value = Storage.getItem('milkRange');
+    CoffeeCreator.foamRange.value = Storage.getItem('foamRange');
+    CoffeeCreator.fillRange.value = Storage.getItem('fillRange');
+    CoffeeCreator.innerCoffee.style.height = `${Storage.getItem('coffeeRange')}%`;
+    CoffeeCreator.innerMilk.style.height = `${Storage.getItem('milkRange')}%`;
+    CoffeeCreator.innerFoam.style.height = `${Storage.getItem('foamRange')}%`;
+    CoffeeCreator.inner.style.height = `${Storage.getItem('fillRange')}%`;
 
     showPercent(calc('milk'), 'milk');
     showPercent(calc('water'), 'water');
@@ -38,6 +53,9 @@ function showModal() { //Show popup window
     CoffeeMachineUI.aside.classList.remove('show');
     document.querySelector('.left-child').classList.toggle('blur');
 
+    Popup.coffeeValue.textContent =  `+ ${calculateValueToRefill('coffee', coffeeMachine.defaultCoffee, Popup.addCoffeeRange.value).toFixed() - Storage.getItem('coffee')}`;
+    Popup.milkValue.textContent = `+ ${calculateValueToRefill('milk', coffeeMachine.defaultMilk, Popup.addMilkRange.value).toFixed()  - Storage.getItem('milk')}`;
+    Popup.waterValue.textContent = `+ ${calculateValueToRefill('water', coffeeMachine.defaultWater, Popup.addWaterRange.value).toFixed() - Storage.getItem('water')}`;
     Popup.defaultWaterQuantity.textContent = coffeeMachine.defaultWater;
     Popup.waterQuantity.textContent = `${Storage.getItem('water')}/`;
     Popup.defaultMilkQuantity.textContent = coffeeMachine.defaultMilk;
@@ -456,6 +474,21 @@ Popup.addWaterIcon.addEventListener('click', function() {
     resetAlertTextContent();
 });
 
+Popup.addCoffeeRange.addEventListener('change', function() {
+    Popup.coffeeValue.textContent = `+ ${calculateValueToRefill('coffee', coffeeMachine.defaultCoffee, Popup.addCoffeeRange.value).toFixed() - Storage.getItem('coffee')}`;
+    Popup.addCoffeeRange.max = ((coffeeMachine.defaultCoffee - Storage.getItem('coffee')) / coffeeMachine.defaultCoffee * 100).toFixed();
+});
+
+Popup.addMilkRange.addEventListener('change', function() {
+    Popup.milkValue.textContent = `+ ${calculateValueToRefill('milk', coffeeMachine.defaultMilk, Popup.addMilkRange.value).toFixed()  - Storage.getItem('milk')}`;
+    Popup.addMilkRange.max = ((coffeeMachine.defaultMilk - Storage.getItem('milk')) / coffeeMachine.defaultMilk * 100).toFixed();
+});
+
+Popup.addWaterRange.addEventListener('change', function() {
+    Popup.waterValue.textContent = `+ ${calculateValueToRefill('water', coffeeMachine.defaultWater, Popup.addWaterRange.value).toFixed() - Storage.getItem('water')}`;
+    Popup.addWaterRange.max = ((coffeeMachine.defaultWater - Storage.getItem('water')) / coffeeMachine.defaultWater * 100).toFixed();
+});
+
 CoffeeMachineUI.showAside.addEventListener('click', function() {
    CoffeeMachineUI.aside.classList.toggle('show');
 });
@@ -478,19 +511,23 @@ CoffeeMenu.closeCoffeeMenu.addEventListener('click', function() {
 });
 
 CoffeeCreator.coffeeRange.addEventListener('change', function() {
-    CoffeeCreator.innerCoffee.style.height = `${CoffeeCreator.coffeeRange.value}%`;
+    Storage.setItem('coffeeRange', CoffeeCreator.coffeeRange.value);
+    CoffeeCreator.innerCoffee.style.height = `${Storage.getItem('coffeeRange')}%`;
 });
 
 CoffeeCreator.milkRange.addEventListener('change', function() {
-    CoffeeCreator.innerMilk.style.height = `${CoffeeCreator.milkRange.value}%`;
+    Storage.setItem('milkRange', CoffeeCreator.milkRange.value);
+    CoffeeCreator.innerMilk.style.height = `${Storage.getItem('milkRange')}%`;
 });
 
 CoffeeCreator.foamRange.addEventListener('change', function() {
-    CoffeeCreator.innerFoam.style.height = `${CoffeeCreator.foamRange.value}%`;
+    Storage.setItem('foamRange', CoffeeCreator.foamRange.value);
+    CoffeeCreator.innerFoam.style.height = `${Storage.getItem('foamRange')}%`;
 });
 
 CoffeeCreator.fillRange.addEventListener('change', function() {
-    CoffeeCreator.inner.style.height = `${CoffeeCreator.fillRange.value}%`;
+    Storage.setItem('fillRange', CoffeeCreator.fillRange.value);
+    CoffeeCreator.inner.style.height = `${Storage.getItem('fillRange')}%`;
 });
 
 CoffeeCreator.customCoffeeButton.addEventListener('click', function(event) {
@@ -506,6 +543,7 @@ CoffeeCreator.customCoffeeButton.addEventListener('click', function(event) {
     }
     else {
         customCoffee.name = CoffeeCreator.customCoffeeInput.value;
+        Storage.setItem('customCoffeeName', customCoffee.name);
         console.log(customCoffee.name);
         CoffeeCreator.customCoffeeInput.style.border = 'none';
         CoffeeCreator.customCoffeeName.classList.remove('error');
@@ -536,6 +574,26 @@ CoffeeCreator.coffeeCreationWrap.addEventListener('click', function(event) {
         document.querySelector('.left-child').classList.remove('blur');
         console.log('work!');
     }
+});
+
+CoffeeCreator.resetCoffeeCreator.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    Storage.removeItem('coffeeRange');
+    Storage.removeItem('milkRange');
+    Storage.removeItem('foamRange');
+    Storage.removeItem('fillRange');
+    Storage.removeItem('customCoffeeName');
+    
+    CoffeeCreator.customCoffeeInput.value = Storage.getItem('customCoffeeName');
+    CoffeeCreator.coffeeRange.value = Storage.getItem('coffeeRange');
+    CoffeeCreator.milkRange.value = Storage.getItem('milkRange');
+    CoffeeCreator.foamRange.value = Storage.getItem('foamRange');
+    CoffeeCreator.fillRange.value = Storage.getItem('fillRange');
+    CoffeeCreator.innerCoffee.style.height = `${CoffeeCreator.coffeeRange.value}%`;
+    CoffeeCreator.innerMilk.style.height = `${CoffeeCreator.milkRange.value}%`;
+    CoffeeCreator.innerFoam.style.height = `${CoffeeCreator.foamRange.value}%`;
+    CoffeeCreator.inner.style.height = `${CoffeeCreator.fillRange.value}%`;
 });
 
 Popup.modalWrap.addEventListener('click', function(event) {
