@@ -14,7 +14,7 @@ const espresso = new Coffee('espresso', 30, 0, 8);
 const latte = new Coffee('latte', 60, 300, 16);
 const americano = new Coffee('americano', 150, 0, 16);
 const cappuccino = new Coffee('cappuccino', 60, 120, 16);
-const customCoffee = new Coffee('', 60, 100, 16);
+const customCoffee = new Coffee('', 100, 200, 16);
 
 let power = false;
 
@@ -272,8 +272,21 @@ function addItemtoStorage(item, value) {
 function makeCustomCoffee() {
     disableStartButton();
 
-    if (CoffeeCreator.coffeeRange.value >= CoffeeCreator.milkRange.value) {
-        if (CoffeeCreator.milkRange.value === '0') {
+    customCoffee.water = (Storage.getItem('coffeeRange') * 2) * (Storage.getItem('fillRange') / 100);
+    customCoffee.milk = (Storage.getItem('milkRange') * 3) * (Storage.getItem('fillRange') / 100);
+    customCoffee.coffee = Storage.getItem('coffeeRange') / 5;
+
+    function choosePourType(milkRange, coffeeRange, milkValue) {
+        if (Number(milkRange) === 0 
+        && Number(coffeeRange) === 0) {
+            milkValue = (Storage.getItem('foamRange') * 3) * (Storage.getItem('fillRange') / 100);
+            pourMilk();
+            removePourMilk();
+        }
+
+    else if (coffeeRange >= milkRange) {
+        if (Number(milkRange) === 0) {
+            milkValue = (Storage.getItem('foamRange') * 3) * (Storage.getItem('fillRange') / 100);
             pourCoffee();
             removePourCoffee();
         }
@@ -281,13 +294,9 @@ function makeCustomCoffee() {
             pourCoffeeAndMilk();
             removePourCoffeeAndMilk();
         }
-
-        addItemtoStorage('water', CoffeeCreator.coffeeRange.value * 2);
-        addItemtoStorage('milk', CoffeeCreator.milkRange.value * 3);
-        addItemtoStorage('coffee', customCoffee.coffee);
     }
-    else if (CoffeeCreator.coffeeRange.value < CoffeeCreator.milkRange.value) {
-        if (CoffeeCreator.coffeeRange.value === '0') {
+    else if (coffeeRange < milkRange) {
+        if (Number(coffeeRange === 0)) {
             pourMilk();
             removePourMilk();
         }
@@ -295,11 +304,14 @@ function makeCustomCoffee() {
             pourCoffeeAndMilk();
             removePourCoffeeAndMilk();
         }
-
-        addItemtoStorage('water', latte.water);
-        addItemtoStorage('milk', latte.milk);
-        addItemtoStorage('coffee', latte.coffee);
     }
+    }
+
+    choosePourType(CoffeeCreator.milkRange.value, CoffeeCreator.coffeeRange.value, customCoffee.milk);
+
+    addItemtoStorage('water', customCoffee.water);
+    addItemtoStorage('milk', customCoffee.milk);
+    addItemtoStorage('coffee', customCoffee.coffee);
     
     setTimeout(function() {
         CoffeeMachineUI.innerCup.style.height = `${CoffeeCreator.fillRange.value}%`;
@@ -307,8 +319,6 @@ function makeCustomCoffee() {
         Cup.milk.style.height = `${CoffeeCreator.milkRange.value}%`;
         Cup.foam.style.height = `${CoffeeCreator.foamRange.value}%`;
     }, 2000);
-    
-    console.log(coffeeMachine.coffee);
 }
 
 function makeEspresso() {
