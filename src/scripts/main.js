@@ -18,10 +18,6 @@ const customCoffee = new Coffee('', 100, 200, 16);
 
 let power = false;
 
-const cupElements = [Cup.coffee, Cup.milk, Cup.foam];
-const coffeeButtons = [CoffeeMachineUI.espressoButton, CoffeeMachineUI.latteButton, CoffeeMachineUI.americanoButton, CoffeeMachineUI.cappuccinoButton];
-const activeElements = [CoffeeMachineUI.powerButton, CoffeeMachineUI.text, Tank.displayPercentWater, Tank.displayPercentMilk, Tank.displayPercentCoffee];
-
 window.onload = function() {
     Storage.checkStorage('milk', coffeeMachine.milk);
     Storage.checkStorage('water', coffeeMachine.water);
@@ -47,7 +43,8 @@ window.onload = function() {
     showPercent(calc('coffee'), 'coffee');
 }
 
-function showModal() { //Show popup window 
+//Show popup window, that includes interface to refill fluid tanks 
+function showModal() { 
     Popup.modal.classList.toggle('show');
     Popup.modalWrap.classList.toggle('show');
     CoffeeMachineUI.aside.classList.remove('show');
@@ -64,6 +61,7 @@ function showModal() { //Show popup window
     Popup.coffeeQuantity.textContent = `${Storage.getItem('coffee')}/`;
 } 
 
+//Checks if coffee machine is turned on or off
 function switchOn() {
     if (!power) { // Checks that the coffee machine is turned off
         power = true;
@@ -91,7 +89,8 @@ function addAlertTextContent(product, coffee) {
     Popup.alert.style.display = 'flex';
 }
 
-function checkPossibility(coffeeType, makeCoffee) { //Checks the possibility of making coffee
+//Checks the possibility of making the choosed coffee
+function checkPossibility(coffeeType, makeCoffee) { 
     if (Storage.getItem('coffee') >= coffeeType.coffee
     && Storage.getItem('water') >= coffeeType.water
     && Storage.getItem('milk') >= coffeeType.milk) {
@@ -114,6 +113,7 @@ function checkPossibility(coffeeType, makeCoffee) { //Checks the possibility of 
     }
 }
 
+//Choose with type of coffee will be making
 function chooseType() {
     switch(CoffeeMachineUI.text.value) {
         case customCoffee.name:
@@ -139,12 +139,16 @@ function chooseType() {
 }
 
 function enableCoffeeTypesButtons() {
+    const coffeeButtons = [CoffeeMachineUI.espressoButton, CoffeeMachineUI.latteButton, CoffeeMachineUI.americanoButton, CoffeeMachineUI.cappuccinoButton];
+
     for (let i = 0; i < coffeeButtons.length; i++) {
         coffeeButtons[i].disabled = false;
     }
 } 
 
 function disableCoffeeTypesButtons() {
+    const coffeeButtons = [CoffeeMachineUI.espressoButton, CoffeeMachineUI.latteButton, CoffeeMachineUI.americanoButton, CoffeeMachineUI.cappuccinoButton];
+
     for (let i = 0; i < coffeeButtons.length; i++) {
         coffeeButtons[i].disabled = true;
     }
@@ -176,7 +180,8 @@ function disableTakeCup() {
     CoffeeMachineUI.takeCup.disabled = true;
 }
 
-const showPercent = function(percent, product) { //Display percent value of specific product 
+//Display percent value of specific product 
+const showPercent = function(percent, product) { 
     switch(product) {
         case 'water':
             Tank.displayPercentWater.textContent = `${percent}%`;
@@ -197,7 +202,8 @@ const showPercent = function(percent, product) { //Display percent value of spec
     console.log(`${product} ${percent}%`);
 }
 
-const calc = function(product, value, defaultValue) { //Calculate the percent value of products remaining in coffee machine
+//Calculate the percent value of products remaining in coffee machine
+const calc = function(product, value, defaultValue) { 
     switch (product) {
         case 'water':
             value = Storage.getItem('water');
@@ -215,14 +221,16 @@ const calc = function(product, value, defaultValue) { //Calculate the percent va
     return Math.round(value / defaultValue * 100);
 }
 
-function pourCoffee() { //Calls coffee pour animation
+//Calls coffee pour animation
+function pourCoffee() { 
     setTimeout(function() {
         CoffeeMachineUI.coffee.classList.add('pour');
         CoffeeMachineUI.smallStartBtn.style.backgroundColor = 'rgb(255, 202, 87)';
     }, 1000);
 }
 
-function removePourCoffee() { //Prevents from call coffee pour animation
+ //Prevents from call coffee pour animation
+function removePourCoffee() {
     setTimeout(function() {
         CoffeeMachineUI.coffee.classList.remove('pour');
         CoffeeMachineUI.smallStartBtn.style.backgroundColor = '#777';
@@ -230,7 +238,8 @@ function removePourCoffee() { //Prevents from call coffee pour animation
     }, 8000);
 }
 
-function pourMilk() { //Calls milk pour animation
+//Calls milk pour animation
+function pourMilk() {
     setTimeout(function() {
         CoffeeMachineUI.milk.classList.add('pour');
 
@@ -238,7 +247,8 @@ function pourMilk() { //Calls milk pour animation
     }, 1000);
 }
 
-function removePourMilk() { //Prevents from call milk pour animation
+//Prevents from call milk pour animation
+function removePourMilk() {
     setTimeout(function() {
         CoffeeMachineUI.milk.classList.remove('pour');
         CoffeeMachineUI.smallStartBtn.style.backgroundColor = '#777';
@@ -246,7 +256,8 @@ function removePourMilk() { //Prevents from call milk pour animation
     }, 8000);
 }
 
-function pourCoffeeAndMilk() { //Calls milk and coffee pour animation
+//Calls milk and coffee pour animation
+function pourCoffeeAndMilk() {
     setTimeout(function() {
         CoffeeMachineUI.coffee.classList.add('pour');
         CoffeeMachineUI.milk.classList.add('pour');
@@ -255,7 +266,8 @@ function pourCoffeeAndMilk() { //Calls milk and coffee pour animation
     }, 1000);
 }
 
-function removePourCoffeeAndMilk() { //Prevents from call milk and coffee pour animation
+//Prevents from call milk and coffee pour animation
+function removePourCoffeeAndMilk() { 
     setTimeout(function() {
         CoffeeMachineUI.coffee.classList.remove('pour');
         CoffeeMachineUI.milk.classList.remove('pour');
@@ -381,7 +393,10 @@ function makeCappuccino() {
     addItemtoStorage('coffee', cappuccino.coffee);
 }
 
-function getCup() { // Put empty cup on the stand
+//Put empty cup on the stand
+function getCup() { 
+    const cupElements = [Cup.coffee, Cup.milk, Cup.foam];
+
     for (let i = 0; i < cupElements.length; i++) {
         cupElements[i].style.display = 'block';  
     }
@@ -391,12 +406,14 @@ function getCup() { // Put empty cup on the stand
     enableStartButton();
 }
 
+//Remove cup
 CoffeeMachineUI.takeCup.addEventListener('click', function() {
     getCup();
     disableTakeCup();
 });
 
-CoffeeMachineUI.takeCoffee.addEventListener('click', function() { // Take a cup of coffee from the stand
+//Take a cup of coffee from the stand
+CoffeeMachineUI.takeCoffee.addEventListener('click', function() { 
     CoffeeMachineUI.cup.style.visibility = 'hidden';
     
     for (let i = 0; i < cupElements.length; i++) {
@@ -411,20 +428,25 @@ CoffeeMachineUI.takeCoffee.addEventListener('click', function() { // Take a cup 
     enableTakeCup();
 });
 
-CoffeeMachineUI.startButton.addEventListener('click', function() { // Run coffee machine, by click on start button
+//Starts coffee machine program
+CoffeeMachineUI.startButton.addEventListener('click', function() { 
     chooseType();
 });
 
-CoffeeMachineUI.powerButton.addEventListener('click', function() {  // Start the program, by click on power button
-    CoffeeMachineUI.powerButton.classList.toggle('power-default');
+//Turn on coffee machine, by click on power button
+CoffeeMachineUI.powerButton.addEventListener('click', function() {  
+    const activeElements = [CoffeeMachineUI.powerButton, CoffeeMachineUI.text, Tank.displayPercentWater, Tank.displayPercentMilk, Tank.displayPercentCoffee];
 
+    CoffeeMachineUI.powerButton.classList.toggle('power-default');
+    
     for (let i = 0; i < activeElements.length; i++) {
         activeElements[i].classList.toggle('active');
     }
 
     switchOn();
 });
-                            // Coffee selection buttons
+
+// Coffee selection buttons
 CoffeeMachineUI.espressoButton.addEventListener('click', function() { // espresso selection button
     CoffeeMachineUI.text.value = 'espresso';
 });
