@@ -4,7 +4,7 @@
 }
 
 body {
-    min-height: 300vh;
+    height: 300vh;
 }
 
 .top {
@@ -63,11 +63,6 @@ body {
     align-items: center;
     width: 100%;
     height: 90%;
-}
-
-.bottom-text {
-    font-size: 3rem;
-    display: none;
 }
 
 .col {
@@ -151,7 +146,7 @@ body {
     }
 
     .col {
-        height: 120vh;
+        height: 100vh;
         flex-direction: column;
         justify-content: center;
     }
@@ -161,7 +156,6 @@ body {
     }
 
     .col p {
-        text-align: center;
         width: 80%;
     }
 

@@ -12,13 +12,20 @@
 </head>
 <body>
     <header>
+        <section class="nav-logo">
+            <i class="fa-solid fa-gear" id="menu-bars"></i>
+            <i class="fa-solid fa-bars" id="main-menu-icon"></i>
+            <div class="logo">
+                <h1>Project Coffee</h1>
+                <img src="../images/coffee-cup-logo.png" alt="coffee-cup-draw">
+            </div>
+        </section>
+
         <nav> <!--Navigation bar used in this project-->
-            <img src="../images/coffee-cup-logo.png" alt="coffee-cup-draw">
-            <h1>Project Coffee</h1>
             <ul class="nav-links">
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="#">Account</a></li>
-                <li><a href="#">Make Coffee</a></li>
+                <li><a href="#">Coffee Machine</a></li>
                 <li><a href="coffee-types.html">Coffee Types</a></li>
             </ul>
         </nav>
@@ -101,7 +108,7 @@
                         </div>
                         <p>Quantity: <span class="water-quantity"></span><span class="default-water-quantity"></span> ml</p>
                         <input type="range" value="50" max="100" step="1" id="water-quantity-range" name="water-quantity-range">
-                        <span id="water-value"></span>
+                        <span id="water-value" class="content-container-value"></span>
                         <i class="fa-solid fa-square-plus" id="add-water"></i>
                     </div>
 
@@ -111,7 +118,7 @@
                         </div>
                         <p>Quantity: <span class="milk-quantity"></span><span class="default-milk-quantity"></span> ml</p>
                         <input type="range" value="50" max="100" step="1" id="milk-quantity-range" name="milk-quantity-range">
-                        <span id="milk-value"></span>
+                        <span id="milk-value" class="content-container-value"></span>
                         <i class="fa-solid fa-square-plus" id="add-milk"></i>
                     </div>
 
@@ -121,7 +128,7 @@
                         </div>
                         <p>Quantity: <span class="coffee-quantity"></span><span class="default-coffee-quantity"></span> g</p>
                         <input type="range" value="50" max="100" step="1" id="coffee-quantity-range" name="coffee-quantity-range">
-                        <span id="coffee-value"></span>
+                        <span id="coffee-value" class="content-container-value"></span>
                         <i class="fa-solid fa-square-plus" id="add-coffee"></i>
                     </div>
                  
@@ -132,27 +139,36 @@
      
         <section class="left-child">
             <aside>
-                <i class="fa-solid fa-bars" id="menu-bars"></i>
                 <section class="action-icons">
-                    <div>
-                        <i class="fa-solid fa-circle-down" id="arrow-icon"></i>
-                        <p>Show menu</p>
-                    </div>
-                    
-                    <div>
-                        <i class="fa-solid fa-circle-plus" id="plus-icon"></i>
-                        <p>Refill tanks</p>  
-                    </div>  
-                    
-                    <div>
-                        <i class="fa-solid fa-mug-saucer" id="mug-icon"></i>
-                        <p>Create coffee</p>
-                    </div>
+                    <ul class="config-menu">
+                        <li id="show-menu">Show menu</li>
+                        <li id="refill-tanks">Refill tanks</li>
+                        <li id="create-coffee">Create coffee</li>
+                    </ul>
+                </section>
+
+                <section class="menu-aside">
+                    <ul class="menu-aside-nav">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">Coffee Machine</a></li>
+                        <li><a href="coffee-types.html">Coffee Types</a></li>
+                    </ul>
                 </section>
             </aside>
 
             <section class="coffee-machine"><!--Body of coffee machine, this section include all machine elements-->
                 <div class="top"><!--The upper part of coffee machine-->
+                    <aside>
+                        <section class="menu-aside">
+                            <ul class="menu-aside-nav">
+                                <li><a href="/index.html">Home</a></li>
+                                <li><a href="#">Account</a></li>
+                                <li><a href="#">Coffee Machine</a></li>
+                                <li><a href="coffee-types.html">Coffee Types</a></li>
+                            </ul>
+                        </section>
+                    </aside>
                     <div class="side-btn-box"> <!--Buttons on top-left side-->
                         <div class="side-btn">
                             <label for="espresso-btn">Espresso</label>
@@ -305,5 +321,6 @@
         </section>
     </main>
     <script src="../scripts/main.js" type="module"></script>
+    <script src="../scripts/nav.js"></script>
 </body>
 </html>

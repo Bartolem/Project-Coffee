@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/coffee-types.css">
     <link rel="stylesheet" href="../styles/nav.css">
+    <link rel="stylesheet" href="../styles/all.css">
     <title>Project Coffee | Coffee Types</title>
 </head>
 <body>
     <header>
+        <section class="nav-logo">
+            <i class="fa-solid fa-bars" id="main-menu-icon"></i>
+            <div class="logo">
+                <h1>Project Coffee</h1>
+                <img src="../images/coffee-cup-logo.png" alt="coffee-cup-draw">
+            </div>
+        </section>
+
         <nav> <!--Navigation bar used in this project-->
-            <img src="../images/coffee-cup-logo.png" alt="coffee-cup-draw">
-            <h1>Project Coffee</h1>
             <ul class="nav-links">
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="#">Account</a></li>
@@ -23,6 +30,16 @@
     </header>
 
     <main class="container">
+        <aside>
+            <section class="menu-aside">
+                <ul class="menu-aside-nav">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="make-coffee.html">Coffee Machine</a></li>
+                    <li><a href="#">Coffee Types</a></li>
+                </ul>
+            </section>
+        </aside>
         <div class="column">
             <div class="img-container"> 
                 <img src="../images/espresso-type.png" alt="latte">
@@ -103,5 +120,6 @@
             <div class="milk-foam"></div>
         </div>
     </footer>
+    <script src="/src/scripts/nav.js"></script>
 </body>
 </html>

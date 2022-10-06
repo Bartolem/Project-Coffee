@@ -474,20 +474,21 @@ Popup.addWaterIcon.addEventListener('click', function() {
     resetAlertTextContent();
 });
 
-Popup.addCoffeeRange.addEventListener('change', function() {
+Popup.addCoffeeRange.oninput = function() {
     Popup.coffeeValue.textContent = `+ ${calculateValueToRefill('coffee', coffeeMachine.defaultCoffee, Popup.addCoffeeRange.value).toFixed() - Storage.getItem('coffee')}`;
     Popup.addCoffeeRange.max = ((coffeeMachine.defaultCoffee - Storage.getItem('coffee')) / coffeeMachine.defaultCoffee * 100).toFixed();
-});
+};
 
-Popup.addMilkRange.addEventListener('change', function() {
+Popup.addMilkRange.oninput = function() {
     Popup.milkValue.textContent = `+ ${calculateValueToRefill('milk', coffeeMachine.defaultMilk, Popup.addMilkRange.value).toFixed()  - Storage.getItem('milk')}`;
     Popup.addMilkRange.max = ((coffeeMachine.defaultMilk - Storage.getItem('milk')) / coffeeMachine.defaultMilk * 100).toFixed();
-});
+};
 
-Popup.addWaterRange.addEventListener('change', function() {
-    Popup.waterValue.textContent = `+ ${calculateValueToRefill('water', coffeeMachine.defaultWater, Popup.addWaterRange.value).toFixed() - Storage.getItem('water')}`;
+Popup.addWaterRange.oninput = function() {
+    Popup.waterValue.textContent = `+ ${calculateValueToRefill('water', coffeeMachine.defaultWater, 
+    Popup.addWaterRange.value).toFixed() - Storage.getItem('water')}`;
     Popup.addWaterRange.max = ((coffeeMachine.defaultWater - Storage.getItem('water')) / coffeeMachine.defaultWater * 100).toFixed();
-});
+};
 
 CoffeeMachineUI.showAside.addEventListener('click', function() {
    CoffeeMachineUI.aside.classList.toggle('show');
