@@ -10,12 +10,12 @@ export class CoffeeMachineUI {
     }
 
     static get startButton() {
-        const startButton = document.querySelector('.start');
+        const startButton = document.getElementById('start');
         return startButton;
     }
 
     static get powerButton() {
-        const powerButton = document.querySelector('.power');
+        const powerButton = document.getElementById('power');
         return powerButton;
     }
 

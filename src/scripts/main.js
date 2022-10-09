@@ -6,7 +6,6 @@ import { Tank } from "./tank.js";
 import { Storage } from "./storage.js";
 import { CoffeeCreator } from "./coffeeCreator.js";
 import { CoffeeMenu } from "./coffeeMenu.js";
-import { Aside } from "./aside.js";
 import { CoffeeMachineUI } from "./coffeeMachineUI.js";
 
 const coffeeMachine = new CoffeeMachine(1750, 2400, 500, 15);
@@ -276,6 +275,7 @@ function removePourCoffeeAndMilk() {
     }, 8000);
 }
 
+//Adds items to localStorage
 function addItemtoStorage(item, value) {
     Storage.setItem(item, Storage.getItem(item) - value);
     showPercent(calc(item), item);
@@ -406,72 +406,6 @@ function getCup() {
     enableStartButton();
 }
 
-//Remove cup
-CoffeeMachineUI.takeCup.addEventListener('click', function() {
-    getCup();
-    disableTakeCup();
-});
-
-//Take a cup of coffee from the stand
-CoffeeMachineUI.takeCoffee.addEventListener('click', function() { 
-    CoffeeMachineUI.cup.style.visibility = 'hidden';
-    
-    for (let i = 0; i < cupElements.length; i++) {
-        cupElements[i].style.display = 'none';  
-    }
-
-    for (let i = 0; i < cupElements.length; i++) {
-        cupElements[i].style.height = '0';  
-    }
-
-    disableTakeCoffee();
-    enableTakeCup();
-});
-
-//Starts coffee machine program
-CoffeeMachineUI.startButton.addEventListener('click', function() { 
-    chooseType();
-});
-
-//Turn on coffee machine, by click on power button
-CoffeeMachineUI.powerButton.addEventListener('click', function() {  
-    const activeElements = [CoffeeMachineUI.powerButton, CoffeeMachineUI.text, Tank.displayPercentWater, Tank.displayPercentMilk, Tank.displayPercentCoffee];
-
-    CoffeeMachineUI.powerButton.classList.toggle('power-default');
-    
-    for (let i = 0; i < activeElements.length; i++) {
-        activeElements[i].classList.toggle('active');
-    }
-
-    switchOn();
-});
-
-// Coffee selection buttons
-CoffeeMachineUI.espressoButton.addEventListener('click', function() { // espresso selection button
-    CoffeeMachineUI.text.value = 'espresso';
-});
-
-CoffeeMachineUI.latteButton.addEventListener('click', function() { // latte selection button
-    CoffeeMachineUI.text.value = 'latte';
-});
-
-CoffeeMachineUI.americanoButton.addEventListener('click', function() { // americano selection button
-    CoffeeMachineUI.text.value = 'americano';
-});
-
-CoffeeMachineUI.cappuccinoButton.addEventListener('click', function() { // cappuccino selection button
-    CoffeeMachineUI.text.value = "cappuccino";
-});
-
-Aside.showMenu.addEventListener('click', function() {
-    CoffeeMenu.coffeeMenu.classList.toggle('show');
-    CoffeeMachineUI.aside.classList.remove('show');
-});
-
-Popup.closeModalIcon.addEventListener('click', showModal);
-
-Aside.refillTanks.addEventListener('click', showModal);
-
 function calculateValueToRefill(name, item, range) {
     let coffeeValue = item * range / 100;
     let coffeeValueTotal = Number(Storage.getItem(name));
@@ -485,26 +419,15 @@ function calculateValueToRefill(name, item, range) {
     return coffeeValueTotal;
 }
 
-Popup.addCoffeeIcon.addEventListener('click', function() {
-    Storage.setItem('coffee', calculateValueToRefill('coffee', coffeeMachine.defaultCoffee, Popup.addCoffeeRange.value));
-    Popup.coffeeQuantity.textContent = `${Storage.getItem('coffee')}/`;
-    showPercent(calc('coffee'), 'coffee');
-    resetAlertTextContent();
-});
+//Event delegation
+function selectElement(type, selector, callback) {
+    document.addEventListener(type, (event) => {
+        if (event.target.closest(selector)) {
+            callback(event);
+        }
+    });
+}
 
-Popup.addMilkIcon.addEventListener('click', function() {
-    Storage.setItem('milk', calculateValueToRefill('milk', coffeeMachine.defaultMilk, Popup.addMilkRange.value));
-    Popup.milkQuantity.textContent = `${Storage.getItem('milk')}/`;
-    showPercent(calc('milk'), 'milk');
-    resetAlertTextContent();
-});
-
-Popup.addWaterIcon.addEventListener('click', function() {
-    Storage.setItem('water', calculateValueToRefill('water', coffeeMachine.defaultWater, Popup.addWaterRange.value));
-    Popup.waterQuantity.textContent = `${Storage.getItem('water')}/`;
-    showPercent(calc('water'), 'water');
-    resetAlertTextContent();
-});
 
 Popup.addCoffeeRange.oninput = function() {
     Popup.coffeeValue.textContent = `+ ${calculateValueToRefill('coffee', coffeeMachine.defaultCoffee, Popup.addCoffeeRange.value).toFixed() - Storage.getItem('coffee')}`;
@@ -522,48 +445,156 @@ Popup.addWaterRange.oninput = function() {
     Popup.addWaterRange.max = ((coffeeMachine.defaultWater - Storage.getItem('water')) / coffeeMachine.defaultWater * 100).toFixed();
 };
 
-CoffeeMachineUI.showAside.addEventListener('click', function() {
-   CoffeeMachineUI.aside.classList.toggle('show');
+//Turn on coffee machine, by click on power button
+selectElement('click', '#power', (event) => {
+    const activeElements = [CoffeeMachineUI.powerButton, CoffeeMachineUI.text, Tank.displayPercentWater, Tank.displayPercentMilk, Tank.displayPercentCoffee];
+
+    CoffeeMachineUI.powerButton.classList.toggle('power-default');
+    
+    for (let i = 0; i < activeElements.length; i++) {
+        activeElements[i].classList.toggle('active');
+    }
+
+    switchOn();
 });
 
-Aside.mugIcon.addEventListener('click', function() {
+//Starts coffee machine program
+selectElement('click', '.start', (event) => {
+    chooseType();
+});
+
+// espresso selection button
+selectElement('click', '.espresso-btn', (event) => {
+    CoffeeMachineUI.text.value = 'espresso';
+});
+
+// latte selection button
+selectElement('click', '.latte-btn', (event) => {
+    CoffeeMachineUI.text.value = 'latte';
+});
+
+// americano selection button
+selectElement('click', '.americano-btn', (event) => {
+    CoffeeMachineUI.text.value = 'americano';
+});
+
+// cappuccino selection button
+selectElement('click', '.cappuccino-btn', (event) => {
+    CoffeeMachineUI.text.value = 'cappuccino';
+});
+
+selectElement('click', '#show-menu', (event) => {
+    CoffeeMenu.coffeeMenu.classList.toggle('show');
+    CoffeeMachineUI.aside.classList.remove('show');
+});
+
+selectElement('click', '.modal-top i', (event) => {
+    showModal();
+});
+
+selectElement('click', '#refill-tanks', (event) => {
+    showModal();
+});
+
+//Removes cup
+selectElement('click', '.base button:nth-child(2)', (event) => {
+    getCup();
+    disableTakeCup();
+});
+
+//Takes a cup of coffee from the stand
+selectElement('click', '.base button:nth-child(1)', (event) => {
+    const cupElements = [Cup.coffee, Cup.milk, Cup.foam];
+
+    CoffeeMachineUI.cup.style.visibility = 'hidden';
+    
+    for (let i = 0; i < cupElements.length; i++) {
+        cupElements[i].style.display = 'none';  
+    }
+
+    for (let i = 0; i < cupElements.length; i++) {
+        cupElements[i].style.height = '0';  
+    }
+
+    disableTakeCoffee();
+    enableTakeCup();
+});
+
+//Refills coffee tank
+selectElement('click', '#add-coffee', (event) => {
+    Storage.setItem('coffee', calculateValueToRefill('coffee', coffeeMachine.defaultCoffee, Popup.addCoffeeRange.value));
+    Popup.coffeeQuantity.textContent = `${Storage.getItem('coffee')}/`;
+    showPercent(calc('coffee'), 'coffee');
+    resetAlertTextContent();
+});
+
+//Refills milk tank
+selectElement('click', '#add-milk', (event) => {
+    Storage.setItem('milk', calculateValueToRefill('milk', coffeeMachine.defaultMilk, Popup.addMilkRange.value));
+    Popup.milkQuantity.textContent = `${Storage.getItem('milk')}/`;
+    showPercent(calc('milk'), 'milk');
+    resetAlertTextContent();
+});
+
+//Refills water tank
+selectElement('click', '#add-water', (event) => {
+    Storage.setItem('water', calculateValueToRefill('water', coffeeMachine.defaultWater, Popup.addWaterRange.value));
+    Popup.waterQuantity.textContent = `${Storage.getItem('water')}/`;
+    showPercent(calc('water'), 'water');
+    resetAlertTextContent();
+});
+
+//Shows aside menu
+selectElement('click', '#menu-bars', (event) => {
+    CoffeeMachineUI.aside.classList.toggle('show');
+});
+
+//Shows coffee creator
+selectElement('click', '#create-coffee', (event) => {
     CoffeeCreator.coffeeCreation.classList.toggle('show');
     CoffeeCreator.coffeeCreationWrap.classList.toggle('show');
     CoffeeMachineUI.aside.classList.remove('show');
     document.querySelector('.left-child').classList.toggle('blur');
 });
 
-CoffeeCreator.closeCoffeeCreatorIcon.addEventListener('click', function() {
+//Closes coffee creator
+selectElement('click', '.coffee-creation-top i', (event) => {
     CoffeeCreator.coffeeCreation.classList.toggle('show');
     CoffeeCreator.coffeeCreationWrap.classList.toggle('show');
     document.querySelector('.left-child').classList.toggle('blur');
 });
 
-CoffeeMenu.closeCoffeeMenu.addEventListener('click', function() {
+//Closes coffee menu
+selectElement('click', '.menu-top i', (event) => {
     CoffeeMenu.coffeeMenu.classList.toggle('show');
 });
 
-CoffeeCreator.coffeeRange.addEventListener('change', function() {
+//Set coffee level of custom coffee 
+selectElement('input', '#coffee-range', (event) => {
     Storage.setItem('coffeeRange', CoffeeCreator.coffeeRange.value);
     CoffeeCreator.innerCoffee.style.height = `${Storage.getItem('coffeeRange')}%`;
 });
 
-CoffeeCreator.milkRange.addEventListener('change', function() {
+//Set milk level of custom coffee 
+selectElement('input', '#milk-range', (event) => {
     Storage.setItem('milkRange', CoffeeCreator.milkRange.value);
     CoffeeCreator.innerMilk.style.height = `${Storage.getItem('milkRange')}%`;
 });
 
-CoffeeCreator.foamRange.addEventListener('change', function() {
+//Set milk foam level of custom coffee 
+selectElement('input', '#foam-range', (event) => {
     Storage.setItem('foamRange', CoffeeCreator.foamRange.value);
     CoffeeCreator.innerFoam.style.height = `${Storage.getItem('foamRange')}%`;
 });
 
-CoffeeCreator.fillRange.addEventListener('change', function() {
+//Set fill level of custom coffee 
+selectElement('input', '#fill-range', (event) => {
     Storage.setItem('fillRange', CoffeeCreator.fillRange.value);
     CoffeeCreator.inner.style.height = `${Storage.getItem('fillRange')}%`;
 });
 
-CoffeeCreator.customCoffeeButton.addEventListener('click', function(event) {
+//Simple coffee creator form validation
+selectElement('click', '.custom-name button', (event) => {
     event.preventDefault();
     
     if (CoffeeCreator.customCoffeeInput.value === ''){
@@ -591,7 +622,8 @@ CoffeeCreator.customCoffeeButton.addEventListener('click', function(event) {
     }
 });
 
-CoffeeCreator.addToCoffeeMachine.addEventListener('click', function(event) {
+//Adds custom coffee to coffee machine
+selectElement('click', '#add-to-coffee-machine', (event) => {
     event.preventDefault();
 
     CoffeeMachineUI.text.value = customCoffee.name;
@@ -600,16 +632,24 @@ CoffeeCreator.addToCoffeeMachine.addEventListener('click', function(event) {
     setTimeout(() => CoffeeCreator.addedToCoffeeMachineMessage.setAttribute('hidden', 'hidden'), 4000);
 });
 
-CoffeeCreator.coffeeCreationWrap.addEventListener('click', function(event) {
+//Closes coffee creator modal by click outside the modal window
+selectElement('click', '.coffee-creation-wrap', (event) => {
     if (!event.target.closest('.coffee-creation')) {
         CoffeeCreator.coffeeCreation.classList.remove('show');
         CoffeeCreator.coffeeCreationWrap.classList.remove('show');
         document.querySelector('.left-child').classList.remove('blur');
-        console.log('work!');
     }
 });
 
-CoffeeCreator.resetCoffeeCreator.addEventListener('click', function(event) {
+//Closes refill tanks modal by click outside the modal window
+selectElement('click', '.modal-wrap', (event) => {
+    if (!event.target.closest('.modal')) {
+        showModal();
+    }
+});
+
+//Reset custom coffee creator to default values
+selectElement('click', '#reset-custom-coffee', (event) => {
     event.preventDefault();
 
     Storage.removeItem('coffeeRange');
@@ -629,8 +669,4 @@ CoffeeCreator.resetCoffeeCreator.addEventListener('click', function(event) {
     CoffeeCreator.inner.style.height = `${CoffeeCreator.fillRange.value}%`;
 });
 
-Popup.modalWrap.addEventListener('click', function(event) {
-    if (!event.target.closest('.modal')) {
-        showModal();
-    }
-});
+
