@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Coffee | Account</title>
+    <link rel="stylesheet" href="../styles/nav.css">
+    <link rel="stylesheet" href="../styles/all.css">
+    <link rel="stylesheet" href="../styles/account.css">
+</head>
+<body>
+    <header>
+        <section class="nav-logo">
+            <i class="fa-solid fa-bars" id="main-menu-icon"></i>
+            <div class="logo">
+                <h1>Project Coffee</h1>
+                <img src="../images/coffee-cup-logo.png" alt="coffee-cup-draw">
+            </div>
+        </section>
+
+        <nav> <!--Navigation bar used in this project-->
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="#">Account</a></li>
+                <li><a href="make-coffee.html">Make Coffee</a></li>
+                <li><a href="coffee-types.html">Coffee Types</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <aside>
+            <section class="menu-aside">
+                <ul class="menu-aside-nav">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="make-coffee.html">Coffee Machine</a></li>
+                    <li><a href="coffee-types.html">Coffee Types</a></li>
+                </ul>
+            </section>
+        </aside>
+
+        <section class="container">
+            <div class="account">
+                <h2>Account configuration</h2>
+                <div>
+                    <h3>Change account name</h3>
+                    <button class="account-button" id="change-account-button">Edit</button>
+                    <input type="text" readonly disabled id="account-display">
+                </div>
+                <button class="account-button" id="reset-statistics-btn">Reset statistics</button>
+                <button class="account-button" id="delete-account-btn">Delete account</button>
+            </div>
+
+            <div class="statistics">
+                <h2>Statistics</h2>
+                <p>Maked coffee: <span id="maked-coffee">0</span></p>
+                <p>Custom coffee created: <span id="custom-coffee-created">0</span></p>
+                <p>Favorite coffee type: <span id="favorite-coffee-type">name</span></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../scripts/account.js" type="module"></script>
+</body>
+</html>

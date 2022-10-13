@@ -15,17 +15,34 @@ const americano = new Coffee('americano', 150, 0, 16);
 const cappuccino = new Coffee('cappuccino', 60, 120, 16);
 const customCoffee = new Coffee('', 100, 200, 16);
 
+let makedCoffee = 0;
+let createdCustomCoffee = 0;
+let espressoType = 0, latteType = 0, americanoType = 0, cappuccinoType = 0;
 let power = false;
 
 window.onload = function() {
-    Storage.checkStorage('milk', coffeeMachine.milk);
-    Storage.checkStorage('water', coffeeMachine.water);
-    Storage.checkStorage('coffee', coffeeMachine.coffee);
-    Storage.checkStorage('coffeeRange', CoffeeCreator.coffeeRange.value);
-    Storage.checkStorage('milkRange', CoffeeCreator.milkRange.value);
-    Storage.checkStorage('foamRange', CoffeeCreator.foamRange.value);
-    Storage.checkStorage('fillRange', CoffeeCreator.fillRange.value);
-    Storage.checkStorage('customCoffeeName', customCoffee.name);
+    checkStorage('makedCoffee', makedCoffee);
+    checkStorage('createdCustomCoffee', createdCustomCoffee);
+    checkStorage('espressoType', espressoType);
+    checkStorage('latteType', latteType);
+    checkStorage('americanoType', americanoType);
+    checkStorage('cappuccinoType', cappuccinoType);
+    checkStorage('milk', coffeeMachine.milk);
+    checkStorage('water', coffeeMachine.water);
+    checkStorage('coffee', coffeeMachine.coffee);
+    checkStorage('coffeeRange', CoffeeCreator.coffeeRange.value);
+    checkStorage('milkRange', CoffeeCreator.milkRange.value);
+    checkStorage('foamRange', CoffeeCreator.foamRange.value);
+    checkStorage('fillRange', CoffeeCreator.fillRange.value);
+    checkStorage('customCoffeeName', customCoffee.name);
+
+    makedCoffee = Storage.getItem('makedCoffee');
+    createdCustomCoffee = Storage.getItem('createdCustomCoffee');
+    espressoType = Storage.getItem('espressoType');
+    latteType = Storage.getItem('latteType');
+    americanoType = Storage.getItem('americanoType');
+    cappuccinoType = Storage.getItem('cappuccinoType');
+    checkStorage('favoriteCoffee', getFavoriteCoffeeType());
 
     CoffeeCreator.customCoffeeInput.value = Storage.getItem('customCoffeeName');
     CoffeeCreator.coffeeRange.value = Storage.getItem('coffeeRange');
@@ -40,6 +57,39 @@ window.onload = function() {
     showPercent(calc('milk'), 'milk');
     showPercent(calc('water'), 'water');
     showPercent(calc('coffee'), 'coffee');
+}
+
+function checkStorage(name, value) {
+    Storage.checkStorage(name, value);
+}
+
+function getFavoriteCoffeeType() {
+    const favoriteCoffees = [{
+        value: espressoType,
+        name: 'espresso'
+    },
+    {
+        value: latteType,
+        name: 'latte'
+    },
+    {
+        value: americanoType,
+        name: 'americano'
+    },
+    {
+        value: cappuccinoType,
+        name: 'cappuccino'
+    }];
+    
+    for (let i = 1; i < favoriteCoffees.length; i++) {
+        let maxNum = favoriteCoffees[0];
+
+        if (favoriteCoffees[i].value > maxNum.value) {
+            maxNum = favoriteCoffees[i];
+        }
+
+        return maxNum.name;
+    }
 }
 
 //Show popup window, that includes interface to refill fluid tanks 
@@ -94,6 +144,8 @@ function checkPossibility(coffeeType, makeCoffee) {
     && Storage.getItem('water') >= coffeeType.water
     && Storage.getItem('milk') >= coffeeType.milk) {
         makeCoffee();
+        Storage.setItem('makedCoffee', ++makedCoffee);
+        console.log(`Maked coffee: ${Storage.getItem('makedCoffee')}`);
     }
     else if (Storage.getItem('coffee') < coffeeType.coffee) {
         showModal();
@@ -284,6 +336,8 @@ function addItemtoStorage(item, value) {
 function makeCustomCoffee() {
     disableStartButton();
 
+    Storage.setItem('createdCustomCoffee', ++createdCustomCoffee);
+
     customCoffee.water = (Storage.getItem('coffeeRange') * 2) * (Storage.getItem('fillRange') / 100);
     customCoffee.milk = (Storage.getItem('milkRange') * 3) * (Storage.getItem('fillRange') / 100);
     customCoffee.coffee = Storage.getItem('coffeeRange') / 5;
@@ -334,6 +388,8 @@ function makeCustomCoffee() {
 }
 
 function makeEspresso() {
+    Storage.setItem('espressoType', ++espressoType);
+
     disableStartButton();
     pourCoffee();
     removePourCoffee();
@@ -348,6 +404,8 @@ function makeEspresso() {
 }
 
 function makeLatte() {
+    Storage.setItem('latteType', ++latteType);
+
     disableStartButton();
     pourCoffeeAndMilk();
     removePourCoffeeAndMilk();
@@ -364,6 +422,8 @@ function makeLatte() {
 }
 
 function makeAmericano() {
+    Storage.setItem('americanoType', ++americanoType);
+
     disableStartButton();
     pourCoffee();
     removePourCoffee();
@@ -378,6 +438,8 @@ function makeAmericano() {
 }
 
 function makeCappuccino() {
+    Storage.setItem('cappuccinoType', ++cappuccinoType);
+
     disableStartButton();
     pourCoffeeAndMilk();
     removePourCoffeeAndMilk();
@@ -459,7 +521,7 @@ selectElement('click', '#power', (event) => {
 });
 
 //Starts coffee machine program
-selectElement('click', '.start', (event) => {
+CoffeeMachineUI.startButton.addEventListener('click', function() {
     chooseType();
 });
 
