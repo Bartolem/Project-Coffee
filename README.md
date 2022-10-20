@@ -1,6 +1,13 @@
 # Project-Coffee
-## About
 This project is a sort of simulation of coffee brewing using an coffee machine.
+
+## Introduction
+It's a training project. I wanted to do this project to learn the basics of frontend technologies. I didn't use any frameworks or other libraries.
+
+## Table of contents
+* [Used technologies](https://github.com/Bartolem/Project-Coffee#used-technologies)
+* [How to use](https://github.com/Bartolem/Project-Coffee#usage)
+* [Custom coffee creation](https://github.com/Bartolem/Project-Coffee#custom-coffee-creation)
 
 ## Used technologies
 * HTML
@@ -10,15 +17,15 @@ This project is a sort of simulation of coffee brewing using an coffee machine.
 ## Description
 The heart of this project is the coffee machine. This machine has made brewing coffee simple. The user can choose the type of coffee. Must keep in mind that the ingredients needed to create this drink are gradually running out, so they must be refilled.
 
-## Usage
+## How to use
 1. On the navigation bar, click on the make coffee tab.
-![](images/usage1.png)
+![](src/images/usage1.png)
 <br>
 <br>
 <br>
 
 2. Turn on the machine by pressing the button.
-![](images/usage2.png)
+![](src/images/usage2.png)
 <br>
 <br>
 <br>
@@ -30,13 +37,41 @@ The heart of this project is the coffee machine. This machine has made brewing c
 <br>
 
 4. Press the button responsible for pouring coffee.
-![](images/usage4.png)
+![](src/images/usage4.png)
 <br>
 <br>
 <br>
 
 5. Take the coffee cup and put a new empty cup to repeat the process.
-![](images/usage5.png)
+![](src/images/usage5.png)
 <br>
 <br>
 <br>
+
+## Custom coffee creation
+1. Click gear icon, and select create coffee option.
+![](src/images/create1.png)
+<br>
+<br>
+<br>
+
+2. Create custom coffee by changing slider position.
+![](src/images/create2.png)
+<br>
+<br>
+<br>
+
+3. Set the name of your coffee.
+![](src/images/create3.png)
+<br>
+<br>
+<br>
+
+4. Add your creation to coffee machine.
+![](src/images/create4.png)
+<br>
+<br>
+<br>
+
+5. Now, you can pour your coffee.
+![](src/images/create5.png)
