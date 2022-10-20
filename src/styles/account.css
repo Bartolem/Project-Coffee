@@ -23,6 +23,9 @@ main {
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
+    color: #4b3b32;
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
 }
 
 .statistics, .account {
@@ -30,7 +33,7 @@ main {
     align-items: flex-start;
     flex-direction: column;
     justify-content: space-around;
-    flex-basis: 50%;
+    flex-basis: 40%;
     height: 50%;
     margin: 0 2em;
 }
@@ -38,7 +41,34 @@ main {
 
 input,
 input:disabled {
-    color: black;
+    height: 3em;
+    width: 10em;
+    color: #4b3b32;
     border: none;
     background-color: transparent;
+    text-align: center;
+}
+
+.account-button {
+    height: 3em;
+    width: 12em;
+    border-radius: 3px;
+    color: white;
+    border: none;
+    background-color: darkslategray;
+}
+
+#delete-account-btn {
+    background-color: brown;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+
+    .statistics, .account {
+        margin: 0 0.5em;
+        width: 100%;
+    } 
 }

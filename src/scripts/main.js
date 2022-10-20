@@ -43,6 +43,7 @@ window.onload = function() {
     americanoType = Storage.getItem('americanoType');
     cappuccinoType = Storage.getItem('cappuccinoType');
     Storage.setItem('favoriteCoffee', getFavoriteCoffeeType());
+    console.log(getFavoriteCoffeeType())
 
     CoffeeCreator.customCoffeeInput.value = Storage.getItem('customCoffeeName');
     CoffeeCreator.coffeeRange.value = Storage.getItem('coffeeRange');
@@ -80,16 +81,16 @@ function getFavoriteCoffeeType() {
         value: cappuccinoType,
         name: 'cappuccino'
     }];
+
+    let maxNum = favoriteCoffees[0];
     
     for (let i = 1; i < favoriteCoffees.length; i++) {
-        let maxNum = favoriteCoffees[0];
-
         if (favoriteCoffees[i].value > maxNum.value) {
             maxNum = favoriteCoffees[i];
         }
-
-        return maxNum.name;
     }
+
+    return maxNum.name;
 }
 
 //Show popup window, that includes interface to refill fluid tanks 

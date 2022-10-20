@@ -5,20 +5,25 @@ const createdCustomCoffee = document.getElementById('custom-coffee-created');
 const favoriteCoffee = document.getElementById('favorite-coffee-type');
 const displayAccount = document.getElementById('account-display');
 
-checkStorage('makedCoffee', makedCoffee.textContent);
-checkStorage('createdCustomCoffee', createdCustomCoffee.textContent);
-checkStorage('favoriteCoffee', favoriteCoffee.textContent);
+// checkStorage('makedCoffee', makedCoffee.textContent);
+// checkStorage('createdCustomCoffee', createdCustomCoffee.textContent);
+// checkStorage('favoriteCoffee', favoriteCoffee.textContent);
+
+makedCoffee.textContent = Storage.getItem('makedCoffee');
+createdCustomCoffee.textContent = Storage.getItem('createdCustomCoffee');
+favoriteCoffee.textContent = Storage.getItem('favoriteCoffee');
 
 displayAccount.value = Storage.getItem('accountName');
 
 function checkStorage(item, element) {
-    if (Storage.getItem(item) !== null) {
-        element = Storage.getItem(item);
-    }
+    // if (Storage.getItem(item) !== null) {
+    //     element = Storage.getItem(item);
+    // }
 
-    else {
-        element = 0;
-    }
+    // else {
+    //     element = 0;
+    // }
+    element = Storage.getItem(item);
 }
 
 function selectElement(type, selector, callback) {
@@ -53,7 +58,7 @@ selectElement('click', '#change-account-button', (event) => {
 
     Storage.setItem('accountName', displayAccount.value);
 
-    if (editButton.textContent.toLocaleLowerCase() === 'edit') {
+    if (editButton.textContent.toLocaleLowerCase() === 'change account name') {
         displayAccount.disabled = false;
         displayAccount.removeAttribute('readonly');
         displayAccount.focus();
@@ -62,6 +67,6 @@ selectElement('click', '#change-account-button', (event) => {
     else {
         displayAccount.setAttribute('readonly', 'readonly');
         displayAccount.disabled = true;
-        editButton.textContent = 'Edit';
+        editButton.textContent = 'Change account name';
     }
 });
