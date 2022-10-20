@@ -5,25 +5,24 @@ const createdCustomCoffee = document.getElementById('custom-coffee-created');
 const favoriteCoffee = document.getElementById('favorite-coffee-type');
 const displayAccount = document.getElementById('account-display');
 
-// checkStorage('makedCoffee', makedCoffee.textContent);
-// checkStorage('createdCustomCoffee', createdCustomCoffee.textContent);
-// checkStorage('favoriteCoffee', favoriteCoffee.textContent);
-
-makedCoffee.textContent = Storage.getItem('makedCoffee');
-createdCustomCoffee.textContent = Storage.getItem('createdCustomCoffee');
-favoriteCoffee.textContent = Storage.getItem('favoriteCoffee');
-
 displayAccount.value = Storage.getItem('accountName');
 
-function checkStorage(item, element) {
-    // if (Storage.getItem(item) !== null) {
-    //     element = Storage.getItem(item);
-    // }
+function displayStatistics() {
+    makedCoffee.textContent = checkStorage('makedCoffee', makedCoffee.textContent);
+    createdCustomCoffee.textContent = checkStorage('createdCustomCoffee', createdCustomCoffee.textContent);
+    favoriteCoffee.textContent = checkStorage('favoriteCoffee', favoriteCoffee.textContent);
+}
 
-    // else {
-    //     element = 0;
-    // }
-    element = Storage.getItem(item);
+function checkStorage(item, element) {
+    if (Storage.getItem(item) === null) {
+        element = 0;
+    }
+
+    else {
+        element = Storage.getItem(item);
+    }
+
+    return element;
 }
 
 function selectElement(type, selector, callback) {
@@ -46,11 +45,15 @@ selectElement('click', '#reset-statistics-btn', (event) => {
     Storage.removeItem('latteType');
     Storage.removeItem('americanoType');
     Storage.removeItem('cappuccinoType');
+
+    displayStatistics();
 });
 
 selectElement('click', '#delete-account-btn', (event) => {
     localStorage.clear();
     displayAccount.value = '';
+
+    displayStatistics();
 });
 
 selectElement('click', '#change-account-button', (event) => {
@@ -70,3 +73,5 @@ selectElement('click', '#change-account-button', (event) => {
         editButton.textContent = 'Change account name';
     }
 });
+
+displayStatistics();
