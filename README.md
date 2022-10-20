@@ -31,7 +31,7 @@ The heart of this project is the coffee machine. This machine has made brewing c
 <br>
 
 3. Choose coffee type.
-<br>![](images/usage3.png)
+<br>![](src/images/usage3.png)
 <br>
 <br>
 <br>
