@@ -12,7 +12,7 @@ It's a training project. I wanted to do this project to learn the basics of fron
 ## Used technologies
 * HTML
 * CSS
-* Java Script
+* JavaScript
 
 ## Description
 The heart of this project is the coffee machine. This machine has made brewing coffee simple. The user can choose the type of coffee. Must keep in mind that the ingredients needed to create this drink are gradually running out, so they must be refilled.
