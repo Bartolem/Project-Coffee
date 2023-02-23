@@ -43,7 +43,6 @@ window.onload = function() {
     americanoType = Storage.getItem('americanoType');
     cappuccinoType = Storage.getItem('cappuccinoType');
     Storage.setItem('favoriteCoffee', getFavoriteCoffeeType());
-    console.log(getFavoriteCoffeeType())
 
     CoffeeCreator.customCoffeeInput.value = Storage.getItem('customCoffeeName');
     CoffeeCreator.coffeeRange.value = Storage.getItem('coffeeRange');
